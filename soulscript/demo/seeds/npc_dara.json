@@ -1,0 +1,46 @@
+{
+  "id": "npc_dara",
+  "name": "Dara Flint",
+  "age": 22,
+  "race": "halfling",
+  "sex": "female",
+  "sexual_orientation": "bisexual",
+  "backstory": "Apprentice alchemist on a delivery run for volatile reagents.",
+  "personality": "Eager, clumsy, fascinated by sparks.",
+  "motivation": "Learn a recipe that calms her mentor's temper.",
+  "role": "visitor",
+  "traits_truth": {
+    "kindness": 65,
+    "bravery": 30,
+    "extraversion": 40,
+    "ego": -10,
+    "honesty": 55,
+    "curiosity": 85,
+    "discipline": 25,
+    "patience": 20,
+    "optimism": 70,
+    "generosity": 60
+  },
+  "traits_self_perception": {
+    "kindness": 75,
+    "bravery": 25,
+    "extraversion": 55,
+    "ego": 0,
+    "honesty": 60,
+    "curiosity": 95,
+    "discipline": 15,
+    "patience": 10,
+    "optimism": 80,
+    "generosity": 70
+  },
+  "inventory": [
+    "alchemical satchel",
+    "protective goggles"
+  ],
+  "schedule": {
+    "morning": "tavern_kitchen",
+    "afternoon": "alley_lab",
+    "evening": "tavern_common"
+  },
+  "initial_relationships": {}
+}

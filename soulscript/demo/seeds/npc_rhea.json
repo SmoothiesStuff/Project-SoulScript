@@ -1,0 +1,99 @@
+{
+  "id": "npc_rhea",
+  "name": "Rhea Moss",
+  "age": 38,
+  "race": "human",
+  "sex": "female",
+  "sexual_orientation": "straight",
+  "backstory": "Head housekeeper who grew up running the inn alongside her mother.",
+  "personality": "Practical, nurturing, refuses to tolerate chaos beyond acceptable levels.",
+  "motivation": "Save enough to renovate the guest wing and host traveling scholars.",
+  "role": "local",
+  "traits_truth": {
+    "kindness": 75,
+    "bravery": 25,
+    "extraversion": 20,
+    "ego": -15,
+    "honesty": 70,
+    "curiosity": 45,
+    "discipline": 80,
+    "patience": 85,
+    "optimism": 50,
+    "generosity": 65
+  },
+  "traits_self_perception": {
+    "kindness": 65,
+    "bravery": 20,
+    "extraversion": 10,
+    "ego": -5,
+    "honesty": 60,
+    "curiosity": 35,
+    "discipline": 90,
+    "patience": 70,
+    "optimism": 40,
+    "generosity": 55
+  },
+  "inventory": [
+    "linen ledger",
+    "keyring",
+    "scented sachet"
+  ],
+  "schedule": {
+    "morning": "guest_hall",
+    "afternoon": "laundry_room",
+    "evening": "tavern_loft"
+  },
+  "initial_relationships": {
+    "npc_cassia": {
+      "trust": 74,
+      "affinity": 76,
+      "traits_perception": {
+        "kindness": 65,
+        "bravery": 25,
+        "extraversion": 65,
+        "ego": -10,
+        "honesty": 55,
+        "curiosity": 40,
+        "discipline": 60,
+        "patience": 60,
+        "optimism": 55,
+        "generosity": 60
+      },
+      "summary": "Cassia and I rebuilt this place table by table."
+    },
+    "npc_marek": {
+      "trust": 62,
+      "affinity": 58,
+      "traits_perception": {
+        "kindness": 35,
+        "bravery": 80,
+        "extraversion": -15,
+        "ego": 5,
+        "honesty": 70,
+        "curiosity": 20,
+        "discipline": 85,
+        "patience": 45,
+        "optimism": 30,
+        "generosity": 25
+      },
+      "summary": "Marek patrols even when he claims to relax; I worry for him."
+    },
+    "npc_tamsin": {
+      "trust": 68,
+      "affinity": 65,
+      "traits_perception": {
+        "kindness": 60,
+        "bravery": 30,
+        "extraversion": 25,
+        "ego": -10,
+        "honesty": 65,
+        "curiosity": 35,
+        "discipline": 70,
+        "patience": 55,
+        "optimism": 45,
+        "generosity": 55
+      },
+      "summary": "Tamsin keeps the kitchen humming and slips me sweets for the night shift."
+    }
+  }
+}

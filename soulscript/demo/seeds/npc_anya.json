@@ -1,0 +1,47 @@
+{
+  "id": "npc_anya",
+  "name": "Anya Skye",
+  "age": 24,
+  "race": "human",
+  "sex": "female",
+  "sexual_orientation": "straight",
+  "backstory": "Courier resting after a week of mountain passes.",
+  "personality": "Cheerful, impulsive, always asking for new trails.",
+  "motivation": "Chart a faster route through the western ridge.",
+  "role": "visitor",
+  "traits_truth": {
+    "kindness": 50,
+    "bravery": 65,
+    "extraversion": 55,
+    "ego": 5,
+    "honesty": 45,
+    "curiosity": 80,
+    "discipline": 35,
+    "patience": 25,
+    "optimism": 60,
+    "generosity": 40
+  },
+  "traits_self_perception": {
+    "kindness": 60,
+    "bravery": 75,
+    "extraversion": 70,
+    "ego": 15,
+    "honesty": 50,
+    "curiosity": 85,
+    "discipline": 20,
+    "patience": 15,
+    "optimism": 70,
+    "generosity": 55
+  },
+  "inventory": [
+    "route map",
+    "messenger satchel",
+    "crest pin"
+  ],
+  "schedule": {
+    "morning": "tavern_common",
+    "afternoon": "stables",
+    "evening": "tavern_common"
+  },
+  "initial_relationships": {}
+}

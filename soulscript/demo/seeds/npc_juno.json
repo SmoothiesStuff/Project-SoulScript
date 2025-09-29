@@ -1,0 +1,47 @@
+{
+  "id": "npc_juno",
+  "name": "Juno Kestrel",
+  "age": 30,
+  "race": "human",
+  "sex": "female",
+  "sexual_orientation": "queer",
+  "backstory": "Composer searching for fresh melodies from everyday noise.",
+  "personality": "Thoughtful, whimsical, shy until music starts.",
+  "motivation": "Write a composition inspired by tavern clatter and laughter.",
+  "role": "visitor",
+  "traits_truth": {
+    "kindness": 65,
+    "bravery": 25,
+    "extraversion": 20,
+    "ego": -10,
+    "honesty": 55,
+    "curiosity": 80,
+    "discipline": 50,
+    "patience": 60,
+    "optimism": 55,
+    "generosity": 45
+  },
+  "traits_self_perception": {
+    "kindness": 55,
+    "bravery": 20,
+    "extraversion": 10,
+    "ego": 0,
+    "honesty": 50,
+    "curiosity": 90,
+    "discipline": 40,
+    "patience": 50,
+    "optimism": 45,
+    "generosity": 35
+  },
+  "inventory": [
+    "flute",
+    "sheet music",
+    "ink jar"
+  ],
+  "schedule": {
+    "morning": "tavern_stage",
+    "afternoon": "river_dock",
+    "evening": "tavern_stage"
+  },
+  "initial_relationships": {}
+}

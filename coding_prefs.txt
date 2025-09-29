@@ -1,0 +1,135 @@
+########## Coding Preferences for AI Agent ##########
+
+Purpose
+      ###### What This File Is ########
+            ##### This is a binding contract for how you will write, edit, and explain code for me. #####
+            ##### Follow each MUST and NEVER exactly. If a requirement conflicts with idiomatic style, prefer clarity and control. #####
+
+Voice and Style
+      ###### Non AI Look ########
+            ##### Code and comments must read like a thoughtful human wrote them. #####
+            ##### Avoid generic AI phrasing, boilerplate apologizing, or fluffy intros. #####
+            ##### Keep the tone direct, grounded, and practical. #####
+
+Formatting Contract
+      ###### Headers ########
+            ##### Use this exact header style in code and notebooks. #####
+            ##### Top level #####
+            ########## Header Section #########
+            ##### Second level #####
+                  ###### Subsection 1 ########
+            ##### Third level #####
+                        ##### sub sub section 1 #####
+            ##### Other sections inside a header must be labeled the same way and indented to match this pattern. #####
+
+      ###### Line Length and Whitespace ########
+            ##### Wrap lines sensibly. Prefer readability over maximum compression. #####
+            ##### Leave one blank line between logical blocks. #####
+
+Commenting Rules
+      ###### Big Picture ######
+            ##### Start each major block with a header comment that explains the purpose in one or two plain sentences. #####
+            ##### Before nontrivial code, write pseudocode style comments as numbered steps. #####
+            ##### Inline comments should be short and aligned to the right when helpful. #####
+            ##### Avoid em dashes and use parentheses instead if you need an aside. #####
+
+      ###### Docstrings ######
+            ##### When a function is public or nontrivial, include a short one line summary, arguments, returns, and simple examples if useful. #####
+            ##### Prefer Google or NumPy style sections, keep them brief and clear. #####
+
+Naming and Structure
+      ###### Variables and Functions ########
+            ##### Use obvious, descriptive names. Avoid single letters except for small loop counters. #####
+            ##### Prefer lowercase_with_underscores for functions and variables. Classes use CapWords. #####
+            ##### Keep functions small and focused on a single responsibility. #####
+
+      ###### Modules and Files ########
+            ##### Group related functionality. Keep files short enough to understand in one sitting. #####
+            ##### Put top level constants at the top with clear names. #####
+
+Control Flow
+      ###### Loops and Comprehensions ########
+            ##### Prefer overt loops for clarity. Use list comprehensions only when the intent is unmistakable. #####
+            ##### Avoid deeply nested expressions that hide logic. Split into steps. #####
+
+      ###### Branching ########
+            ##### Keep conditions explicit. Name intermediate booleans for readability. #####
+            ##### Fail early with clear messages when inputs are invalid. #####
+
+Data and Libraries
+      ###### Pandas and NumPy ########
+            ##### Prefer explicit stepwise transformations. Chain sparingly and only when the chain is obvious. #####
+            ##### When vectorizing hurts clarity, write a clear loop and comment why. #####
+
+      ###### Imports and Dependencies ########
+            ##### Import only what you use. Keep requirements minimal. #####
+            ##### List exact versions if reproducibility matters, else pin major and minor as needed. #####
+
+Error Handling and Logging
+      ###### Exceptions ########
+            ##### Catch only what you can handle. Re raise otherwise. #####
+            ##### Include the failing values in error messages when safe. #####
+
+      ###### Logging ########
+            ##### Use simple print style logs for notebooks. Use logging module for apps and libraries. #####
+            ##### Provide a DEBUG switch variable to toggle verbosity. #####
+
+Testing and Validation
+      ###### Unit and Smoke Tests ########
+            ##### Add tiny smoke tests for key functions within the notebook or a tests folder for apps. #####
+            ##### Validate shapes, types, and basic invariants with assert statements. #####
+
+Reproducibility
+      ###### Seeds and Artifacts ########
+            ##### Set random seeds. Report library versions when results matter. #####
+            ##### Save important artifacts and metrics to CSV or JSON. #####
+
+Performance
+      ###### Practical Guidance ########
+            ##### Prefer clarity. Optimize only when a real bottleneck is proven. #####
+            ##### If you micro optimize, add a note with a simple benchmark or reason. #####
+
+AI Agent Behavior
+      ###### Ground Rules ########
+            ##### MUST follow these preferences unless I explicitly override in the same message. #####
+            ##### MUST show the full code context when proposing edits that affect behavior. #####
+            ##### MUST produce side by side before and after diffs when changing existing code. #####
+            ##### MUST keep state visible. Do not hide magic helpers or long one liners. #####
+            ##### MUST ask for the minimum necessary clarifications only when absolutely blocked. #####
+            ##### MUST default to explicit loops, obvious variables, and stepwise flow. #####
+            ##### MUST write comments that teach the next reader what is happening and why. #####
+            ##### SHOULD provide tiny runnable examples for new utilities. #####
+            ##### SHOULD add commented out debug prints near complex logic. #####
+            ##### MAY propose small refactors, but include a short justification. #####
+            ##### NEVER slip in new dependencies without calling them out in a short note. #####
+            ##### NEVER invent data, paths, credentials, or pretend to have executed code. #####
+
+Change Management
+      ###### Diff Expectations ########
+            ##### When editing, show a minimal unified diff or two blocks labeled Before and After using code fences. #####
+            ##### List each change in one short sentence. Keep the list scannable. #####
+
+      ###### Backwards Compatibility ########
+            ##### If a change breaks a public function signature, call that out explicitly and suggest a migration snippet. #####
+
+Deliverables
+      ###### What to Output ########
+            ##### For notebooks, include a top cell that sets options and seeds. #####
+            ##### For scripts, include a clear main guard and argument parsing if needed. #####
+            ##### Provide a short README style snippet when adding a nontrivial module. #####
+
+Prompting Template for This User
+      ###### How to Ask and Answer ########
+            ##### When you need input, ask one precise question with a tiny example. #####
+            ##### When you answer, start with a one paragraph summary, then the code, then a short checklist of what changed. #####
+
+Compliance Checklist
+      ###### Use This Before You Finish ########
+            ##### 1 Headers follow the exact indentation pattern. #####
+            ##### 2 Variables and functions have clear names. #####
+            ##### 3 Loops are explicit and readable. #####
+            ##### 4 Comments explain purpose, steps, and tricky bits. #####
+            ##### 5 No hidden state or surprise dependencies. #####
+            ##### 6 Seeds and versions are set when results matter. #####
+            ##### 7 Diffs provided for any edits. #####
+            ##### 8 Outputs saved to simple, portable formats when useful. #####

@@ -1,0 +1,46 @@
+{
+  "id": "npc_helia",
+  "name": "Helia Dawncrest",
+  "age": 27,
+  "race": "aasimar",
+  "sex": "female",
+  "sexual_orientation": "straight",
+  "backstory": "Scholar chasing celestial omens, currently lost in her charts.",
+  "personality": "Serene, distracted, poetic in speech.",
+  "motivation": "Interpret a comet dream that pointed her toward this tavern.",
+  "role": "visitor",
+  "traits_truth": {
+    "kindness": 70,
+    "bravery": 40,
+    "extraversion": 10,
+    "ego": -15,
+    "honesty": 60,
+    "curiosity": 85,
+    "discipline": 45,
+    "patience": 75,
+    "optimism": 60,
+    "generosity": 55
+  },
+  "traits_self_perception": {
+    "kindness": 80,
+    "bravery": 35,
+    "extraversion": 0,
+    "ego": -5,
+    "honesty": 55,
+    "curiosity": 95,
+    "discipline": 35,
+    "patience": 85,
+    "optimism": 70,
+    "generosity": 65
+  },
+  "inventory": [
+    "star charts",
+    "silver quill"
+  ],
+  "schedule": {
+    "morning": "tavern_loft",
+    "afternoon": "hilltop",
+    "evening": "tavern_booth"
+  },
+  "initial_relationships": {}
+}

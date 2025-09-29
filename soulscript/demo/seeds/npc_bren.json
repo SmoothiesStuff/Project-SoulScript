@@ -1,0 +1,46 @@
+{
+  "id": "npc_bren",
+  "name": "Bren Ashfall",
+  "age": 31,
+  "race": "tiefling",
+  "sex": "male",
+  "sexual_orientation": "gay",
+  "backstory": "Traveling fire dancer seeking venues before winter.",
+  "personality": "Flamboyant, competitive, secretly sensitive.",
+  "motivation": "Secure a long-term performance contract in the capital.",
+  "role": "visitor",
+  "traits_truth": {
+    "kindness": 45,
+    "bravery": 55,
+    "extraversion": 85,
+    "ego": 35,
+    "honesty": 50,
+    "curiosity": 60,
+    "discipline": 40,
+    "patience": 30,
+    "optimism": 55,
+    "generosity": 45
+  },
+  "traits_self_perception": {
+    "kindness": 35,
+    "bravery": 70,
+    "extraversion": 95,
+    "ego": 50,
+    "honesty": 40,
+    "curiosity": 70,
+    "discipline": 30,
+    "patience": 25,
+    "optimism": 65,
+    "generosity": 55
+  },
+  "inventory": [
+    "ember fans",
+    "performance garb"
+  ],
+  "schedule": {
+    "morning": "guest_room",
+    "afternoon": "tavern_stage",
+    "evening": "tavern_stage"
+  },
+  "initial_relationships": {}
+}

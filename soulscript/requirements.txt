@@ -1,0 +1,15 @@
+﻿langgraph==0.0.45
+langchain==0.1.20
+pydantic==2.8.2
+networkx==3.2.1
+streamlit==1.36.0
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+rich==13.7.1
+textual==0.45.1
+pandas==2.2.2
+sqlalchemy==2.0.32
+pytest==8.3.2
+openai==1.40.3
+plotly==5.22.0
+streamlit-plotly-events==0.0.6
