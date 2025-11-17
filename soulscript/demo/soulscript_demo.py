@@ -55,6 +55,8 @@ def load_seed_profiles() -> List[NPCProfile]:
         with path.open("r", encoding="utf-8") as handle:
             raw = json.load(handle)
         truth = NPCTruth(**raw)
+        if config.ACTIVE_NPCS and truth.npc_id not in config.ACTIVE_NPCS:
+            continue
         profiles.append(NPCProfile(truth=truth))
     return profiles
 

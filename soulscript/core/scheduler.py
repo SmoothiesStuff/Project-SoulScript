@@ -8,12 +8,12 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional
 
 from . import config
-from .graph_nodes import node_adjust_rel, node_decide_join, node_idle, node_speak
+from .graph_nodes import node_idle, node_speak
 from .llm import LLMClient
 from .memory import ConversationMemory
 from .npc import NPC
 from .relationships import RelationshipGraph
-from .types import Decision, RelationshipEdge, TraitVector, TRAIT_AXES
+from .types import Decision, RelationshipEdge
 
 
 class SimulationScheduler:
@@ -75,10 +75,6 @@ class SimulationScheduler:
             tick_decisions.append(result_idle["decision"])
             result_speak = node_speak(npc, self.conversation_memory, self.relationships, self.llm_client, context)
             tick_decisions.append(result_speak["decision"])
-            result_adjust = node_adjust_rel(npc, self.conversation_memory, self.relationships, self.llm_client, context)
-            tick_decisions.append(result_adjust["decision"])
-            result_join = node_decide_join(npc, self.conversation_memory, self.relationships, self.llm_client, context)
-            tick_decisions.append(result_join["decision"])
         self.decisions.extend(tick_decisions)
         self.current_tick += 1
         return tick_decisions

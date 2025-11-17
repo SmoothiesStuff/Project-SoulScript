@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, List, Tuple
 
+from . import config
 from .npc import NPC
 from .tools import inventory_for, location_of, schedule_for
 from .types import Action, ActionType
@@ -37,9 +38,9 @@ def apply_policy(npc: NPC, node_name: str, context: Dict[str, Any]) -> Tuple[Lis
     """Return allowed actions plus tool outputs for the given node."""
 
     # 1 Pull configuration and pre compute tool values.                        # steps
-    config = POLICY_CONFIG.get(node_name, POLICY_CONFIG["idle"])
+    config_entry = POLICY_CONFIG.get(node_name, POLICY_CONFIG["idle"])
     tool_outputs: Dict[str, Any] = {}
-    for tool_name in config.get("tools", []):
+    for tool_name in config_entry.get("tools", []):
         if tool_name == "inventory":
             tool_outputs["inventory"] = inventory_for(npc.profile)
         elif tool_name == "location":
@@ -52,14 +53,28 @@ def apply_policy(npc: NPC, node_name: str, context: Dict[str, Any]) -> Tuple[Lis
     if target_id is None and nearby:
         target_id = nearby[0]
     allowed_actions: List[Action] = []
-    requires_partner = config.get("requires_partner", False)
+    requires_partner = config_entry.get("requires_partner", False)
     if requires_partner and target_id is None:
         allowed_actions.append(Action(action_type=ActionType.IDLE))
         return allowed_actions, tool_outputs
-    for action_type in config.get("actions", []):
+    filtered_actions = _filtered_actions(config_entry.get("actions", []))
+    for action_type in filtered_actions:
         action = Action(action_type=action_type, target_id=target_id)
         allowed_actions.append(action)
     return allowed_actions, tool_outputs
+
+
+def _filtered_actions(actions: List[ActionType]) -> List[ActionType]:
+    """Limit actions to the configurable set for predictability."""
+
+    if not config.ACTION_SET:
+        return actions
+    selected: List[ActionType] = []
+    allowed = {name.lower() for name in config.ACTION_SET}
+    for action_type in actions:
+        if action_type.value in allowed:
+            selected.append(action_type)
+    return selected
 
 
 # TODO: expose policy knobs via config for rapid tuning during playtests.

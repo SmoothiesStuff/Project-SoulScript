@@ -28,7 +28,7 @@ def node_idle(
 
     # 1 Gather allowed actions and helper data.                                # steps
     allowed_actions, tool_outputs = apply_policy(npc, "idle", context)
-    llm_context = _build_llm_context(npc, conversation_memory, context, tool_outputs)
+    llm_context = _build_llm_context(npc, conversation_memory, context, tool_outputs, relationships)
     decision = llm_client.select_action(npc.npc_id, llm_context, allowed_actions)
     if decision.selected_action.action_type == ActionType.IDLE:
         npc.adjust_mood(1)
@@ -46,7 +46,7 @@ def node_speak(
 
     # 1 Pull nearby NPCs then ask the policy for allowed speak actions.        # steps
     allowed_actions, tool_outputs = apply_policy(npc, "speak", context)
-    llm_context = _build_llm_context(npc, conversation_memory, context, tool_outputs)
+    llm_context = _build_llm_context(npc, conversation_memory, context, tool_outputs, relationships)
     decision = llm_client.select_action(npc.npc_id, llm_context, allowed_actions)
     action = decision.selected_action
     if action.action_type == ActionType.SPEAK and action.target_id:
@@ -89,7 +89,7 @@ def node_decide_join(
 
     # 1 Evaluate current gathering info to set up decisions.                   # steps
     allowed_actions, tool_outputs = apply_policy(npc, "decide_join", context)
-    llm_context = _build_llm_context(npc, conversation_memory, context, tool_outputs)
+    llm_context = _build_llm_context(npc, conversation_memory, context, tool_outputs, relationships)
     decision = llm_client.select_action(npc.npc_id, llm_context, allowed_actions)
     if decision.selected_action.action_type == ActionType.JOIN:
         destination = context.get("gathering_spot", "tavern_floor")
@@ -115,7 +115,7 @@ def node_adjust_rel(
 
     # 1 Use policy to request adjustment actions.                              # steps
     allowed_actions, tool_outputs = apply_policy(npc, "adjust_relationship", context)
-    llm_context = _build_llm_context(npc, conversation_memory, context, tool_outputs)
+    llm_context = _build_llm_context(npc, conversation_memory, context, tool_outputs, relationships)
     decision = llm_client.select_action(npc.npc_id, llm_context, allowed_actions)
     action = decision.selected_action
     if action.action_type == ActionType.ADJUST_RELATIONSHIP and action.target_id:
@@ -139,20 +139,20 @@ def _build_llm_context(
     conversation_memory: ConversationMemory,
     context: Dict[str, Any],
     tool_outputs: Dict[str, Any],
+    relationships: RelationshipGraph,
 ) -> Dict[str, Any]:
-    """Merge base context, tool data, and recent conversations."""
+    """Merge base context, tool data, memory bundles, and shared facts."""
 
-    # 1 Collect short term conversation text for prompts.                      # steps
     partner_id = context.get("focus_target")
-    recent_text: List[str] = []
-    summary = ""
+    long_term_summary = ""
     if partner_id:
-        items = conversation_memory.history(npc.npc_id, partner_id)
-        for item in items:
-            recent_text.append(f"{item.speaker_id}: {item.text}")
-        if items:
-            summaries = conversation_memory.build_summaries(npc.npc_id, partner_id, items)
-            summary = summaries.get((npc.npc_id, partner_id), "")
+        edge = relationships.get_edge(npc.npc_id, partner_id)
+        long_term_summary = edge.summary or ""
+    bundle = conversation_memory.context_bundle(npc.npc_id, partner_id, long_term_summary) if partner_id else {
+        "short_term": [],
+        "long_term": "",
+        "global_facts": list(config.GLOBAL_KNOWLEDGE),
+    }
     llm_context: Dict[str, Any] = {
         "profile": {
             "name": npc.profile.truth.name,
@@ -163,8 +163,9 @@ def _build_llm_context(
             "mood": npc.mood,
             "self_traits": npc.serialize_self_traits(),
         },
-        "conversation_recent": recent_text,
-        "conversation_summary": summary,
+        "short_term": bundle["short_term"],
+        "long_term": bundle["long_term"],
+        "global_facts": bundle["global_facts"],
         "conversation_partner": partner_id,
     }
     llm_context.update(tool_outputs)

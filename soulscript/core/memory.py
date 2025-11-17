@@ -15,7 +15,7 @@ from .types import ConversationItem
 class ConversationMemory:
     """Handles per pair conversation history backed by sqlite."""
 
-    def __init__(self, keep: int = config.CONVERSATION_KEEP) -> None:
+    def __init__(self, keep: int = config.INTERACTION_LINES_KEEP) -> None:
         # 1 Store retention configuration for future inserts.                  # steps
         self.keep = keep
 
@@ -79,6 +79,28 @@ class ConversationMemory:
             fragments.append(f"I replied '{perspective_lines[-1]}'")
         summary_text = " ".join(fragments)
         return style_and_lore_filter(summary_text)
+
+    def context_bundle(
+        self,
+        npc_a: str,
+        npc_b: str,
+        existing_summary: str | None,
+    ) -> Dict[str, List[str] | str]:
+        """Return short term lines, summary, and shared knowledge for prompts."""
+
+        items = self.history(npc_a, npc_b)
+        short_term: List[str] = []
+        for item in items:
+            short_term.append(f"{item.speaker_id}: {item.text}")
+        summary = existing_summary or ""
+        if len(items) >= config.LONG_TERM_SUMMARY_TRIGGER:
+            summaries = self.build_summaries(npc_a, npc_b, items)
+            summary = summaries.get((npc_a, npc_b), summary)
+        return {
+            "short_term": short_term,
+            "long_term": summary,
+            "global_facts": list(config.GLOBAL_KNOWLEDGE),
+        }
 
     def _rows_to_items(self, rows: List[Dict[str, str]]) -> List[ConversationItem]:
         """Convert raw sqlite rows to Pydantic objects."""

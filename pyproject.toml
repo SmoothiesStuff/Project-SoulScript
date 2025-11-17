@@ -1,0 +1,9 @@
+[project]
+name = "soulscript"
+version = "0.1.0"
+requires-python = ">=3.10"
+description = "AI-driven NPC simulation engine"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"

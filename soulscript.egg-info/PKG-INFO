@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: soulscript
+Version: 0.1.0
+Summary: AI-driven NPC simulation engine
+Requires-Python: >=3.10
