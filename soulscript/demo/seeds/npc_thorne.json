@@ -1,0 +1,56 @@
+{
+  "id": "thorne",
+  "name": "Thorne",
+  "age": 41,
+  "race": "dwarf",
+  "sex": "male",
+  "sexual_orientation": "straight",
+  "backstory": "Local guard who keeps watch with few words.",
+  "traits": "Disciplined stance, gravel voice, slow to trust but steady.",
+  "trait_inputs": {
+    "honesty": 70,
+    "warmth": -15,
+    "openness": -30,
+    "patience": 60,
+    "optimism": -10,
+    "charisma": -5,
+    "intelligence": 60
+  },
+  "motivation": "Gauge newcomers and keep the peace without drawing steel.",
+  "role": "local",
+  "traits_truth": {
+    "kindness": 15,
+    "bravery": 80,
+    "extraversion": -30,
+    "ego": 5,
+    "honesty": 75,
+    "curiosity": 30,
+    "patience": 65,
+    "optimism": -5,
+    "intelligence": 65,
+    "charisma": -10
+  },
+  "traits_self_perception": {
+    "kindness": 10,
+    "bravery": 85,
+    "extraversion": -25,
+    "ego": 10,
+    "honesty": 80,
+    "curiosity": 35,
+    "patience": 70,
+    "optimism": -5,
+    "intelligence": 60,
+    "charisma": -5
+  },
+  "inventory": [
+    "guard badge",
+    "short axe",
+    "logbook"
+  ],
+  "schedule": {
+    "morning": "tavern_common",
+    "afternoon": "balcony",
+    "evening": "tavern_common"
+  },
+  "initial_relationships": {}
+}

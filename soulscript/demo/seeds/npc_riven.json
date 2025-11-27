@@ -1,0 +1,56 @@
+{
+  "id": "riven",
+  "name": "Riven",
+  "age": 31,
+  "race": "human",
+  "sex": "male",
+  "sexual_orientation": "straight",
+  "backstory": "Scout who spent years on the border and knows every exit.",
+  "traits": "Quiet, watches doors, keeps routes in mind before he speaks.",
+  "trait_inputs": {
+    "honesty": 20,
+    "warmth": -30,
+    "openness": -40,
+    "patience": 25,
+    "optimism": -20,
+    "charisma": -10,
+    "intelligence": 55
+  },
+  "motivation": "Gauge who is safe to trade information with.",
+  "role": "visitor",
+  "traits_truth": {
+    "kindness": -10,
+    "bravery": 60,
+    "extraversion": -20,
+    "ego": 10,
+    "honesty": 35,
+    "curiosity": 45,
+    "patience": 25,
+    "optimism": -30,
+    "intelligence": 65,
+    "charisma": -15
+  },
+  "traits_self_perception": {
+    "kindness": -5,
+    "bravery": 70,
+    "extraversion": -10,
+    "ego": 20,
+    "honesty": 40,
+    "curiosity": 50,
+    "patience": 20,
+    "optimism": -20,
+    "intelligence": 70,
+    "charisma": -10
+  },
+  "inventory": [
+    "scout cloak",
+    "map slivers",
+    "signal whistle"
+  ],
+  "schedule": {
+    "morning": "tavern_common",
+    "afternoon": "balcony",
+    "evening": "tavern_common"
+  },
+  "initial_relationships": {}
+}

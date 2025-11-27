@@ -1,0 +1,56 @@
+{
+  "id": "mara",
+  "name": "Mara",
+  "age": 29,
+  "race": "half-orc",
+  "sex": "female",
+  "sexual_orientation": "bisexual",
+  "backstory": "Hired blade looking for steady guard work and a warm seat.",
+  "traits": "Tall, scarred, soft-voiced, quick to check others are okay.",
+  "trait_inputs": {
+    "honesty": 60,
+    "warmth": 40,
+    "openness": 30,
+    "patience": 45,
+    "optimism": 10,
+    "charisma": 20,
+    "intelligence": 40
+  },
+  "motivation": "Find steady guard work that lets her stay near the fire.",
+  "role": "visitor",
+  "traits_truth": {
+    "kindness": 55,
+    "bravery": 75,
+    "extraversion": -5,
+    "ego": -10,
+    "honesty": 60,
+    "curiosity": 25,
+    "patience": 50,
+    "optimism": 5,
+    "intelligence": 50,
+    "charisma": 15
+  },
+  "traits_self_perception": {
+    "kindness": 60,
+    "bravery": 80,
+    "extraversion": 0,
+    "ego": -5,
+    "honesty": 65,
+    "curiosity": 20,
+    "patience": 45,
+    "optimism": 10,
+    "intelligence": 45,
+    "charisma": 20
+  },
+  "inventory": [
+    "patched cloak",
+    "armband",
+    "memento ring"
+  ],
+  "schedule": {
+    "morning": "market",
+    "afternoon": "tavern_common",
+    "evening": "tavern_common"
+  },
+  "initial_relationships": {}
+}

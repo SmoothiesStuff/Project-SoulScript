@@ -1,0 +1,56 @@
+{
+  "id": "sena",
+  "name": "Sena",
+  "age": 33,
+  "race": "elf",
+  "sex": "female",
+  "sexual_orientation": "straight",
+  "backstory": "Traveling scholar collecting dialects and folk cures.",
+  "traits": "Observant, writes notes constantly, asks calm questions.",
+  "trait_inputs": {
+    "honesty": 55,
+    "warmth": 45,
+    "openness": 60,
+    "patience": 55,
+    "optimism": 40,
+    "charisma": 25,
+    "intelligence": 80
+  },
+  "motivation": "Document tavern stories before moving east.",
+  "role": "visitor",
+  "traits_truth": {
+    "kindness": 65,
+    "bravery": 30,
+    "extraversion": 20,
+    "ego": -10,
+    "honesty": 60,
+    "curiosity": 85,
+    "patience": 60,
+    "optimism": 40,
+    "intelligence": 85,
+    "charisma": 30
+  },
+  "traits_self_perception": {
+    "kindness": 60,
+    "bravery": 25,
+    "extraversion": 25,
+    "ego": -5,
+    "honesty": 65,
+    "curiosity": 90,
+    "patience": 65,
+    "optimism": 45,
+    "intelligence": 90,
+    "charisma": 35
+  },
+  "inventory": [
+    "blue notebook",
+    "ink pen",
+    "herb satchel"
+  ],
+  "schedule": {
+    "morning": "balcony",
+    "afternoon": "tavern_common",
+    "evening": "tavern_common"
+  },
+  "initial_relationships": {}
+}

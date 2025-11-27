@@ -1,0 +1,800 @@
+[2025-11-27T13:23:21.270415] llm_in npc=npc_sena node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T13:23:21.937218] llm_out npc=npc_sena node=speak action=speak target=npc_mara line='Stories truly bring us closer together, don't they?'
+[2025-11-27T13:23:21.950689] dialogue npc_sena->npc_mara: 'Stories truly bring us closer together, don't they?' (defer_effects=True)
+[2025-11-27T13:23:21.964499] llm_in npc=npc_mara node=speak partner=npc_sena allowed=['speak'] short=4
+[2025-11-27T13:23:22.636630] llm_out npc=npc_sena node=speak action=speak target=npc_mara line='Stories truly bring people together, don't they?'
+[2025-11-27T13:23:22.653682] dialogue npc_sena->npc_mara: 'Stories truly bring people together, don't they?' (defer_effects=True)
+[2025-11-27T13:23:22.672682] llm_in npc=npc_mara node=speak partner=npc_sena allowed=['speak'] short=4
+[2025-11-27T13:23:23.406048] llm_out npc=npc_mara node=speak action=speak target=npc_sena line='They really do; it's like weaving a tapestry of our lives together.'
+[2025-11-27T13:23:23.422061] dialogue npc_mara->npc_sena: 'They really do; it's like weaving a tapestry of our lives together.' (defer_effects=True)
+[2025-11-27T13:23:23.928579] llm_out npc=npc_mara node=speak action=speak target=npc_sena line='They really do, it's like weaving a tapestry of experiences.'
+[2025-11-27T13:23:23.943295] dialogue npc_mara->npc_sena: 'They really do, it's like weaving a tapestry of experiences.' (defer_effects=True)
+[2025-11-27T13:23:23.957981] llm_in npc=npc_thorne node=speak partner=npc_vex allowed=['speak'] short=4
+[2025-11-27T13:23:25.437086] llm_out npc=npc_thorne node=speak action=speak target=npc_vex line='Better safe than sorry, Vex. Always trust your instincts.'
+[2025-11-27T13:23:25.455085] dialogue npc_thorne->npc_vex: 'Better safe than sorry, Vex. Always trust your instincts.' (defer_effects=True)
+[2025-11-27T13:23:25.650883] llm_in npc=npc_mara node=speak partner=npc_sena allowed=['speak'] short=4
+[2025-11-27T13:23:27.334027] llm_out npc=npc_mara node=speak action=speak target=npc_sena line='Absolutely, each story adds a new thread to our shared experience.'
+[2025-11-27T13:23:27.351065] dialogue npc_mara->npc_sena: 'Absolutely, each story adds a new thread to our shared experience.' (defer_effects=True)
+[2025-11-27T13:23:27.370900] llm_in npc=npc_thorne node=speak partner=npc_vex allowed=['speak'] short=4
+[2025-11-27T13:23:29.327257] llm_out npc=npc_thorne node=speak action=speak target=npc_vex line='That's the spirit, Vex. Stay sharp out there.'
+[2025-11-27T13:23:29.344057] dialogue npc_thorne->npc_vex: 'That's the spirit, Vex. Stay sharp out there.' (defer_effects=True)
+[2025-11-27T13:23:32.530325] summary npc_riven->npc_lyra: 'Lyra is always on the lookout for extraordinary tales to weave into her ballads, and she thrives on gathering stories from colorful characters she encounters. Her adventurous spirit and knack for mischief make her a captivating companion in every journey.' trust_delta=3 affinity_delta=2 traits={'kindness': 1, 'bravery': 1, 'extraversion': 1, 'ego': 1, 'honesty': 0, 'curiosity': 1, 'patience': -1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T13:23:32.539315] summary npc_lyra->npc_riven: 'Riven has a knack for storytelling and is always on the lookout for extraordinary tales to share. Their enthusiasm for adventure makes every conversation exciting, especially when discussing intriguing characters and their wild escapades.' trust_delta=3 affinity_delta=2
+[2025-11-27T13:23:36.116462] summary npc_thorne->npc_vex: 'Vex is always hustling for the next big score and stays optimistic about finding opportunities. Their instinct to stay sharp and aware of their surroundings makes them a reliable partner in our adventures.' trust_delta=3 affinity_delta=2 traits={'kindness': 1, 'bravery': 1, 'extraversion': 1, 'ego': 1, 'honesty': -1, 'curiosity': 1, 'patience': -1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T13:23:36.128465] summary npc_vex->npc_thorne: 'My partner, Thorne, is always reminding me to stay sharp and trust my instincts, knowing that opportunities can come and go in an instant. They’ve experienced a lot and emphasize the importance of being cautious and aware of what might be lurking around us.' trust_delta=3 affinity_delta=2
+[2025-11-27T13:23:40.019988] summary npc_mara->npc_sena: 'Sena has a warm and friendly presence, finding comfort in sharing stories by the fire on chilly nights. They believe that stories truly bring people together, weaving a tapestry of shared experiences.' trust_delta=3 affinity_delta=3 traits={'kindness': 1, 'bravery': 1, 'extraversion': 1, 'ego': -1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T13:23:40.029994] summary npc_sena->npc_mara: 'Mara has a warm and inviting presence, cherishing the magic of simple pleasures and the comfort of sharing stories by the fire. She believes that each story we share adds a new thread to the tapestry of our lives together.' trust_delta=3 affinity_delta=3
+[2025-11-27T13:23:43.643082] summary npc_sena->npc_mara: 'Mara has a warm and inviting presence, and she finds joy in sharing stories by the fire, believing that each tale we tell weaves a new thread into the tapestry of our lives together. Her appreciation for the simple pleasures makes every moment spent with her feel special.' trust_delta=3 affinity_delta=3 traits={'kindness': 1, 'bravery': 1, 'extraversion': -1, 'ego': -1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T13:23:43.652081] summary npc_mara->npc_sena: 'Sena has a warm and friendly presence, always finding comfort in sharing stories by the fire on chilly nights. They believe that stories truly bring people closer together, weaving a tapestry of shared experiences.' trust_delta=3 affinity_delta=3
+[2025-11-27T13:23:47.011009] summary npc_lyra->npc_riven: 'Riven is always eager to hear extraordinary stories and has a genuine enthusiasm for adventure, making every conversation a thrilling exchange. Their love for intriguing characters and their tales adds a special spark to our discussions.' trust_delta=3 affinity_delta=2 traits={'kindness': -1, 'bravery': 1, 'extraversion': -1, 'ego': 1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': -1, 'intelligence': 1, 'charisma': -1}
+[2025-11-27T13:23:47.020006] summary npc_riven->npc_lyra: 'Lyra is always on the hunt for extraordinary tales to inspire her ballads, and her recent adventures include a rogue who claims to have stolen a dragon's treasure. With her adventurous spirit and love for mischief, she brings a captivating energy to every encounter.' trust_delta=3 affinity_delta=2
+[2025-11-27T13:23:52.698785] summary npc_vex->npc_thorne: 'Thorne is a seasoned partner who always encourages me to stay sharp and trust my instincts, reminding me that opportunities can be fleeting. They stress the importance of being cautious and aware of our surroundings, always looking out for what might be lurking nearby.' trust_delta=3 affinity_delta=2 traits={'kindness': 1, 'bravery': 1, 'extraversion': -1, 'ego': 1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': -1, 'intelligence': 1, 'charisma': -1}
+[2025-11-27T13:23:52.708783] summary npc_thorne->npc_vex: 'Vex is always on the lookout for their next big score, staying optimistic and ready to hustle. Their sharp instincts and awareness of their surroundings make them a dependable partner in our adventures.' trust_delta=3 affinity_delta=2
+[2025-11-27T13:23:52.737054] llm_in npc=npc_lyra node=speak partner=npc_riven allowed=['speak'] short=0
+[2025-11-27T13:23:54.575854] llm_out npc=npc_lyra node=speak action=speak target=npc_riven line='Hey Riven, what's the most extraordinary story you've heard lately?'
+[2025-11-27T13:23:54.593652] dialogue npc_lyra->npc_riven: 'Hey Riven, what's the most extraordinary story you've heard lately?' (defer_effects=True)
+[2025-11-27T13:23:54.611342] llm_in npc=npc_vex node=speak partner=npc_thorne allowed=['speak'] short=0
+[2025-11-27T13:23:56.177909] llm_out npc=npc_vex node=speak action=speak target=npc_thorne line='You know, Thorne, opportunities do slip away if you’re not quick on your feet.'
+[2025-11-27T13:23:56.195708] dialogue npc_vex->npc_thorne: 'You know, Thorne, opportunities do slip away if you’re not quick on your feet.' (defer_effects=True)
+[2025-11-27T13:23:56.215304] llm_in npc=npc_riven node=speak partner=npc_lyra allowed=['speak'] short=1
+[2025-11-27T13:23:57.456454] llm_out npc=npc_riven node=speak action=speak target=npc_lyra line='I once heard of a scout who outsmarted a band of thieves near the border.'
+[2025-11-27T13:23:57.471096] dialogue npc_riven->npc_lyra: 'I once heard of a scout who outsmarted a band of thieves near the border.' (defer_effects=True)
+[2025-11-27T13:23:57.484096] llm_in npc=npc_sena node=speak partner=npc_mara allowed=['speak'] short=0
+[2025-11-27T13:23:58.931293] llm_out npc=npc_sena node=speak action=speak target=npc_mara line='I admire how you weave stories together; they truly enrich the atmosphere here.'
+[2025-11-27T13:23:58.946982] dialogue npc_sena->npc_mara: 'I admire how you weave stories together; they truly enrich the atmosphere here.' (defer_effects=True)
+[2025-11-27T13:23:59.266945] llm_in npc=npc_sena node=speak partner=npc_mara allowed=['speak'] short=1
+[2025-11-27T13:24:01.005576] llm_out npc=npc_sena node=speak action=speak target=npc_mara line='Your storytelling truly brings the tavern to life, Mara.'
+[2025-11-27T13:24:01.022128] dialogue npc_sena->npc_mara: 'Your storytelling truly brings the tavern to life, Mara.' (defer_effects=True)
+[2025-11-27T13:24:01.044743] llm_in npc=npc_thorne node=speak partner=npc_vex allowed=['speak'] short=1
+[2025-11-27T13:24:02.851417] llm_out npc=npc_thorne node=speak action=speak target=npc_vex line='True, but sometimes patience pays off too, Vex.'
+[2025-11-27T13:24:02.867684] dialogue npc_thorne->npc_vex: 'True, but sometimes patience pays off too, Vex.' (defer_effects=True)
+[2025-11-27T13:24:02.881329] llm_in npc=npc_mara node=speak partner=npc_sena allowed=['speak'] short=2
+[2025-11-27T13:24:04.498962] llm_out npc=npc_mara node=speak action=speak target=npc_sena line='Thank you, Sena! It’s the warmth of the tavern that inspires me.'
+[2025-11-27T13:24:04.513507] dialogue npc_mara->npc_sena: 'Thank you, Sena! It’s the warmth of the tavern that inspires me.' (defer_effects=True)
+[2025-11-27T13:24:04.528937] llm_in npc=npc_lyra node=speak partner=npc_riven allowed=['speak'] short=2
+[2025-11-27T13:24:06.419552] llm_out npc=npc_lyra node=speak action=speak target=npc_riven line='That sounds thrilling! Did the scout have any clever tricks up their sleeve?'
+[2025-11-27T13:24:06.436612] dialogue npc_lyra->npc_riven: 'That sounds thrilling! Did the scout have any clever tricks up their sleeve?' (defer_effects=True)
+[2025-11-27T13:24:06.449614] llm_in npc=npc_vex node=speak partner=npc_thorne allowed=['speak'] short=2
+[2025-11-27T13:24:08.101989] llm_out npc=npc_vex node=speak action=speak target=npc_thorne line='Absolutely, Thorne. But you know, sometimes you just have to take that leap!'
+[2025-11-27T13:24:08.118989] dialogue npc_vex->npc_thorne: 'Absolutely, Thorne. But you know, sometimes you just have to take that leap!' (defer_effects=True)
+[2025-11-27T13:24:08.132847] llm_in npc=npc_riven node=speak partner=npc_lyra allowed=['speak'] short=3
+[2025-11-27T13:24:09.795320] llm_out npc=npc_riven node=speak action=speak target=npc_lyra line='The scout used clever disguises and set traps to outwit them.'
+[2025-11-27T13:24:09.810435] dialogue npc_riven->npc_lyra: 'The scout used clever disguises and set traps to outwit them.' (defer_effects=True)
+[2025-11-27T13:24:10.036345] llm_in npc=npc_vex node=speak partner=npc_thorne allowed=['speak'] short=3
+[2025-11-27T13:24:11.472502] llm_out npc=npc_vex node=speak action=speak target=npc_thorne line='True, but isn't it more thrilling to seize the moment?'
+[2025-11-27T13:24:11.487502] dialogue npc_vex->npc_thorne: 'True, but isn't it more thrilling to seize the moment?' (defer_effects=True)
+[2025-11-27T13:24:11.499751] llm_in npc=npc_lyra node=speak partner=npc_riven allowed=['speak'] short=4
+[2025-11-27T13:24:13.004886] llm_out npc=npc_lyra node=speak action=speak target=npc_riven line='What a clever idea! I bet that scout has some amazing tales to tell.'
+[2025-11-27T13:24:13.018888] dialogue npc_lyra->npc_riven: 'What a clever idea! I bet that scout has some amazing tales to tell.' (defer_effects=True)
+[2025-11-27T13:24:13.037664] llm_in npc=npc_riven node=speak partner=npc_lyra allowed=['speak'] short=4
+[2025-11-27T13:24:14.920018] llm_out npc=npc_riven node=speak action=speak target=npc_lyra line='They certainly do, stories like that can last a lifetime.'
+[2025-11-27T13:24:14.937625] dialogue npc_riven->npc_lyra: 'They certainly do, stories like that can last a lifetime.' (defer_effects=True)
+[2025-11-27T13:24:14.951635] llm_in npc=npc_mara node=speak partner=npc_sena allowed=['speak'] short=3
+[2025-11-27T13:24:16.671648] llm_out npc=npc_mara node=speak action=speak target=npc_sena line='I’m glad you feel that way; it’s a pleasure to share them with you!'
+[2025-11-27T13:24:16.685607] dialogue npc_mara->npc_sena: 'I’m glad you feel that way; it’s a pleasure to share them with you!' (defer_effects=True)
+[2025-11-27T13:24:16.698422] llm_in npc=npc_thorne node=speak partner=npc_vex allowed=['speak'] short=4
+[2025-11-27T13:24:18.135511] llm_out npc=npc_thorne node=speak action=speak target=npc_vex line='Thrilling, yes, but sometimes the best moments come with a little waiting.'
+[2025-11-27T13:24:18.151869] dialogue npc_thorne->npc_vex: 'Thrilling, yes, but sometimes the best moments come with a little waiting.' (defer_effects=True)
+[2025-11-27T13:24:18.165377] llm_in npc=npc_sena node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T13:24:20.513939] llm_out npc=npc_sena node=speak action=speak target=npc_mara line='The warmth truly enhances the stories; it’s a joy to listen to you.'
+[2025-11-27T13:24:20.531989] dialogue npc_sena->npc_mara: 'The warmth truly enhances the stories; it’s a joy to listen to you.' (defer_effects=True)
+[2025-11-27T13:24:20.730506] llm_in npc=npc_mara node=speak partner=npc_sena allowed=['speak'] short=4
+[2025-11-27T13:24:22.702116] llm_out npc=npc_mara node=speak action=speak target=npc_sena line='I’m happy to hear that! Stories are best shared in good company.'
+[2025-11-27T13:24:22.715617] dialogue npc_mara->npc_sena: 'I’m happy to hear that! Stories are best shared in good company.' (defer_effects=True)
+[2025-11-27T13:24:22.728616] llm_in npc=npc_vex node=speak partner=npc_thorne allowed=['speak'] short=4
+[2025-11-27T13:24:24.356189] llm_out npc=npc_vex node=speak action=speak target=npc_thorne line='I get that, but what if waiting means missing out on something amazing?'
+[2025-11-27T13:24:24.371194] dialogue npc_vex->npc_thorne: 'I get that, but what if waiting means missing out on something amazing?' (defer_effects=True)
+[2025-11-27T13:24:24.390328] llm_in npc=npc_thorne node=speak partner=npc_vex allowed=['speak'] short=4
+[2025-11-27T13:24:26.327505] llm_out npc=npc_thorne node=speak action=speak target=npc_vex line='Missing out is a risk, but patience often reveals greater rewards.'
+[2025-11-27T13:24:26.348008] dialogue npc_thorne->npc_vex: 'Missing out is a risk, but patience often reveals greater rewards.' (defer_effects=True)
+[2025-11-27T13:24:26.368375] llm_in npc=npc_sena node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T13:24:28.181227] llm_out npc=npc_sena node=speak action=speak target=npc_mara line='Absolutely! Good company makes every story richer and more memorable.'
+[2025-11-27T13:24:28.197074] dialogue npc_sena->npc_mara: 'Absolutely! Good company makes every story richer and more memorable.' (defer_effects=True)
+[2025-11-27T13:24:28.214994] llm_in npc=npc_lyra node=speak partner=npc_riven allowed=['speak'] short=4
+[2025-11-27T13:24:29.781972] llm_out npc=npc_lyra node=speak action=speak target=npc_riven line='I’d love to hear one of those stories sometime!'
+[2025-11-27T13:24:29.797486] dialogue npc_lyra->npc_riven: 'I’d love to hear one of those stories sometime!' (defer_effects=True)
+[2025-11-27T13:24:29.810156] llm_in npc=npc_riven node=speak partner=npc_lyra allowed=['speak'] short=4
+[2025-11-27T13:24:31.970876] llm_out npc=npc_riven node=speak action=speak target=npc_lyra line='Maybe over a drink, I can share a few tales.'
+[2025-11-27T13:24:31.984265] dialogue npc_riven->npc_lyra: 'Maybe over a drink, I can share a few tales.' (defer_effects=True)
+[2025-11-27T13:24:32.165924] llm_in npc=npc_vex node=speak partner=npc_thorne allowed=['speak'] short=4
+[2025-11-27T13:24:33.696583] llm_out npc=npc_vex node=speak action=speak target=npc_thorne line='True, but sometimes a little risk adds spice to life, don’t you think?'
+[2025-11-27T13:24:33.710612] dialogue npc_vex->npc_thorne: 'True, but sometimes a little risk adds spice to life, don’t you think?' (defer_effects=True)
+[2025-11-27T13:24:33.723834] llm_in npc=npc_lyra node=speak partner=npc_riven allowed=['speak'] short=4
+[2025-11-27T13:24:35.795009] llm_out npc=npc_lyra node=speak action=speak target=npc_riven line='That sounds perfect! I’ll bring my best songs to share too.'
+[2025-11-27T13:24:35.816426] dialogue npc_lyra->npc_riven: 'That sounds perfect! I’ll bring my best songs to share too.' (defer_effects=True)
+[2025-11-27T13:24:35.829822] llm_in npc=npc_thorne node=speak partner=npc_vex allowed=['speak'] short=4
+[2025-11-27T13:24:37.350803] llm_out npc=npc_thorne node=speak action=speak target=npc_vex line='A touch of risk can indeed make things more interesting, I won't deny that.'
+[2025-11-27T13:24:37.365706] dialogue npc_thorne->npc_vex: 'A touch of risk can indeed make things more interesting, I won't deny that.' (defer_effects=True)
+[2025-11-27T13:24:37.377696] llm_in npc=npc_sena node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T13:24:38.927010] llm_out npc=npc_sena node=speak action=speak target=npc_mara line='Indeed, it’s the stories that bind us together, isn’t it?'
+[2025-11-27T13:24:38.940967] dialogue npc_sena->npc_mara: 'Indeed, it’s the stories that bind us together, isn’t it?' (defer_effects=True)
+[2025-11-27T13:24:38.954966] llm_in npc=npc_mara node=speak partner=npc_sena allowed=['speak'] short=4
+[2025-11-27T13:24:40.447206] llm_out npc=npc_mara node=speak action=speak target=npc_sena line='Absolutely, it's the threads of our tales that weave us closer together.'
+[2025-11-27T13:24:40.462263] dialogue npc_mara->npc_sena: 'Absolutely, it's the threads of our tales that weave us closer together.' (defer_effects=True)
+[2025-11-27T13:24:40.476264] llm_in npc=npc_riven node=speak partner=npc_lyra allowed=['speak'] short=4
+[2025-11-27T13:24:42.088918] llm_out npc=npc_riven node=speak action=speak target=npc_lyra line='Looking forward to it, music and stories make for a great night.'
+[2025-11-27T13:24:42.103212] dialogue npc_riven->npc_lyra: 'Looking forward to it, music and stories make for a great night.' (defer_effects=True)
+[2025-11-27T13:24:45.109015] summary npc_lyra->npc_riven: 'Riven has a knack for storytelling and enjoys sharing tales of clever scouts and their adventures. Their enthusiasm for music and stories makes every gathering feel special and memorable.' trust_delta=3 affinity_delta=2 traits={'kindness': -1, 'bravery': 1, 'extraversion': -1, 'ego': 1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': -1, 'intelligence': 1, 'charisma': -1}
+[2025-11-27T13:24:45.117014] summary npc_riven->npc_lyra: 'Lyra has a knack for finding thrilling stories and is always eager to share her own ballads. Her adventurous spirit and love for music make every moment spent with her feel special.' trust_delta=3 affinity_delta=2
+[2025-11-27T13:24:50.968980] summary npc_vex->npc_thorne: 'Thorne is a wise partner who emphasizes the value of patience, reminding me that sometimes waiting can lead to greater rewards. They appreciate a bit of risk too, acknowledging that it can make life more interesting.' trust_delta=3 affinity_delta=2 traits={'kindness': 1, 'bravery': 1, 'extraversion': -1, 'ego': 1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': -1, 'intelligence': 1, 'charisma': -1}
+[2025-11-27T13:24:50.981988] summary npc_thorne->npc_vex: 'Vex thrives on taking risks and believes in seizing the moment, always ready to embrace the thrill of the chase. Their optimistic nature and adventurous spirit add a lively dynamic to our partnership.' trust_delta=3 affinity_delta=2
+[2025-11-27T13:24:54.422118] summary npc_riven->npc_lyra: 'Lyra has a talent for discovering captivating stories and loves to share her own songs. Her enthusiasm for music and storytelling makes every gathering with her a delightful experience.' trust_delta=3 affinity_delta=2 traits={'kindness': 1, 'bravery': 1, 'extraversion': 1, 'ego': 1, 'honesty': 0, 'curiosity': 1, 'patience': -1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T13:24:54.431116] summary npc_lyra->npc_riven: 'Riven has a talent for storytelling and loves sharing tales of clever scouts and their adventures. Their enthusiasm for music and stories truly makes every gathering feel special.' trust_delta=3 affinity_delta=2
+[2025-11-27T13:24:58.353971] summary npc_sena->npc_mara: 'Mara has a warm and inviting presence that truly brings the tavern to life with her storytelling. She believes that sharing tales in good company weaves us closer together, making every moment spent with her feel special.' trust_delta=3 affinity_delta=3 traits={'kindness': 1, 'bravery': 1, 'extraversion': -1, 'ego': -1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T13:24:58.364083] summary npc_mara->npc_sena: 'Sena has a warm and friendly presence that truly enhances the stories shared in the tavern. They believe that good company makes every tale richer and more memorable, and they cherish the connections that stories create between people.' trust_delta=3 affinity_delta=3
+[2025-11-27T13:25:02.347627] summary npc_thorne->npc_vex: 'Vex is all about taking leaps and believes that a little risk can add excitement to life. Their adventurous spirit often encourages us to seize the moment, even if it sometimes means stepping outside of our comfort zones.' trust_delta=3 affinity_delta=2 traits={'kindness': 1, 'bravery': 1, 'extraversion': 1, 'ego': 1, 'honesty': -1, 'curiosity': 1, 'patience': -1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T13:25:02.355723] summary npc_vex->npc_thorne: 'Thorne is a wise partner who values patience, often reminding me that waiting can lead to greater rewards. They also appreciate a bit of risk, recognizing that it can add excitement to life.' trust_delta=3 affinity_delta=2
+[2025-11-27T13:25:06.749926] summary npc_mara->npc_sena: 'Sena has a warm and friendly presence that enhances the stories shared in the tavern, believing that good company makes every tale richer and more memorable. They cherish the connections that stories create between people, recognizing that it's the stories that bind us together.' trust_delta=3 affinity_delta=3 traits={'kindness': 1, 'bravery': 1, 'extraversion': 1, 'ego': -1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T13:25:06.757925] summary npc_sena->npc_mara: 'Mara has a remarkable ability to bring the tavern to life with her storytelling, and she believes that sharing tales in good company strengthens our bonds. Her warmth and passion for storytelling make every moment spent with her feel truly special.' trust_delta=3 affinity_delta=3
+[2025-11-27T13:25:07.106824] llm_in npc=npc_mara node=speak partner=npc_lyra allowed=['speak'] short=0
+[2025-11-27T13:25:08.810942] llm_out npc=npc_mara node=speak action=speak target=npc_lyra line='Nice to see a friendly face around here.'
+[2025-11-27T13:25:08.825942] dialogue npc_mara->npc_lyra: 'Nice to see a friendly face around here.' (defer_effects=True)
+[2025-11-27T13:25:08.845420] llm_in npc=npc_lyra node=speak partner=npc_mara allowed=['speak'] short=1
+[2025-11-27T13:25:10.324013] llm_out npc=npc_lyra node=speak action=speak target=npc_mara line='It really is! What brings you to this cozy spot?'
+[2025-11-27T13:25:10.339035] dialogue npc_lyra->npc_mara: 'It really is! What brings you to this cozy spot?' (defer_effects=True)
+[2025-11-27T13:25:10.358097] llm_in npc=npc_riven node=speak partner=npc_thorne allowed=['speak'] short=0
+[2025-11-27T13:25:11.681964] llm_out npc=npc_riven node=speak action=speak target=npc_thorne line='It's a good night for a drink, isn't it?'
+[2025-11-27T13:25:11.698221] dialogue npc_riven->npc_thorne: 'It's a good night for a drink, isn't it?' (defer_effects=True)
+[2025-11-27T13:25:11.711691] llm_in npc=npc_thorne node=speak partner=npc_riven allowed=['speak'] short=1
+[2025-11-27T13:25:13.150051] llm_out npc=npc_thorne node=speak action=speak target=npc_riven line='Aye, the kind of night that calls for good company and a warm drink.'
+[2025-11-27T13:25:13.166569] dialogue npc_thorne->npc_riven: 'Aye, the kind of night that calls for good company and a warm drink.' (defer_effects=True)
+[2025-11-27T13:25:13.178569] llm_in npc=npc_vex node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T13:25:14.853590] llm_out npc=npc_vex node=idle action=idle target=- reason='Vex is trying to break the ice with a friendly comment.'
+[2025-11-27T13:25:14.863606] llm_in npc=npc_vex node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T13:25:16.415570] llm_out npc=npc_vex node=speak action=idle target=- line='Nice place, isn't it? Perfect for a game or two.'
+[2025-11-27T13:25:16.428402] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T13:25:17.969829] llm_out npc=npc_sena node=idle action=idle target=- reason='Curiosity about the partner's presence in the tavern.'
+[2025-11-27T13:25:17.978829] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T13:25:19.417592] llm_out npc=npc_sena node=speak action=idle target=- line='What brings you to this cozy tavern?'
+[2025-11-27T13:25:19.621174] llm_in npc=npc_mara node=speak partner=npc_lyra allowed=['speak'] short=2
+[2025-11-27T13:25:21.252307] llm_out npc=npc_mara node=speak action=speak target=npc_lyra line='Just looking for a warm seat and some steady work, really.'
+[2025-11-27T13:25:21.267309] dialogue npc_mara->npc_lyra: 'Just looking for a warm seat and some steady work, really.' (defer_effects=True)
+[2025-11-27T13:25:21.289461] llm_in npc=npc_riven node=speak partner=npc_thorne allowed=['speak'] short=2
+[2025-11-27T13:25:22.766748] llm_out npc=npc_riven node=speak action=speak target=npc_thorne line='Definitely, it's nice to unwind after a long day.'
+[2025-11-27T13:25:22.781860] dialogue npc_riven->npc_thorne: 'Definitely, it's nice to unwind after a long day.' (defer_effects=True)
+[2025-11-27T13:25:22.793861] llm_in npc=npc_thorne node=speak partner=npc_riven allowed=['speak'] short=3
+[2025-11-27T13:25:24.482618] llm_out npc=npc_thorne node=speak action=speak target=npc_riven line='It is indeed; a good drink can ease the burdens of the day.'
+[2025-11-27T13:25:24.496660] dialogue npc_thorne->npc_riven: 'It is indeed; a good drink can ease the burdens of the day.' (defer_effects=True)
+[2025-11-27T13:25:24.514048] llm_in npc=npc_vex node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T13:25:26.008508] llm_out npc=npc_vex node=idle action=idle target=- reason='Vex is curious and looking to engage.'
+[2025-11-27T13:25:26.016509] llm_in npc=npc_vex node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T13:25:27.610579] llm_out npc=npc_vex node=speak action=idle target=- line='Nice place, isn't it? Perfect for some good company and a game or two.'
+[2025-11-27T13:25:27.625930] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T13:25:29.281460] llm_out npc=npc_sena node=idle action=idle target=- reason='Sena is curious about new stories and experiences.'
+[2025-11-27T13:25:29.291458] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T13:25:30.945810] llm_out npc=npc_sena node=speak action=idle target=- line='What brings you to this tavern?'
+[2025-11-27T13:25:30.962826] llm_in npc=npc_lyra node=speak partner=npc_mara allowed=['speak'] short=3
+[2025-11-27T13:25:32.421428] llm_out npc=npc_lyra node=speak action=speak target=npc_mara line='I hear you! This place has a nice vibe for both.'
+[2025-11-27T13:25:32.437436] dialogue npc_lyra->npc_mara: 'I hear you! This place has a nice vibe for both.' (defer_effects=True)
+[2025-11-27T13:25:32.690520] llm_in npc=npc_riven node=speak partner=npc_thorne allowed=['speak'] short=4
+[2025-11-27T13:25:34.178640] llm_out npc=npc_riven node=speak action=speak target=npc_thorne line='Absolutely, it’s the perfect way to wrap up the evening.'
+[2025-11-27T13:25:34.193540] dialogue npc_riven->npc_thorne: 'Absolutely, it’s the perfect way to wrap up the evening.' (defer_effects=True)
+[2025-11-27T13:25:34.206538] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T13:25:35.547573] llm_out npc=npc_sena node=idle action=idle target=- reason='Sena enjoys collecting stories and is curious about others.'
+[2025-11-27T13:25:35.556572] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T13:25:37.033455] llm_out npc=npc_sena node=speak action=idle target=- line='What brings you to this tavern today?'
+[2025-11-27T13:25:37.048441] llm_in npc=npc_mara node=speak partner=npc_lyra allowed=['speak'] short=4
+[2025-11-27T13:25:38.590503] llm_out npc=npc_mara node=speak action=speak target=npc_lyra line='Absolutely! It feels like the perfect place to unwind.'
+[2025-11-27T13:25:38.604424] dialogue npc_mara->npc_lyra: 'Absolutely! It feels like the perfect place to unwind.' (defer_effects=True)
+[2025-11-27T13:25:38.629425] llm_in npc=npc_thorne node=speak partner=npc_riven allowed=['speak'] short=4
+[2025-11-27T13:25:41.189211] llm_out npc=npc_thorne node=speak action=speak target=npc_riven line='Aye, every evening deserves a good end like this one.'
+[2025-11-27T13:25:41.218724] dialogue npc_thorne->npc_riven: 'Aye, every evening deserves a good end like this one.' (defer_effects=True)
+[2025-11-27T13:25:41.232198] llm_in npc=npc_lyra node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T13:25:42.741921] llm_out npc=npc_lyra node=speak action=speak target=npc_mara line='It really does! Have you tried any of the local brews yet?'
+[2025-11-27T13:25:42.757032] dialogue npc_lyra->npc_mara: 'It really does! Have you tried any of the local brews yet?' (defer_effects=True)
+[2025-11-27T13:25:42.770031] llm_in npc=npc_vex node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T13:25:44.304747] llm_out npc=npc_vex node=idle action=idle target=- reason='Starting a friendly conversation to break the ice.'
+[2025-11-27T13:25:44.315741] llm_in npc=npc_vex node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T13:25:45.970768] llm_out npc=npc_vex node=speak action=idle target=- line='Nice place, isn’t it? Always good for a game or two.'
+[2025-11-27T13:25:46.164474] llm_in npc=npc_thorne node=speak partner=npc_riven allowed=['speak'] short=4
+[2025-11-27T13:25:47.809304] llm_out npc=npc_thorne node=speak action=speak target=npc_riven line='Indeed, a moment like this is worth savoring.'
+[2025-11-27T13:25:47.825178] dialogue npc_thorne->npc_riven: 'Indeed, a moment like this is worth savoring.' (defer_effects=True)
+[2025-11-27T13:25:47.837663] llm_in npc=npc_lyra node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T13:25:49.306896] llm_out npc=npc_lyra node=speak action=speak target=npc_mara line='Not yet, but I've heard great things about them! Any recommendations?'
+[2025-11-27T13:25:49.319895] dialogue npc_lyra->npc_mara: 'Not yet, but I've heard great things about them! Any recommendations?' (defer_effects=True)
+[2025-11-27T13:25:49.336086] llm_in npc=npc_vex node=speak partner=npc_sena allowed=['speak'] short=0
+[2025-11-27T13:25:50.604810] llm_out npc=npc_vex node=speak action=speak target=npc_sena line='Hey there, what brings you to this lively tavern?'
+[2025-11-27T13:25:50.620551] dialogue npc_vex->npc_sena: 'Hey there, what brings you to this lively tavern?' (defer_effects=True)
+[2025-11-27T13:25:50.634554] llm_in npc=npc_riven node=speak partner=npc_thorne allowed=['speak'] short=4
+[2025-11-27T13:25:52.032789] llm_out npc=npc_riven node=speak action=speak target=npc_thorne line='True, it’s moments like these that make the journey worthwhile.'
+[2025-11-27T13:25:52.047783] dialogue npc_riven->npc_thorne: 'True, it’s moments like these that make the journey worthwhile.' (defer_effects=True)
+[2025-11-27T13:25:52.066784] llm_in npc=npc_mara node=speak partner=npc_lyra allowed=['speak'] short=4
+[2025-11-27T13:25:54.244001] llm_out npc=npc_mara node=speak action=speak target=npc_lyra line='I really enjoyed the honey mead here last time; it's quite sweet!'
+[2025-11-27T13:25:54.260097] dialogue npc_mara->npc_lyra: 'I really enjoyed the honey mead here last time; it's quite sweet!' (defer_effects=True)
+[2025-11-27T13:25:54.276095] llm_in npc=npc_sena node=speak partner=npc_vex allowed=['speak'] short=1
+[2025-11-27T13:25:56.102568] llm_out npc=npc_sena node=speak action=speak target=npc_vex line='I'm here to collect stories and dialects before heading east.'
+[2025-11-27T13:25:56.116628] dialogue npc_sena->npc_vex: 'I'm here to collect stories and dialects before heading east.' (defer_effects=True)
+[2025-11-27T13:25:56.418105] llm_in npc=npc_mara node=speak partner=npc_lyra allowed=['speak'] short=4
+[2025-11-27T13:25:58.069934] llm_out npc=npc_mara node=speak action=speak target=npc_lyra line='You should definitely give it a try; it's perfect for a cozy evening!'
+[2025-11-27T13:25:58.084931] dialogue npc_mara->npc_lyra: 'You should definitely give it a try; it's perfect for a cozy evening!' (defer_effects=True)
+[2025-11-27T13:25:58.104276] llm_in npc=npc_lyra node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T13:25:59.941205] llm_out npc=npc_lyra node=speak action=speak target=npc_mara line='I’ll have to try the honey mead then, sounds delightful!'
+[2025-11-27T13:25:59.958040] dialogue npc_lyra->npc_mara: 'I’ll have to try the honey mead then, sounds delightful!' (defer_effects=True)
+[2025-11-27T13:26:03.687878] summary npc_mara->npc_lyra: 'Lyra is friendly and enjoys the cozy atmosphere of our surroundings. She's curious about the local brews and is eager to try the honey mead, which she thinks sounds delightful.' trust_delta=3 affinity_delta=2 traits={'kindness': 1, 'bravery': 1, 'extraversion': 1, 'ego': 1, 'honesty': 0, 'curiosity': 1, 'patience': -1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T13:26:03.696878] summary npc_lyra->npc_mara: 'Mara is looking for a warm seat and steady work, and she really enjoyed the honey mead here, describing it as sweet and perfect for a cozy evening. She appreciates the nice vibe of the place, making it a great spot to unwind.' trust_delta=3 affinity_delta=2
+[2025-11-27T13:26:07.786375] summary npc_lyra->npc_mara: 'Mara is looking for a warm seat and steady work, and she really enjoyed the honey mead here, describing it as sweet and perfect for a cozy evening. She appreciates the nice vibe of the place, making it a great spot for her to unwind.' trust_delta=3 affinity_delta=2 traits={'kindness': 1, 'bravery': 1, 'extraversion': -1, 'ego': -1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T13:26:07.795378] summary npc_mara->npc_lyra: 'Lyra is friendly and appreciates the cozy vibe of our surroundings. She's curious about the local brews and is excited to try the honey mead, which she thinks sounds delightful.' trust_delta=3 affinity_delta=2
+[2025-11-27T13:26:11.301115] summary npc_riven->npc_thorne: 'Thorne has a warm demeanor and appreciates the simple pleasures of life, like enjoying a good drink with company after a long day. He believes in savoring moments that make the journey worthwhile.' trust_delta=3 affinity_delta=3 traits={'kindness': 1, 'bravery': 1, 'extraversion': -1, 'ego': 1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': -1, 'intelligence': 1, 'charisma': -1}
+[2025-11-27T13:26:11.319115] summary npc_thorne->npc_riven: 'Riven enjoys unwinding after a long day and appreciates good company over a warm drink. They value moments of relaxation, believing they make the journey worthwhile.' trust_delta=3 affinity_delta=3
+[2025-11-27T13:26:14.534926] summary npc_thorne->npc_riven: 'Riven appreciates unwinding after a long day and enjoys sharing good company over a warm drink. They believe that moments of relaxation are what truly make the journey worthwhile.' trust_delta=3 affinity_delta=3 traits={'kindness': -1, 'bravery': 1, 'extraversion': -1, 'ego': 1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': -1, 'intelligence': 1, 'charisma': -1}
+[2025-11-27T13:26:14.543926] summary npc_riven->npc_thorne: 'Thorne has a warm demeanor and truly values the simple pleasures in life, like enjoying a good drink with company after a long day. He believes that every evening deserves a good end and that moments like these are worth savoring.' trust_delta=3 affinity_delta=3
+[2025-11-27T13:26:17.488756] summary npc_vex->npc_sena: 'Sena is a curious storyteller who collects tales and dialects, preparing for a journey east.' trust_delta=2 affinity_delta=1 traits={'kindness': 1, 'bravery': 1, 'extraversion': 1, 'ego': -1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T13:26:17.496755] summary npc_sena->npc_vex: 'My partner, Vex, is friendly and curious, always ready to engage with others in lively settings like the tavern. They seem interested in what brings people together and enjoy hearing stories.' trust_delta=2 affinity_delta=1
+[2025-11-27T13:26:20.609173] summary npc_sena->npc_vex: 'My partner, Vex, is friendly and curious, always eager to engage with others in lively settings like the tavern. They enjoy hearing stories and are interested in what brings people together.' trust_delta=2 affinity_delta=1 traits={'kindness': 1, 'bravery': 1, 'extraversion': 1, 'ego': 1, 'honesty': -1, 'curiosity': 1, 'patience': -1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T13:26:20.621172] summary npc_vex->npc_sena: 'Sena is a curious storyteller who enjoys collecting tales and dialects in preparation for her journey east.' trust_delta=2 affinity_delta=1
+[2025-11-27T13:26:20.659420] llm_in npc=npc_vex node=speak partner=npc_sena allowed=['speak'] short=0
+[2025-11-27T13:26:22.190812] llm_out npc=npc_vex node=speak action=speak target=npc_sena line='Hey there, Sena! What stories are you gathering for your journey?'
+[2025-11-27T13:26:22.205923] dialogue npc_vex->npc_sena: 'Hey there, Sena! What stories are you gathering for your journey?' (defer_effects=True)
+[2025-11-27T13:26:22.224077] llm_in npc=npc_thorne node=speak partner=npc_riven allowed=['speak'] short=0
+[2025-11-27T13:26:23.648278] llm_out npc=npc_thorne node=speak action=speak target=npc_riven line='Evening, Riven. How's the night treating you?'
+[2025-11-27T13:26:23.664514] dialogue npc_thorne->npc_riven: 'Evening, Riven. How's the night treating you?' (defer_effects=True)
+[2025-11-27T13:26:23.685544] llm_in npc=npc_sena node=speak partner=npc_vex allowed=['speak'] short=1
+[2025-11-27T13:26:25.185753] llm_out npc=npc_sena node=speak action=speak target=npc_vex line='I'm collecting tales of local legends and unique folk cures, actually!'
+[2025-11-27T13:26:25.201174] dialogue npc_sena->npc_vex: 'I'm collecting tales of local legends and unique folk cures, actually!' (defer_effects=True)
+[2025-11-27T13:26:25.214218] llm_in npc=npc_riven node=speak partner=npc_thorne allowed=['speak'] short=1
+[2025-11-27T13:26:26.835296] llm_out npc=npc_riven node=speak action=speak target=npc_thorne line='It's a quiet night, just how I like it.'
+[2025-11-27T13:26:26.850295] dialogue npc_riven->npc_thorne: 'It's a quiet night, just how I like it.' (defer_effects=True)
+[2025-11-27T14:08:12.037527] llm_in npc=npc_mara node=speak partner=npc_lyra allowed=['speak'] short=0
+[2025-11-27T14:08:15.000530] llm_out npc=npc_mara node=speak action=speak target=npc_lyra line='Honey mead is a great choice; it warms the soul on chilly nights.'
+[2025-11-27T14:08:15.016157] dialogue npc_mara->npc_lyra: 'Honey mead is a great choice; it warms the soul on chilly nights.' (defer_effects=True)
+[2025-11-27T14:08:15.030370] llm_in npc=npc_riven node=speak partner=npc_thorne allowed=['speak'] short=2
+[2025-11-27T14:08:17.025988] llm_out npc=npc_riven node=speak action=speak target=npc_thorne line='It's nice to have a peaceful night like this, isn't it?'
+[2025-11-27T14:08:17.042842] dialogue npc_riven->npc_thorne: 'It's nice to have a peaceful night like this, isn't it?' (defer_effects=True)
+[2025-11-27T14:08:17.056487] llm_in npc=npc_sena node=speak partner=npc_vex allowed=['speak'] short=2
+[2025-11-27T14:08:19.164498] llm_out npc=npc_sena node=speak action=speak target=npc_vex line='I'm hoping to learn about the unique traditions here, do you have any favorites?'
+[2025-11-27T14:08:19.180005] dialogue npc_sena->npc_vex: 'I'm hoping to learn about the unique traditions here, do you have any favorites?' (defer_effects=True)
+[2025-11-27T14:08:19.193991] llm_in npc=npc_thorne node=speak partner=npc_riven allowed=['speak'] short=3
+[2025-11-27T14:08:20.769773] llm_out npc=npc_thorne node=speak action=speak target=npc_riven line='Aye, it’s nice to have a moment of calm.'
+[2025-11-27T14:08:20.786009] dialogue npc_thorne->npc_riven: 'Aye, it’s nice to have a moment of calm.' (defer_effects=True)
+[2025-11-27T14:08:20.805632] llm_in npc=npc_vex node=speak partner=npc_sena allowed=['speak'] short=3
+[2025-11-27T14:08:23.039818] llm_out npc=npc_vex node=speak action=speak target=npc_sena line='Oh, absolutely! The harvest festival has some wild traditions worth sharing.'
+[2025-11-27T14:08:23.054819] dialogue npc_vex->npc_sena: 'Oh, absolutely! The harvest festival has some wild traditions worth sharing.' (defer_effects=True)
+[2025-11-27T14:08:23.076083] llm_in npc=npc_lyra node=speak partner=npc_mara allowed=['speak'] short=1
+[2025-11-27T14:08:24.834671] llm_out npc=npc_lyra node=speak action=speak target=npc_mara line='Absolutely! It’s like a warm hug in a cup, isn’t it?'
+[2025-11-27T14:08:24.850163] dialogue npc_lyra->npc_mara: 'Absolutely! It’s like a warm hug in a cup, isn’t it?' (defer_effects=True)
+[2025-11-27T14:08:24.988235] llm_in npc=npc_sena node=speak partner=npc_vex allowed=['speak'] short=4
+[2025-11-27T14:08:26.620610] llm_out npc=npc_sena node=speak action=speak target=npc_vex line='That sounds fascinating! What traditions stand out the most to you?'
+[2025-11-27T14:08:26.633694] dialogue npc_sena->npc_vex: 'That sounds fascinating! What traditions stand out the most to you?' (defer_effects=True)
+[2025-11-27T14:08:26.646696] llm_in npc=npc_thorne node=speak partner=npc_riven allowed=['speak'] short=4
+[2025-11-27T14:08:28.068489] llm_out npc=npc_thorne node=speak action=speak target=npc_riven line='Indeed, a calm night is a rare treasure.'
+[2025-11-27T14:08:28.083601] dialogue npc_thorne->npc_riven: 'Indeed, a calm night is a rare treasure.' (defer_effects=True)
+[2025-11-27T14:08:28.096110] llm_in npc=npc_riven node=speak partner=npc_thorne allowed=['speak'] short=4
+[2025-11-27T14:08:29.514539] llm_out npc=npc_riven node=speak action=speak target=npc_thorne line='Absolutely, we should cherish these moments while we can.'
+[2025-11-27T14:08:29.527769] dialogue npc_riven->npc_thorne: 'Absolutely, we should cherish these moments while we can.' (defer_effects=True)
+[2025-11-27T14:08:29.540769] llm_in npc=npc_lyra node=speak partner=npc_mara allowed=['speak'] short=2
+[2025-11-27T14:08:31.159828] llm_out npc=npc_lyra node=speak action=speak target=npc_mara line='Definitely! It’s perfect for sharing stories and making new friends, don’t you think?'
+[2025-11-27T14:08:31.173828] dialogue npc_lyra->npc_mara: 'Definitely! It’s perfect for sharing stories and making new friends, don’t you think?' (defer_effects=True)
+[2025-11-27T14:08:31.186831] llm_in npc=npc_vex node=speak partner=npc_sena allowed=['speak'] short=4
+[2025-11-27T14:08:32.708717] llm_out npc=npc_vex node=speak action=speak target=npc_sena line='Well, there's a ritual dance that involves everyone wearing masks!'
+[2025-11-27T14:08:32.723269] dialogue npc_vex->npc_sena: 'Well, there's a ritual dance that involves everyone wearing masks!' (defer_effects=True)
+[2025-11-27T14:08:32.736268] llm_in npc=npc_mara node=speak partner=npc_lyra allowed=['speak'] short=3
+[2025-11-27T14:08:34.201637] llm_out npc=npc_mara node=speak action=speak target=npc_lyra line='Absolutely! Stories shared over mead are the best kind, aren't they?'
+[2025-11-27T14:08:34.217624] dialogue npc_mara->npc_lyra: 'Absolutely! Stories shared over mead are the best kind, aren't they?' (defer_effects=True)
+[2025-11-27T14:13:44.468657] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=0
+[2025-11-27T14:13:47.272895] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='Hey there, what brings you to this cozy spot?'
+[2025-11-27T14:13:47.288264] dialogue npc_vex->npc_lyra: 'Hey there, what brings you to this cozy spot?' (defer_effects=True)
+[2025-11-27T14:13:47.300265] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=0
+[2025-11-27T14:13:48.822877] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='It's nice to see a warm fire on a chilly night, isn't it?'
+[2025-11-27T14:13:48.843879] dialogue npc_mara->npc_riven: 'It's nice to see a warm fire on a chilly night, isn't it?' (defer_effects=True)
+[2025-11-27T14:13:48.866805] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:13:50.329705] llm_out npc=npc_sena node=idle action=idle target=- reason='Curious about your story and how it connects to mine.'
+[2025-11-27T14:13:50.340718] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:13:51.617961] llm_out npc=npc_sena node=speak action=idle target=- line='What stories have you heard during your travels?'
+[2025-11-27T14:13:51.637614] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=1
+[2025-11-27T14:13:53.065347] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='Absolutely, it makes the chill feel a bit more bearable.'
+[2025-11-27T14:13:53.080247] dialogue npc_riven->npc_mara: 'Absolutely, it makes the chill feel a bit more bearable.' (defer_effects=True)
+[2025-11-27T14:13:53.093253] llm_in npc=npc_thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:13:54.775797] llm_out npc=npc_thorne node=idle action=idle target=- reason='Thorne is gauging your presence and keeping it friendly.'
+[2025-11-27T14:13:54.784799] llm_in npc=npc_thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:13:56.312521] llm_out npc=npc_thorne node=speak action=idle target=- line='Evening. How's the night treating you?'
+[2025-11-27T14:13:56.327322] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=1
+[2025-11-27T14:13:57.841853] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='Just looking for some good stories and maybe a song or two!'
+[2025-11-27T14:13:57.856544] dialogue npc_lyra->npc_vex: 'Just looking for some good stories and maybe a song or two!' (defer_effects=True)
+[2025-11-27T14:13:58.049051] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=2
+[2025-11-27T14:13:59.499211] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='I love a good tale! What stories have you heard lately?'
+[2025-11-27T14:13:59.513815] dialogue npc_lyra->npc_vex: 'I love a good tale! What stories have you heard lately?' (defer_effects=True)
+[2025-11-27T14:13:59.527325] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=2
+[2025-11-27T14:14:01.545390] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='It really does; there's something comforting about it.'
+[2025-11-27T14:14:01.562212] dialogue npc_mara->npc_riven: 'It really does; there's something comforting about it.' (defer_effects=True)
+[2025-11-27T14:14:01.579211] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:14:02.799112] llm_out npc=npc_sena node=idle action=idle target=- reason='Curiosity about the partner's presence.'
+[2025-11-27T14:14:02.808113] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:14:04.136691] llm_out npc=npc_sena node=speak action=idle target=- line='What brings you to this tavern today?'
+[2025-11-27T14:14:04.152775] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=3
+[2025-11-27T14:14:05.867680] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='Definitely, it feels like home in here.'
+[2025-11-27T14:14:05.884687] dialogue npc_riven->npc_mara: 'Definitely, it feels like home in here.' (defer_effects=True)
+[2025-11-27T14:14:05.911998] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=3
+[2025-11-27T14:14:07.830776] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='Oh, I've got a few wild ones! Ever heard about the ghost that haunts the old mill?'
+[2025-11-27T14:14:07.844619] dialogue npc_vex->npc_lyra: 'Oh, I've got a few wild ones! Ever heard about the ghost that haunts the old mill?' (defer_effects=True)
+[2025-11-27T14:14:07.858129] llm_in npc=npc_thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:14:09.371531] llm_out npc=npc_thorne node=idle action=idle target=- reason='Starting a conversation to gauge the newcomer.'
+[2025-11-27T14:14:09.379543] llm_in npc=npc_thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:14:10.708007] llm_out npc=npc_thorne node=speak action=idle target=- line='Nice evening, isn't it?'
+[2025-11-27T14:14:10.952269] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:14:12.396267] llm_out npc=npc_sena node=idle action=idle target=- reason='Sena is curious about new stories and connections.'
+[2025-11-27T14:14:12.405287] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:14:14.253260] llm_out npc=npc_sena node=speak action=idle target=- line='What brings you to this tavern?'
+[2025-11-27T14:14:14.268123] llm_in npc=npc_thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:14:15.878798] llm_out npc=npc_thorne node=idle action=idle target=- reason='Engaging with newcomers is part of my duty.'
+[2025-11-27T14:14:15.888798] llm_in npc=npc_thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:14:17.580387] llm_out npc=npc_thorne node=speak action=idle target=- line='Evening. How's the night treating you?'
+[2025-11-27T14:14:17.599767] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=4
+[2025-11-27T14:14:19.507579] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='I've heard tales of treasures hidden in the woods too, care to hear more?'
+[2025-11-27T14:14:19.525651] dialogue npc_vex->npc_lyra: 'I've heard tales of treasures hidden in the woods too, care to hear more?' (defer_effects=True)
+[2025-11-27T14:14:19.541016] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=4
+[2025-11-27T14:14:21.075706] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='Absolutely! I’m all ears for treasure tales!'
+[2025-11-27T14:14:21.094071] dialogue npc_lyra->npc_vex: 'Absolutely! I’m all ears for treasure tales!' (defer_effects=True)
+[2025-11-27T14:14:21.112104] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T14:14:22.452288] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='It really does create a sense of belonging, doesn't it?'
+[2025-11-27T14:14:22.467843] dialogue npc_riven->npc_mara: 'It really does create a sense of belonging, doesn't it?' (defer_effects=True)
+[2025-11-27T14:14:22.481071] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=4
+[2025-11-27T14:14:24.047823] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='Absolutely, it's nice to feel connected in a place like this.'
+[2025-11-27T14:14:24.066243] dialogue npc_mara->npc_riven: 'Absolutely, it's nice to feel connected in a place like this.' (defer_effects=True)
+[2025-11-27T14:14:24.254829] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=4
+[2025-11-27T14:14:25.777590] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='Well, legend has it that a bandit buried a fortune near the Whispering Pines.'
+[2025-11-27T14:14:25.796098] dialogue npc_vex->npc_lyra: 'Well, legend has it that a bandit buried a fortune near the Whispering Pines.' (defer_effects=True)
+[2025-11-27T14:14:25.820383] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=4
+[2025-11-27T14:14:28.500600] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='It truly is; I love how it brings people together.'
+[2025-11-27T14:14:28.515991] dialogue npc_mara->npc_riven: 'It truly is; I love how it brings people together.' (defer_effects=True)
+[2025-11-27T14:14:28.529055] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T14:14:29.933705] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='Exactly, it’s like a warm embrace from the community.'
+[2025-11-27T14:14:29.949051] dialogue npc_riven->npc_mara: 'Exactly, it’s like a warm embrace from the community.' (defer_effects=True)
+[2025-11-27T14:14:29.964663] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=4
+[2025-11-27T14:14:31.819973] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='That sounds intriguing! Do you know if anyone's tried to find it?'
+[2025-11-27T14:14:31.835948] dialogue npc_lyra->npc_vex: 'That sounds intriguing! Do you know if anyone's tried to find it?' (defer_effects=True)
+[2025-11-27T14:14:31.848947] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:14:33.098923] llm_out npc=npc_sena node=idle action=idle target=- reason='Curious about your story and background.'
+[2025-11-27T14:14:33.107935] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:14:34.353298] llm_out npc=npc_sena node=speak action=idle target=- line='What brings you to this cozy tavern?'
+[2025-11-27T14:14:34.367420] llm_in npc=npc_thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:14:35.889302] llm_out npc=npc_thorne node=idle action=idle target=- reason='Initiating conversation to gauge the newcomer.'
+[2025-11-27T14:14:35.899324] llm_in npc=npc_thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:14:37.430559] llm_out npc=npc_thorne node=speak action=idle target=- line='Evening. Busy night, isn't it?'
+[2025-11-27T14:14:37.766885] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=4
+[2025-11-27T14:14:39.217091] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='It really is comforting to be part of something bigger, isn't it?'
+[2025-11-27T14:14:39.235450] dialogue npc_mara->npc_riven: 'It really is comforting to be part of something bigger, isn't it?' (defer_effects=True)
+[2025-11-27T14:14:39.248451] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T14:14:40.729497] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='Absolutely, it feels great to share that sense of belonging.'
+[2025-11-27T14:14:40.755035] dialogue npc_riven->npc_mara: 'Absolutely, it feels great to share that sense of belonging.' (defer_effects=True)
+[2025-11-27T14:14:44.263827] summary npc_vex->npc_lyra: 'Lyra loves a good story and is always eager to hear tales of adventure, especially those involving hidden treasures. She's curious and enthusiastic, ready to listen to any intriguing legends.' trust_delta=3 affinity_delta=3 traits={'kindness': 1, 'bravery': 1, 'extraversion': 1, 'ego': 1, 'honesty': 0, 'curiosity': 1, 'patience': -1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T14:14:44.272827] summary npc_lyra->npc_vex: 'My partner, Vex, is a great storyteller with a knack for sharing wild tales, like the ghost that haunts the old mill and legends of hidden treasures in the woods. They seem to enjoy discussing intriguing stories and adventures, especially those involving buried fortunes.' trust_delta=3 affinity_delta=3
+[2025-11-27T14:14:47.543752] summary npc_mara->npc_riven: 'Riven has a warm and welcoming presence, often expressing how comforting it is to feel a sense of belonging and connection within the community. They truly appreciate the way shared spaces bring people together.' trust_delta=3 affinity_delta=3 traits={'kindness': -1, 'bravery': 1, 'extraversion': -1, 'ego': 1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': -1, 'intelligence': 1, 'charisma': -1}
+[2025-11-27T14:14:47.552751] summary npc_riven->npc_mara: 'Mara finds comfort in the sense of belonging that our surroundings provide, and she truly appreciates how it brings people together. She loves feeling connected and being part of something bigger.' trust_delta=3 affinity_delta=3
+[2025-11-27T14:14:51.050176] summary npc_riven->npc_mara: 'Mara finds great comfort in feeling connected to her surroundings and appreciates how they foster a sense of belonging among people. She loves being part of something bigger and values the warmth that comes from community ties.' trust_delta=3 affinity_delta=3 traits={'kindness': 1, 'bravery': 1, 'extraversion': -1, 'ego': -1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T14:14:51.069181] summary npc_mara->npc_riven: 'Riven has a warm and welcoming presence, often expressing how comforting it is to feel a sense of belonging within the community. They truly appreciate the way shared spaces create connections and bring people together.' trust_delta=3 affinity_delta=3
+[2025-11-27T14:14:54.683972] summary npc_lyra->npc_vex: 'My partner, Vex, is an engaging storyteller who loves sharing wild tales, especially about the ghost haunting the old mill and the legend of a buried fortune near the Whispering Pines. They have a talent for making intriguing stories come to life, and I always look forward to hearing their latest adventures.' trust_delta=3 affinity_delta=3 traits={'kindness': 1, 'bravery': 1, 'extraversion': 1, 'ego': 1, 'honesty': -1, 'curiosity': 1, 'patience': -1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T14:14:54.692978] summary npc_vex->npc_lyra: 'Lyra is always on the lookout for good stories and loves to hear about adventures, especially those involving hidden treasures. Her curiosity and enthusiasm make her a great listener, eager to dive into any intriguing tale.' trust_delta=3 affinity_delta=3
+[2025-11-27T14:14:54.718289] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:14:56.040656] llm_out npc=npc_sena node=idle action=idle target=- reason='Curiosity about the partner's presence.'
+[2025-11-27T14:14:56.048657] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:14:57.592699] llm_out npc=npc_sena node=speak action=idle target=- line='What brings you to this tavern?'
+[2025-11-27T14:14:57.609764] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=0
+[2025-11-27T14:14:59.303837] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='Hey Lyra, ever heard of a treasure that’s just waiting to be found?'
+[2025-11-27T14:14:59.318833] dialogue npc_vex->npc_lyra: 'Hey Lyra, ever heard of a treasure that’s just waiting to be found?' (defer_effects=True)
+[2025-11-27T14:14:59.337014] llm_in npc=npc_thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:15:00.531568] llm_out npc=npc_thorne node=idle action=idle target=- reason='Initiating conversation to gauge the newcomer.'
+[2025-11-27T14:15:00.541576] llm_in npc=npc_thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:15:02.030844] llm_out npc=npc_thorne node=speak action=idle target=- line='Evening, stranger. What brings you to our tavern?'
+[2025-11-27T14:15:02.046237] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=1
+[2025-11-27T14:15:03.727258] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='I've heard whispers of one near the Whispering Pines! Care to share more?'
+[2025-11-27T14:15:03.744179] dialogue npc_lyra->npc_vex: 'I've heard whispers of one near the Whispering Pines! Care to share more?' (defer_effects=True)
+[2025-11-27T14:15:03.945929] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:15:05.384588] llm_out npc=npc_sena node=idle action=idle target=- reason='Curiosity about the partner's presence.'
+[2025-11-27T14:15:05.394632] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:15:06.770908] llm_out npc=npc_sena node=speak action=idle target=- line='What brings you to this cozy tavern?'
+[2025-11-27T14:15:06.787479] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=0
+[2025-11-27T14:15:08.343361] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='It's nice to see a community like this; feels welcoming, doesn't it?'
+[2025-11-27T14:15:08.357363] dialogue npc_riven->npc_mara: 'It's nice to see a community like this; feels welcoming, doesn't it?' (defer_effects=True)
+[2025-11-27T14:15:08.370725] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=2
+[2025-11-27T14:15:10.247408] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='Oh, I've heard tales of that! What do you know about it?'
+[2025-11-27T14:15:10.262115] dialogue npc_lyra->npc_vex: 'Oh, I've heard tales of that! What do you know about it?' (defer_effects=True)
+[2025-11-27T14:15:10.278273] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=1
+[2025-11-27T14:15:11.955465] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='Absolutely, it feels like a warm embrace after a long journey.'
+[2025-11-27T14:15:11.972892] dialogue npc_mara->npc_riven: 'Absolutely, it feels like a warm embrace after a long journey.' (defer_effects=True)
+[2025-11-27T14:15:11.986072] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=3
+[2025-11-27T14:15:13.758074] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='I know a few secrets about it, but it’ll cost you a drink or two!'
+[2025-11-27T14:15:13.775104] dialogue npc_vex->npc_lyra: 'I know a few secrets about it, but it’ll cost you a drink or two!' (defer_effects=True)
+[2025-11-27T14:15:13.792616] llm_in npc=npc_thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:15:15.472924] llm_out npc=npc_thorne node=idle action=idle target=- reason='Engaging with newcomers is part of my duty.'
+[2025-11-27T14:15:15.481924] llm_in npc=npc_thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:15:16.772929] llm_out npc=npc_thorne node=speak action=idle target=- line='Evening. What brings you to this part of town?'
+[2025-11-27T14:15:16.967222] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=4
+[2025-11-27T14:15:18.727107] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='How about I buy you a drink then? What secrets do you have?'
+[2025-11-27T14:15:18.742887] dialogue npc_lyra->npc_vex: 'How about I buy you a drink then? What secrets do you have?' (defer_effects=True)
+[2025-11-27T14:15:18.756888] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=2
+[2025-11-27T14:15:20.804915] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='It really does; it's the kind of place that makes you feel at home.'
+[2025-11-27T14:15:20.822431] dialogue npc_riven->npc_mara: 'It really does; it's the kind of place that makes you feel at home.' (defer_effects=True)
+[2025-11-27T14:15:20.834435] llm_in npc=npc_thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:15:22.378910] llm_out npc=npc_thorne node=idle action=idle target=- reason='Initiating friendly small talk to gauge the newcomer.'
+[2025-11-27T14:15:22.391207] llm_in npc=npc_thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:15:24.491159] llm_out npc=npc_thorne node=speak action=idle target=- line='Evening. You new around here?'
+[2025-11-27T14:15:24.516170] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=3
+[2025-11-27T14:15:27.152303] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='It's wonderful to find a place that feels like home, isn't it?'
+[2025-11-27T14:15:27.166644] dialogue npc_mara->npc_riven: 'It's wonderful to find a place that feels like home, isn't it?' (defer_effects=True)
+[2025-11-27T14:15:27.179647] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=4
+[2025-11-27T14:15:28.974175] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='Well, I know a hidden path that leads to some rare herbs!'
+[2025-11-27T14:15:28.989618] dialogue npc_vex->npc_lyra: 'Well, I know a hidden path that leads to some rare herbs!' (defer_effects=True)
+[2025-11-27T14:15:29.008510] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:15:36.484886] llm_out npc=npc_sena node=idle action=idle target=- reason='Curiosity about others is part of Sena's nature.'
+[2025-11-27T14:15:36.495887] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:15:38.068295] llm_out npc=npc_sena node=speak action=idle target=- line='What brings you to this tavern?'
+[2025-11-27T14:15:38.410089] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=4
+[2025-11-27T14:15:40.099314] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='Rare herbs, you say? That sounds intriguing! Tell me more about this path.'
+[2025-11-27T14:15:40.114662] dialogue npc_lyra->npc_vex: 'Rare herbs, you say? That sounds intriguing! Tell me more about this path.' (defer_effects=True)
+[2025-11-27T14:15:40.136062] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=4
+[2025-11-27T14:15:41.649683] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='Definitely, it makes the journey worthwhile, doesn't it?'
+[2025-11-27T14:15:41.663969] dialogue npc_mara->npc_riven: 'Definitely, it makes the journey worthwhile, doesn't it?' (defer_effects=True)
+[2025-11-27T14:15:41.680263] llm_in npc=npc_thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:15:43.196584] llm_out npc=npc_thorne node=idle action=idle target=- reason='Acknowledging the guard's role while maintaining a friendly tone.'
+[2025-11-27T14:15:43.205592] llm_in npc=npc_thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:15:44.618216] llm_out npc=npc_thorne node=speak action=idle target=- line='Just keeping an eye on things around here.'
+[2025-11-27T14:15:44.631201] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:15:46.064607] llm_out npc=npc_sena node=idle action=idle target=- reason='Sena is curious and wants to engage in conversation.'
+[2025-11-27T14:15:46.072606] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:15:47.424982] llm_out npc=npc_sena node=speak action=idle target=- line='What brings you to this tavern on such a fine day?'
+[2025-11-27T14:15:47.441719] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T14:15:49.181058] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='Absolutely, it gives a sense of purpose to the travels we undertake.'
+[2025-11-27T14:15:49.196397] dialogue npc_riven->npc_mara: 'Absolutely, it gives a sense of purpose to the travels we undertake.' (defer_effects=True)
+[2025-11-27T14:15:49.213116] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=4
+[2025-11-27T14:15:50.749942] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='It's a bit overgrown, but the herbs are worth the trek!'
+[2025-11-27T14:15:50.767216] dialogue npc_vex->npc_lyra: 'It's a bit overgrown, but the herbs are worth the trek!' (defer_effects=True)
+[2025-11-27T14:15:50.968075] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=4
+[2025-11-27T14:15:52.859804] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='Overgrown paths can lead to the best treasures! How do you navigate it?'
+[2025-11-27T14:15:52.874625] dialogue npc_lyra->npc_vex: 'Overgrown paths can lead to the best treasures! How do you navigate it?' (defer_effects=True)
+[2025-11-27T14:15:52.887623] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T14:15:54.757957] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='For sure, every step feels more meaningful with a place like this to return to.'
+[2025-11-27T14:15:54.772994] dialogue npc_riven->npc_mara: 'For sure, every step feels more meaningful with a place like this to return to.' (defer_effects=True)
+[2025-11-27T14:15:54.789605] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:15:57.631172] llm_out npc=npc_sena node=idle action=idle target=- reason='Engaging in friendly conversation to learn more about the partner.'
+[2025-11-27T14:15:57.640175] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:15:59.227682] llm_out npc=npc_sena node=speak action=idle target=- line='What brings you to this cozy tavern?'
+[2025-11-27T14:15:59.244689] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=4
+[2025-11-27T14:16:01.083427] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='I just trust my instincts and follow the scent of the herbs!'
+[2025-11-27T14:16:01.098797] dialogue npc_vex->npc_lyra: 'I just trust my instincts and follow the scent of the herbs!' (defer_effects=True)
+[2025-11-27T14:16:04.375618] summary npc_vex->npc_lyra: 'Lyra has a keen interest in hidden treasures and loves to hear about intriguing adventures. Her enthusiasm for stories makes her excited to explore overgrown paths that might lead to rare finds.' trust_delta=3 affinity_delta=3 traits={'kindness': 1, 'bravery': 1, 'extraversion': 1, 'ego': 1, 'honesty': 0, 'curiosity': 1, 'patience': -1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T14:16:04.384618] summary npc_lyra->npc_vex: 'My partner, Vex, is not only an engaging storyteller but also knows some hidden paths that lead to rare herbs. They trust their instincts and have a knack for navigating overgrown trails, making every adventure feel worthwhile.' trust_delta=3 affinity_delta=3
+[2025-11-27T14:16:07.778921] summary npc_lyra->npc_vex: 'My partner, Vex, is a skilled navigator who trusts their instincts and follows the scent of rare herbs. They know a hidden path to these treasures, even if it can be a bit overgrown.' trust_delta=3 affinity_delta=3 traits={'kindness': 1, 'bravery': 1, 'extraversion': 1, 'ego': 1, 'honesty': -1, 'curiosity': 1, 'patience': -1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T14:16:07.786921] summary npc_vex->npc_lyra: 'Lyra is fascinated by hidden treasures and loves to hear about intriguing adventures, often expressing excitement about exploring overgrown paths that might lead to rare finds. Her enthusiasm for discovering new things, like rare herbs, makes her an adventurous companion.' trust_delta=3 affinity_delta=3
+[2025-11-27T14:16:11.448577] summary npc_riven->npc_mara: 'Mara finds a deep sense of comfort in being connected to her surroundings, feeling that they create a warm embrace that makes her journey worthwhile. She truly values the sense of belonging that comes from being part of a welcoming community.' trust_delta=3 affinity_delta=3 traits={'kindness': 1, 'bravery': 1, 'extraversion': -1, 'ego': -1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T14:16:11.461577] summary npc_mara->npc_riven: 'Riven has a warm and welcoming presence, making the community feel like a homecoming after a long journey. They truly value how shared spaces create connections and give a sense of purpose to our travels.' trust_delta=3 affinity_delta=3
+[2025-11-27T14:16:15.189365] summary npc_mara->npc_riven: 'Riven has a warm and welcoming presence that truly makes our community feel like home, giving every journey a sense of purpose. They appreciate how shared spaces create meaningful connections, making each step of our travels feel more significant.' trust_delta=3 affinity_delta=3 traits={'kindness': -1, 'bravery': 1, 'extraversion': -1, 'ego': 1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': -1, 'intelligence': 1, 'charisma': -1}
+[2025-11-27T14:16:15.198369] summary npc_riven->npc_mara: 'Mara finds a deep sense of comfort in being connected to her surroundings, feeling that they create a warm embrace that makes her journey worthwhile. She truly appreciates the sense of belonging that comes from being part of a welcoming community, which gives her travels meaning.' trust_delta=3 affinity_delta=3
+[2025-11-27T14:16:15.223982] llm_in npc=npc_thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:16:17.012384] llm_out npc=npc_thorne node=idle action=idle target=- reason='Initiating conversation to gauge the newcomer.'
+[2025-11-27T14:16:17.021893] llm_in npc=npc_thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:16:18.484273] llm_out npc=npc_thorne node=speak action=idle target=- line='Evening, stranger. What brings you to our tavern?'
+[2025-11-27T14:16:18.500430] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=0
+[2025-11-27T14:16:21.005872] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='It sounds like you really value community; that’s refreshing to hear.'
+[2025-11-27T14:16:21.021418] dialogue npc_mara->npc_riven: 'It sounds like you really value community; that’s refreshing to hear.' (defer_effects=True)
+[2025-11-27T14:16:21.195088] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=0
+[2025-11-27T14:16:22.738498] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='Have you ever stumbled upon a hidden treasure on your adventures?'
+[2025-11-27T14:16:22.765498] dialogue npc_vex->npc_lyra: 'Have you ever stumbled upon a hidden treasure on your adventures?' (defer_effects=True)
+[2025-11-27T14:16:22.785254] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:16:24.270911] llm_out npc=npc_sena node=idle action=idle target=- reason='Sena is curious about others' stories.'
+[2025-11-27T14:16:24.279938] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:16:25.817890] llm_out npc=npc_sena node=speak action=idle target=- line='What stories have you heard from the locals here?'
+[2025-11-27T14:16:25.841032] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=1
+[2025-11-27T14:16:27.478357] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='Community really does bring warmth, doesn’t it?'
+[2025-11-27T14:16:27.496752] dialogue npc_mara->npc_riven: 'Community really does bring warmth, doesn’t it?' (defer_effects=True)
+[2025-11-27T14:16:27.514197] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=1
+[2025-11-27T14:16:29.207031] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='I once found a chest full of old songs instead of gold!'
+[2025-11-27T14:16:29.223883] dialogue npc_lyra->npc_vex: 'I once found a chest full of old songs instead of gold!' (defer_effects=True)
+[2025-11-27T14:16:29.236885] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=2
+[2025-11-27T14:16:30.951286] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='Absolutely, it’s the connections that make every journey worthwhile.'
+[2025-11-27T14:16:30.969540] dialogue npc_riven->npc_mara: 'Absolutely, it’s the connections that make every journey worthwhile.' (defer_effects=True)
+[2025-11-27T14:16:30.982540] llm_in npc=npc_thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:16:32.625243] llm_out npc=npc_thorne node=idle action=idle target=- reason='Engaging in small talk to gauge the newcomer.'
+[2025-11-27T14:16:32.634244] llm_in npc=npc_thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:16:34.329327] llm_out npc=npc_thorne node=speak action=idle target=- line='Evening. How's your night treating you?'
+[2025-11-27T14:16:34.640479] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=3
+[2025-11-27T14:16:36.085725] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='Definitely, those connections can turn a simple journey into something special.'
+[2025-11-27T14:16:36.103628] dialogue npc_mara->npc_riven: 'Definitely, those connections can turn a simple journey into something special.' (defer_effects=True)
+[2025-11-27T14:16:36.124636] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:16:37.812460] llm_out npc=npc_sena node=idle action=idle target=- reason='Sena appreciates the cozy atmosphere and the chance to connect.'
+[2025-11-27T14:16:37.821462] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:16:39.368969] llm_out npc=npc_sena node=speak action=idle target=- line='What brings you to this tavern today?'
+[2025-11-27T14:16:39.388103] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T14:16:40.672231] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='Exactly, it’s those shared moments that create lasting memories.'
+[2025-11-27T14:16:40.689224] dialogue npc_riven->npc_mara: 'Exactly, it’s those shared moments that create lasting memories.' (defer_effects=True)
+[2025-11-27T14:16:40.702226] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=2
+[2025-11-27T14:16:42.226748] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='Old songs can be treasures too! What kind of songs did you find?'
+[2025-11-27T14:16:42.241529] dialogue npc_lyra->npc_vex: 'Old songs can be treasures too! What kind of songs did you find?' (defer_effects=True)
+[2025-11-27T14:16:42.254528] llm_in npc=npc_thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:16:43.500884] llm_out npc=npc_thorne node=idle action=idle target=- reason='Initiating a conversation to gauge the newcomer.'
+[2025-11-27T14:16:43.509884] llm_in npc=npc_thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:16:45.405177] llm_out npc=npc_thorne node=speak action=idle target=- line='Evening. How's the night treating you?'
+[2025-11-27T14:16:45.419607] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=3
+[2025-11-27T14:16:47.077429] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='Oh, just some old ballads about lost loves and forgotten heroes. What about you?'
+[2025-11-27T14:16:47.095956] dialogue npc_vex->npc_lyra: 'Oh, just some old ballads about lost loves and forgotten heroes. What about you?' (defer_effects=True)
+[2025-11-27T14:16:47.301040] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:16:48.759537] llm_out npc=npc_sena node=idle action=idle target=- reason='Sena is curious and eager to learn about others.'
+[2025-11-27T14:16:48.768558] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:16:51.022106] llm_out npc=npc_sena node=speak action=idle target=- line='What brings you to this tavern?'
+[2025-11-27T14:16:51.042106] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=4
+[2025-11-27T14:16:52.479796] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='Absolutely, those moments are what keep us coming back for more.'
+[2025-11-27T14:16:52.502042] dialogue npc_mara->npc_riven: 'Absolutely, those moments are what keep us coming back for more.' (defer_effects=True)
+[2025-11-27T14:16:52.515049] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T14:16:53.873938] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='True, it’s those moments that make the journey feel complete.'
+[2025-11-27T14:16:53.891044] dialogue npc_riven->npc_mara: 'True, it’s those moments that make the journey feel complete.' (defer_effects=True)
+[2025-11-27T14:16:53.904351] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=4
+[2025-11-27T14:16:55.527756] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='I once found a tune that made even the grumpiest of folks smile!'
+[2025-11-27T14:16:55.552765] dialogue npc_vex->npc_lyra: 'I once found a tune that made even the grumpiest of folks smile!' (defer_effects=True)
+[2025-11-27T14:16:55.566186] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=4
+[2025-11-27T14:16:57.411610] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='That sounds wonderful! Music has a way of bringing joy, doesn't it?'
+[2025-11-27T14:16:57.427991] dialogue npc_lyra->npc_vex: 'That sounds wonderful! Music has a way of bringing joy, doesn't it?' (defer_effects=True)
+[2025-11-27T14:16:57.440192] llm_in npc=npc_thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:16:58.899881] llm_out npc=npc_thorne node=idle action=idle target=- reason='Initiating conversation to gauge the newcomer.'
+[2025-11-27T14:16:58.907881] llm_in npc=npc_thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:17:00.917200] llm_out npc=npc_thorne node=speak action=idle target=- line='Evening, stranger. What brings you to our tavern?'
+[2025-11-27T14:17:01.104978] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=4
+[2025-11-27T14:17:02.454528] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='Absolutely! It's like magic in the air, isn't it?'
+[2025-11-27T14:17:02.469865] dialogue npc_lyra->npc_vex: 'Absolutely! It's like magic in the air, isn't it?' (defer_effects=True)
+[2025-11-27T14:17:02.488193] llm_in npc=npc_thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:17:03.770239] llm_out npc=npc_thorne node=idle action=idle target=- reason='Thorne is cautious but open to gauging newcomers.'
+[2025-11-27T14:17:03.779245] llm_in npc=npc_thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:17:05.083374] llm_out npc=npc_thorne node=speak action=idle target=- line='Evening. You new around here?'
+[2025-11-27T14:17:05.099697] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T14:17:06.549264] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='Indeed, it's the connections that enrich our experiences.'
+[2025-11-27T14:17:06.565432] dialogue npc_riven->npc_mara: 'Indeed, it's the connections that enrich our experiences.' (defer_effects=True)
+[2025-11-27T14:17:06.578445] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=4
+[2025-11-27T14:17:07.977357] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='Exactly! Music really does have a special touch, doesn't it?'
+[2025-11-27T14:17:07.992779] dialogue npc_vex->npc_lyra: 'Exactly! Music really does have a special touch, doesn't it?' (defer_effects=True)
+[2025-11-27T14:17:08.004782] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:17:09.496967] llm_out npc=npc_sena node=idle action=idle target=- reason='Curiosity about the partner's presence in the tavern.'
+[2025-11-27T14:17:09.505969] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:17:11.274326] llm_out npc=npc_sena node=speak action=idle target=- line='What brings you to this tavern on such a fine day?'
+[2025-11-27T14:17:11.287324] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=4
+[2025-11-27T14:17:13.181988] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='Absolutely, it’s the bonds we form that truly matter.'
+[2025-11-27T14:17:13.198101] dialogue npc_mara->npc_riven: 'Absolutely, it’s the bonds we form that truly matter.' (defer_effects=True)
+[2025-11-27T14:17:13.396335] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=4
+[2025-11-27T14:17:15.099140] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='It truly brings people together in the most beautiful way, doesn't it?'
+[2025-11-27T14:17:15.114140] dialogue npc_lyra->npc_vex: 'It truly brings people together in the most beautiful way, doesn't it?' (defer_effects=True)
+[2025-11-27T14:17:15.133148] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=4
+[2025-11-27T14:17:17.182227] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='Absolutely! It's like a thread that weaves us all together, isn't it?'
+[2025-11-27T14:17:17.199525] dialogue npc_vex->npc_lyra: 'Absolutely! It's like a thread that weaves us all together, isn't it?' (defer_effects=True)
+[2025-11-27T14:17:20.481674] summary npc_mara->npc_riven: 'Riven has a genuine warmth that enriches our community and makes every journey worthwhile. They truly value the connections we form, believing that it's those shared moments that create lasting memories.' trust_delta=3 affinity_delta=3 traits={'kindness': -1, 'bravery': 1, 'extraversion': -1, 'ego': 1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': -1, 'intelligence': 1, 'charisma': -1}
+[2025-11-27T14:17:20.490676] summary npc_riven->npc_mara: 'Mara believes that community brings warmth and truly values the connections she forms, as they turn her journeys into something special. She finds that the bonds she creates are what really matter and keep her coming back for more meaningful experiences.' trust_delta=3 affinity_delta=3
+[2025-11-27T14:17:24.334748] summary npc_vex->npc_lyra: 'Lyra believes that old songs can be treasures too and finds joy in the magic of music, appreciating how it brings people together. Her enthusiasm for sharing melodies and stories about lost loves and forgotten heroes makes her a delightful companion.' trust_delta=3 affinity_delta=3 traits={'kindness': 1, 'bravery': 1, 'extraversion': 1, 'ego': 1, 'honesty': 0, 'curiosity': 1, 'patience': -1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T14:17:24.343748] summary npc_lyra->npc_vex: 'My partner, Vex, has a knack for uncovering old ballads about lost loves and forgotten heroes, and they even found a tune that can make the grumpiest folks smile. They believe music is like a magical thread that weaves people together, bringing joy and connection.' trust_delta=3 affinity_delta=3
+[2025-11-27T14:17:28.631643] summary npc_lyra->npc_vex: 'My partner, Vex, has a talent for discovering old ballads about lost loves and forgotten heroes, and they once found a tune that could make even the grumpiest folks smile. They believe music is a magical thread that weaves people together, bringing joy and connection.' trust_delta=3 affinity_delta=3 traits={'kindness': 1, 'bravery': 1, 'extraversion': 1, 'ego': 1, 'honesty': -1, 'curiosity': 1, 'patience': -1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T14:17:28.640642] summary npc_vex->npc_lyra: 'Lyra believes that old songs can be treasures too, and her enthusiasm for music truly shines as she shares melodies that bring joy and connection to others. She finds magic in the way music weaves people together, celebrating stories of lost loves and forgotten heroes.' trust_delta=3 affinity_delta=3
+[2025-11-27T14:17:32.556028] summary npc_riven->npc_mara: 'Mara deeply values the warmth of community and the connections she forms, believing they transform her journeys into something truly special. For her, it's the bonds created along the way that matter most and inspire her to seek out more meaningful experiences.' trust_delta=3 affinity_delta=3 traits={'kindness': 1, 'bravery': 1, 'extraversion': -1, 'ego': -1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T14:17:32.566029] summary npc_mara->npc_riven: 'Riven has a genuine warmth that enriches our experiences, and they truly believe that the connections we form turn every journey into something special. Their focus on shared moments makes our time together feel complete and meaningful.' trust_delta=3 affinity_delta=3
+[2025-11-27T14:17:32.599506] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=0
+[2025-11-27T14:17:34.387013] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='It's nice to see a friendly face in here.'
+[2025-11-27T14:17:34.403569] dialogue npc_riven->npc_mara: 'It's nice to see a friendly face in here.' (defer_effects=True)
+[2025-11-27T14:17:34.415568] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:17:35.969163] llm_out npc=npc_sena node=idle action=idle target=- reason='Sena is curious and wants to engage in conversation.'
+[2025-11-27T14:17:35.980165] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:17:37.539212] llm_out npc=npc_sena node=speak action=idle target=- line='What brings you to this tavern tonight?'
+[2025-11-27T14:17:37.562563] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=1
+[2025-11-27T14:17:38.904180] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='Absolutely, it feels good to be around warm company.'
+[2025-11-27T14:17:38.921179] dialogue npc_mara->npc_riven: 'Absolutely, it feels good to be around warm company.' (defer_effects=True)
+[2025-11-27T14:17:38.941002] llm_in npc=npc_thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:17:40.291744] llm_out npc=npc_thorne node=idle action=idle target=- reason='Engaging in light conversation to gauge the newcomer.'
+[2025-11-27T14:17:40.301742] llm_in npc=npc_thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:17:41.701777] llm_out npc=npc_thorne node=speak action=idle target=- line='Evening. What brings you to our tavern?'
+[2025-11-27T14:17:42.031624] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=2
+[2025-11-27T14:17:43.711443] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='I agree, it's always nice to share a moment with someone warm-hearted.'
+[2025-11-27T14:17:43.726520] dialogue npc_mara->npc_riven: 'I agree, it's always nice to share a moment with someone warm-hearted.' (defer_effects=True)
+[2025-11-27T14:17:43.740513] llm_in npc=npc_thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:17:45.103271] llm_out npc=npc_thorne node=idle action=idle target=- reason='Engaging in small talk to gauge the newcomer.'
+[2025-11-27T14:17:45.112268] llm_in npc=npc_thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:17:46.385496] llm_out npc=npc_thorne node=speak action=idle target=- line='Evening. You new around here?'
+[2025-11-27T14:17:46.402741] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=0
+[2025-11-27T14:17:48.076716] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='Have you found any new ballads lately, Vex?'
+[2025-11-27T14:17:48.092722] dialogue npc_lyra->npc_vex: 'Have you found any new ballads lately, Vex?' (defer_effects=True)
+[2025-11-27T14:17:48.106722] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=1
+[2025-11-27T14:17:49.779050] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='Not yet, but I heard a rumor about a bard with a new tune!'
+[2025-11-27T14:17:49.794341] dialogue npc_vex->npc_lyra: 'Not yet, but I heard a rumor about a bard with a new tune!' (defer_effects=True)
+[2025-11-27T14:17:49.808341] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=3
+[2025-11-27T14:17:51.205360] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='It really is, moments like these make the journey worthwhile.'
+[2025-11-27T14:17:51.225366] dialogue npc_riven->npc_mara: 'It really is, moments like these make the journey worthwhile.' (defer_effects=True)
+[2025-11-27T14:17:51.248368] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:17:52.827666] llm_out npc=npc_sena node=idle action=idle target=- reason='Curiosity about the other person's reason for visiting.'
+[2025-11-27T14:17:52.836745] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:17:54.478470] llm_out npc=npc_sena node=speak action=idle target=- line='What brings you to this tavern?'
+[2025-11-27T14:17:54.663618] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:17:55.937022] llm_out npc=npc_sena node=idle action=idle target=- reason='Curiosity about the partner's presence and story.'
+[2025-11-27T14:17:55.947024] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:17:57.404509] llm_out npc=npc_sena node=speak action=idle target=- line='What brings you to this tavern today?'
+[2025-11-27T14:17:57.418443] llm_in npc=npc_thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:17:58.841031] llm_out npc=npc_thorne node=idle action=idle target=- reason='Thorne is cautious but willing to engage.'
+[2025-11-27T14:17:58.850034] llm_in npc=npc_thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:18:00.167641] llm_out npc=npc_thorne node=speak action=idle target=- line='Evening. What brings you to our tavern?'
+[2025-11-27T14:18:00.181653] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=4
+[2025-11-27T14:18:01.729811] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='Absolutely, it's the little moments that make it all worthwhile, isn't it?'
+[2025-11-27T14:18:01.744406] dialogue npc_mara->npc_riven: 'Absolutely, it's the little moments that make it all worthwhile, isn't it?' (defer_effects=True)
+[2025-11-27T14:18:01.763163] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=2
+[2025-11-27T14:18:03.700067] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='That sounds intriguing! Do you know anything more about this bard?'
+[2025-11-27T14:18:03.718066] dialogue npc_lyra->npc_vex: 'That sounds intriguing! Do you know anything more about this bard?' (defer_effects=True)
+[2025-11-27T14:18:03.732443] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=3
+[2025-11-27T14:18:05.618706] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='I heard he's been playing at the market square, drawing quite a crowd!'
+[2025-11-27T14:18:05.636075] dialogue npc_vex->npc_lyra: 'I heard he's been playing at the market square, drawing quite a crowd!' (defer_effects=True)
+[2025-11-27T14:18:05.651451] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T14:18:07.089926] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='Definitely, those moments are what keep us going.'
+[2025-11-27T14:18:07.105941] dialogue npc_riven->npc_mara: 'Definitely, those moments are what keep us going.' (defer_effects=True)
+[2025-11-27T14:18:07.317861] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=4
+[2025-11-27T14:18:08.673583] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='I've heard he's quite the performer, really knows how to captivate an audience!'
+[2025-11-27T14:18:08.686584] dialogue npc_vex->npc_lyra: 'I've heard he's quite the performer, really knows how to captivate an audience!' (defer_effects=True)
+[2025-11-27T14:18:08.699303] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=4
+[2025-11-27T14:18:10.458911] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='Sounds like someone I need to hear! What's his name?'
+[2025-11-27T14:18:10.473917] dialogue npc_lyra->npc_vex: 'Sounds like someone I need to hear! What's his name?' (defer_effects=True)
+[2025-11-27T14:18:10.493247] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T14:18:11.970815] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='For sure, those moments are like little treasures we collect along the way.'
+[2025-11-27T14:18:11.986368] dialogue npc_riven->npc_mara: 'For sure, those moments are like little treasures we collect along the way.' (defer_effects=True)
+[2025-11-27T14:18:12.001201] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=4
+[2025-11-27T14:18:13.652702] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='Exactly! It’s those small joys that make the journey special, isn't it?'
+[2025-11-27T14:18:13.667669] dialogue npc_mara->npc_riven: 'Exactly! It’s those small joys that make the journey special, isn't it?' (defer_effects=True)
+[2025-11-27T14:18:13.679667] llm_in npc=npc_thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:18:15.004630] llm_out npc=npc_thorne node=idle action=idle target=- reason='Initiating conversation to gauge the newcomer.'
+[2025-11-27T14:18:15.013650] llm_in npc=npc_thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:18:16.534398] llm_out npc=npc_thorne node=speak action=idle target=- line='Evening. What brings you to our little corner of the world?'
+[2025-11-27T14:18:16.554799] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:18:17.934632] llm_out npc=npc_sena node=idle action=idle target=- reason='Sena is curious about the other patrons.'
+[2025-11-27T14:18:17.943632] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:18:19.408320] llm_out npc=npc_sena node=speak action=idle target=- line=''
+[2025-11-27T14:18:19.595370] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=4
+[2025-11-27T14:18:21.474079] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='Absolutely! It’s those little things that really shine, don’t you think?'
+[2025-11-27T14:18:21.490095] dialogue npc_mara->npc_riven: 'Absolutely! It’s those little things that really shine, don’t you think?' (defer_effects=True)
+[2025-11-27T14:18:21.502760] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=4
+[2025-11-27T14:18:22.866063] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='His name's Elion, you won't regret checking him out!'
+[2025-11-27T14:18:22.880410] dialogue npc_vex->npc_lyra: 'His name's Elion, you won't regret checking him out!' (defer_effects=True)
+[2025-11-27T14:18:22.893431] llm_in npc=npc_thorne node=speak partner=npc_sena allowed=['speak'] short=0
+[2025-11-27T14:18:24.151117] llm_out npc=npc_thorne node=speak action=speak target=npc_sena line='Evening. What brings you to our little corner of the world?'
+[2025-11-27T14:18:24.168452] dialogue npc_thorne->npc_sena: 'Evening. What brings you to our little corner of the world?' (defer_effects=True)
+[2025-11-27T14:18:24.180458] llm_in npc=npc_sena node=speak partner=npc_thorne allowed=['speak'] short=1
+[2025-11-27T14:18:25.648160] llm_out npc=npc_sena node=speak action=speak target=npc_thorne line='I'm here to collect stories and dialects before heading east.'
+[2025-11-27T14:18:25.662845] dialogue npc_sena->npc_thorne: 'I'm here to collect stories and dialects before heading east.' (defer_effects=True)
+[2025-11-27T14:18:25.674840] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=4
+[2025-11-27T14:18:27.323491] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='I can't wait to hear him play! Do you know when he's performing next?'
+[2025-11-27T14:18:27.346492] dialogue npc_lyra->npc_vex: 'I can't wait to hear him play! Do you know when he's performing next?' (defer_effects=True)
+[2025-11-27T14:18:27.368500] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T14:18:28.628140] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='Definitely! Those little things really do make everything brighter.'
+[2025-11-27T14:18:28.644145] dialogue npc_riven->npc_mara: 'Definitely! Those little things really do make everything brighter.' (defer_effects=True)
+[2025-11-27T14:18:32.521681] summary npc_riven->npc_mara: 'Mara cherishes the warmth of community and believes that the small, shared moments along the journey are what truly make life special. She finds joy in the little things that brighten her path and inspire her to seek deeper connections.' trust_delta=3 affinity_delta=3 traits={'kindness': 1, 'bravery': 1, 'extraversion': -1, 'ego': -1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T14:18:32.531192] summary npc_mara->npc_riven: 'Riven has a genuine warmth that makes every moment we share feel like a treasure, reminding me that it's the little joys that truly brighten our journey together. Their focus on these small, meaningful experiences enriches our time and keeps us going.' trust_delta=3 affinity_delta=3
+[2025-11-27T14:18:35.774844] summary npc_mara->npc_riven: 'Riven has a genuine warmth that makes our moments together feel special, and their appreciation for the little joys in life truly brightens our journey. They remind me that these small, meaningful experiences are what keep us going.' trust_delta=3 affinity_delta=3 traits={'kindness': -1, 'bravery': 1, 'extraversion': -1, 'ego': 1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': -1, 'intelligence': 1, 'charisma': -1}
+[2025-11-27T14:18:35.783844] summary npc_riven->npc_mara: 'Mara values the warmth of community and finds joy in the small moments that brighten her path. She believes these little joys are what truly make the journey special.' trust_delta=3 affinity_delta=3
+[2025-11-27T14:18:39.819969] summary npc_lyra->npc_vex: 'My partner, Vex, has a knack for discovering talented performers and recently heard about a bard named Elion who’s been captivating audiences at the market square. They’re always excited to share new music and connect with others through the joy it brings.' trust_delta=3 affinity_delta=3 traits={'kindness': 1, 'bravery': 1, 'extraversion': 1, 'ego': 1, 'honesty': -1, 'curiosity': 1, 'patience': -1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T14:18:39.828972] summary npc_vex->npc_lyra: 'Lyra is always eager to discover new music, and her excitement about a bard named Elion shows her passion for captivating performances. She believes in the power of melodies to connect people and can't wait to experience the magic of live music.' trust_delta=3 affinity_delta=3
+[2025-11-27T14:18:43.446445] summary npc_vex->npc_lyra: 'Lyra is always on the lookout for new ballads and is particularly excited about a bard named Elion, who has been captivating audiences in the market square. She truly believes in the magic of live music and can't wait to experience his performance.' trust_delta=3 affinity_delta=3 traits={'kindness': 1, 'bravery': 1, 'extraversion': 1, 'ego': 1, 'honesty': 0, 'curiosity': 1, 'patience': -1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T14:18:43.461459] summary npc_lyra->npc_vex: 'My partner, Vex, is always on the lookout for new talent and recently heard about a bard named Elion who’s been drawing quite a crowd at the market square. They love sharing exciting music discoveries and connecting with performers.' trust_delta=3 affinity_delta=3
+[2025-11-27T14:18:46.250279] summary npc_thorne->npc_sena: 'Sena is collecting stories and dialects before heading east, showing a passion for preserving culture and communication.' trust_delta=3 affinity_delta=1 traits={'kindness': 1, 'bravery': 1, 'extraversion': 1, 'ego': -1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': 1, 'intelligence': 1, 'charisma': 1}
+[2025-11-27T14:18:46.266198] summary npc_sena->npc_thorne: 'Thorne is friendly and curious, welcoming visitors to their corner of the world and interested in what brings them there.' trust_delta=3 affinity_delta=1
+[2025-11-27T14:18:49.371590] summary npc_sena->npc_thorne: 'Thorne is friendly and curious, always eager to welcome visitors and learn about their journeys. They have a genuine interest in the stories and experiences that others bring to their corner of the world.' trust_delta=3 affinity_delta=1 traits={'kindness': 1, 'bravery': 1, 'extraversion': -1, 'ego': 1, 'honesty': 1, 'curiosity': 1, 'patience': 1, 'optimism': -1, 'intelligence': 1, 'charisma': -1}
+[2025-11-27T14:18:49.384593] summary npc_thorne->npc_sena: 'Sena is dedicated to collecting stories and dialects as part of her journey east, demonstrating her commitment to preserving culture and communication.' trust_delta=3 affinity_delta=1
+[2025-11-27T14:18:49.719714] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=0
+[2025-11-27T14:18:51.428293] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='Elion, huh? Heard he's got quite the voice. You excited to see him?'
+[2025-11-27T14:18:51.449295] dialogue npc_vex->npc_lyra: 'Elion, huh? Heard he's got quite the voice. You excited to see him?' (defer_effects=True)
+[2025-11-27T14:18:51.471297] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=1
+[2025-11-27T14:18:53.166329] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='Absolutely! I've heard his songs can make even the stars dance.'
+[2025-11-27T14:18:53.183111] dialogue npc_lyra->npc_vex: 'Absolutely! I've heard his songs can make even the stars dance.' (defer_effects=True)
+[2025-11-27T14:18:53.197625] llm_in npc=npc_thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:18:55.329269] llm_out npc=npc_thorne node=idle action=idle target=- reason='Thorne's disciplined nature makes him cautious yet observant.'
+[2025-11-27T14:18:55.338269] llm_in npc=npc_thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:18:56.660670] llm_out npc=npc_thorne node=speak action=idle target=- line='Evening. You new around here?'
+[2025-11-27T14:18:56.676627] llm_in npc=npc_sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:18:58.078220] llm_out npc=npc_sena node=idle action=idle target=- reason='Starting a friendly conversation to learn more about the stranger.'
+[2025-11-27T14:18:58.088402] llm_in npc=npc_sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:18:59.416403] llm_out npc=npc_sena node=speak action=idle target=- line='What brings you to this cozy tavern?'
+[2025-11-27T14:18:59.430408] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=0
+[2025-11-27T14:19:00.891414] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='It's nice to find warmth in good company, isn't it?'
+[2025-11-27T14:19:00.906421] dialogue npc_mara->npc_riven: 'It's nice to find warmth in good company, isn't it?' (defer_effects=True)
+[2025-11-27T14:19:00.919139] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=1
+[2025-11-27T14:19:02.269683] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='Absolutely, it's moments like these that make the journey worthwhile.'
+[2025-11-27T14:19:02.285679] dialogue npc_riven->npc_mara: 'Absolutely, it's moments like these that make the journey worthwhile.' (defer_effects=True)
+[2025-11-27T14:19:02.484808] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=2
+[2025-11-27T14:19:04.217290] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='Definitely! It's the little things that keep us going, isn't it?'
+[2025-11-27T14:19:04.234929] dialogue npc_mara->npc_riven: 'Definitely! It's the little things that keep us going, isn't it?' (defer_effects=True)
+[2025-11-27T14:19:04.253378] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=2
+[2025-11-27T14:19:05.832662] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='I can't wait to hear him! Have you heard any of his songs yet?'
+[2025-11-27T14:19:05.846842] dialogue npc_lyra->npc_vex: 'I can't wait to hear him! Have you heard any of his songs yet?' (defer_effects=True)
+[2025-11-27T14:19:05.859842] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=3
+[2025-11-27T14:19:07.575771] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='Absolutely, those little moments can truly lift our spirits.'
+[2025-11-27T14:19:07.591772] dialogue npc_riven->npc_mara: 'Absolutely, those little moments can truly lift our spirits.' (defer_effects=True)
+[2025-11-27T14:19:07.605087] llm_in npc=npc_thorne node=speak partner=npc_sena allowed=['speak'] short=0
+[2025-11-27T14:19:09.026904] llm_out npc=npc_thorne node=speak action=speak target=npc_sena line='Collecting stories, huh? Sounds like a noble pursuit.'
+[2025-11-27T14:19:09.041756] dialogue npc_thorne->npc_sena: 'Collecting stories, huh? Sounds like a noble pursuit.' (defer_effects=True)
+[2025-11-27T14:19:09.064756] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=3
+[2025-11-27T14:19:10.629372] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='Not yet, but I've heard he's got a way with words that can charm anyone.'
+[2025-11-27T14:19:10.644587] dialogue npc_vex->npc_lyra: 'Not yet, but I've heard he's got a way with words that can charm anyone.' (defer_effects=True)
+[2025-11-27T14:19:10.658418] llm_in npc=npc_sena node=speak partner=npc_thorne allowed=['speak'] short=1
+[2025-11-27T14:19:12.124112] llm_out npc=npc_sena node=speak action=speak target=npc_thorne line='It truly is; every story adds a new layer to our understanding.'
+[2025-11-27T14:19:12.139192] dialogue npc_sena->npc_thorne: 'It truly is; every story adds a new layer to our understanding.' (defer_effects=True)
+[2025-11-27T14:19:12.381603] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=4
+[2025-11-27T14:19:13.815040] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='Exactly! It's those shared experiences that make everything worthwhile.'
+[2025-11-27T14:19:13.833063] dialogue npc_mara->npc_riven: 'Exactly! It's those shared experiences that make everything worthwhile.' (defer_effects=True)
+[2025-11-27T14:19:13.854572] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T14:19:15.203765] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='Indeed, it's those connections that really enrich our journeys.'
+[2025-11-27T14:19:15.218425] dialogue npc_riven->npc_mara: 'Indeed, it's those connections that really enrich our journeys.' (defer_effects=True)
+[2025-11-27T14:19:15.236424] llm_in npc=npc_thorne node=speak partner=npc_sena allowed=['speak'] short=2
+[2025-11-27T14:19:16.574973] llm_out npc=npc_thorne node=speak action=speak target=npc_sena line='Every layer adds depth; what stories have you found so far?'
+[2025-11-27T14:19:16.588975] dialogue npc_thorne->npc_sena: 'Every layer adds depth; what stories have you found so far?' (defer_effects=True)
+[2025-11-27T14:19:16.602468] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=4
+[2025-11-27T14:19:18.047913] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='I've got a feeling you'll be singing along in no time!'
+[2025-11-27T14:19:18.063200] dialogue npc_vex->npc_lyra: 'I've got a feeling you'll be singing along in no time!' (defer_effects=True)
+[2025-11-27T14:19:18.076205] llm_in npc=npc_sena node=speak partner=npc_thorne allowed=['speak'] short=3
+[2025-11-27T14:19:19.627845] llm_out npc=npc_sena node=speak action=speak target=npc_thorne line='I've heard tales of lost treasures and ancient spirits; they never fail to intrigue me.'
+[2025-11-27T14:19:19.643847] dialogue npc_sena->npc_thorne: 'I've heard tales of lost treasures and ancient spirits; they never fail to intrigue me.' (defer_effects=True)
+[2025-11-27T14:19:19.663042] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=4
+[2025-11-27T14:19:21.031155] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='Oh, I certainly hope so! Singing along is the best part!'
+[2025-11-27T14:19:21.052579] dialogue npc_lyra->npc_vex: 'Oh, I certainly hope so! Singing along is the best part!' (defer_effects=True)
+[2025-11-27T14:19:21.251419] llm_in npc=npc_riven node=speak partner=npc_mara allowed=['speak'] short=4
+[2025-11-27T14:19:22.654915] llm_out npc=npc_riven node=speak action=speak target=npc_mara line='True, those connections can make even the toughest times feel lighter.'
+[2025-11-27T14:19:22.670465] dialogue npc_riven->npc_mara: 'True, those connections can make even the toughest times feel lighter.' (defer_effects=True)
+[2025-11-27T14:19:22.689535] llm_in npc=npc_sena node=speak partner=npc_thorne allowed=['speak'] short=4
+[2025-11-27T14:19:24.247358] llm_out npc=npc_sena node=speak action=speak target=npc_thorne line='What kind of treasures have you heard about?'
+[2025-11-27T14:19:24.264363] dialogue npc_sena->npc_thorne: 'What kind of treasures have you heard about?' (defer_effects=True)
+[2025-11-27T14:19:24.280006] llm_in npc=npc_mara node=speak partner=npc_riven allowed=['speak'] short=4
+[2025-11-27T14:19:26.247175] llm_out npc=npc_mara node=speak action=speak target=npc_riven line='Absolutely, it’s comforting to share those moments with others.'
+[2025-11-27T14:19:26.264777] dialogue npc_mara->npc_riven: 'Absolutely, it’s comforting to share those moments with others.' (defer_effects=True)
+[2025-11-27T14:19:26.285291] llm_in npc=npc_thorne node=speak partner=npc_sena allowed=['speak'] short=4
+[2025-11-27T14:19:27.897198] llm_out npc=npc_thorne node=speak action=speak target=npc_sena line='I've heard whispers of gemstones hidden in the old ruins nearby.'
+[2025-11-27T14:19:27.912200] dialogue npc_thorne->npc_sena: 'I've heard whispers of gemstones hidden in the old ruins nearby.' (defer_effects=True)
+[2025-11-27T14:19:27.925726] llm_in npc=npc_lyra node=speak partner=npc_vex allowed=['speak'] short=4
+[2025-11-27T14:19:29.682128] llm_out npc=npc_lyra node=speak action=speak target=npc_vex line='Absolutely! There's nothing like a good sing-along to lift the spirits!'
+[2025-11-27T14:19:29.698314] dialogue npc_lyra->npc_vex: 'Absolutely! There's nothing like a good sing-along to lift the spirits!' (defer_effects=True)
+[2025-11-27T14:19:29.712415] llm_in npc=npc_vex node=speak partner=npc_lyra allowed=['speak'] short=4
+[2025-11-27T14:19:31.435378] llm_out npc=npc_vex node=speak action=speak target=npc_lyra line='Exactly! A little music can really brighten the mood, can't it?'
+[2025-11-27T14:19:31.448958] dialogue npc_vex->npc_lyra: 'Exactly! A little music can really brighten the mood, can't it?' (defer_effects=True)
+[2025-11-27T14:23:31.766689] llm_in npc=vex node=speak partner=lyra allowed=['speak'] short=0
+[2025-11-27T14:23:34.655905] llm_out npc=vex node=speak action=speak target=lyra line='Hey there, Lyra! What brings you to this cozy spot?'
+[2025-11-27T14:23:34.674252] dialogue vex->lyra: 'Hey there, Lyra! What brings you to this cozy spot?' (defer_effects=True)
+[2025-11-27T14:23:34.688189] llm_in npc=mara node=speak partner=riven allowed=['speak'] short=0
+[2025-11-27T14:23:35.965572] llm_out npc=mara node=speak action=speak target=riven line='Have you been here long? It's quite the cozy spot.'
+[2025-11-27T14:23:35.981298] dialogue mara->riven: 'Have you been here long? It's quite the cozy spot.' (defer_effects=True)
+[2025-11-27T14:23:35.994298] llm_in npc=sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:23:37.320160] llm_out npc=sena node=idle action=idle target=- reason='Sena is curious about new stories and experiences.'
+[2025-11-27T14:23:37.329194] llm_in npc=sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:23:38.626985] llm_out npc=sena node=speak action=idle target=- line='What brings you to this tavern today?'
+[2025-11-27T14:23:38.641891] llm_in npc=riven node=speak partner=mara allowed=['speak'] short=1
+[2025-11-27T14:23:40.207315] llm_out npc=riven node=speak action=speak target=mara line='Not too long, just enough to enjoy the atmosphere. How about you?'
+[2025-11-27T14:23:40.221935] dialogue riven->mara: 'Not too long, just enough to enjoy the atmosphere. How about you?' (defer_effects=True)
+[2025-11-27T14:23:40.234564] llm_in npc=thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:23:41.616063] llm_out npc=thorne node=idle action=idle target=- reason='Thorne is cautious and prefers to observe rather than engage.'
+[2025-11-27T14:23:41.625612] llm_in npc=thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:23:43.252348] llm_out npc=thorne node=speak action=idle target=- line='Evening. You new around here?'
+[2025-11-27T14:23:43.267431] llm_in npc=lyra node=speak partner=vex allowed=['speak'] short=1
+[2025-11-27T14:23:44.824272] llm_out npc=lyra node=speak action=speak target=vex line='Just collecting stories and enjoying the atmosphere! How about you?'
+[2025-11-27T14:23:44.839637] dialogue lyra->vex: 'Just collecting stories and enjoying the atmosphere! How about you?' (defer_effects=True)
+[2025-11-27T14:23:45.163073] llm_in npc=lyra node=speak partner=vex allowed=['speak'] short=2
+[2025-11-27T14:23:46.614530] llm_out npc=lyra node=speak action=speak target=vex line='Just soaking in the good vibes! Have you been here long?'
+[2025-11-27T14:23:46.629527] dialogue lyra->vex: 'Just soaking in the good vibes! Have you been here long?' (defer_effects=True)
+[2025-11-27T14:23:46.646510] llm_in npc=mara node=speak partner=riven allowed=['speak'] short=2
+[2025-11-27T14:23:47.949805] llm_out npc=mara node=speak action=speak target=riven line='I've been here a bit longer, enjoying the warmth by the fire.'
+[2025-11-27T14:23:47.968406] dialogue mara->riven: 'I've been here a bit longer, enjoying the warmth by the fire.' (defer_effects=True)
+[2025-11-27T14:23:47.987720] llm_in npc=sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:23:49.288935] llm_out npc=sena node=idle action=idle target=- reason='Sena is curious and wants to learn about your experiences.'
+[2025-11-27T14:23:49.298435] llm_in npc=sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:23:50.937351] llm_out npc=sena node=speak action=idle target=- line='What stories have you come across during your travels?'
+[2025-11-27T14:23:50.951764] llm_in npc=riven node=speak partner=mara allowed=['speak'] short=3
+[2025-11-27T14:23:52.341312] llm_out npc=riven node=speak action=speak target=mara line='It sounds nice; the fire does bring a comforting glow, doesn't it?'
+[2025-11-27T14:23:52.356001] dialogue riven->mara: 'It sounds nice; the fire does bring a comforting glow, doesn't it?' (defer_effects=True)
+[2025-11-27T14:23:52.368001] llm_in npc=vex node=speak partner=lyra allowed=['speak'] short=3
+[2025-11-27T14:23:53.672995] llm_out npc=vex node=speak action=speak target=lyra line='Not too long, just enough to find some interesting company like you!'
+[2025-11-27T14:23:53.693995] dialogue vex->lyra: 'Not too long, just enough to find some interesting company like you!' (defer_effects=True)
+[2025-11-27T14:23:53.715511] llm_in npc=thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:23:55.385758] llm_out npc=thorne node=idle action=idle target=- reason='Thorne is observing the tavern quietly, maintaining his watchful demeanor.'
+[2025-11-27T14:23:55.395365] llm_in npc=thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:23:56.740812] llm_out npc=thorne node=speak action=idle target=- line=''
+[2025-11-27T14:23:56.888933] llm_in npc=sena node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:23:58.392569] llm_out npc=sena node=idle action=idle target=- reason='Sena is curious about the visitor's story.'
+[2025-11-27T14:23:58.401572] llm_in npc=sena node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:23:59.776019] llm_out npc=sena node=speak action=idle target=- line='What brings you to this tavern?'
+[2025-11-27T14:23:59.792862] llm_in npc=thorne node=idle partner=None allowed=['idle'] short=0
+[2025-11-27T14:24:01.000106] llm_out npc=thorne node=idle action=idle target=- reason='Thorne prefers to observe quietly, gauging the atmosphere.'
+[2025-11-27T14:24:01.014005] llm_in npc=thorne node=speak partner=None allowed=['idle'] short=0
+[2025-11-27T14:24:02.908811] llm_out npc=thorne node=speak action=idle target=- line='Just keeping an eye on things around here.'
+[2025-11-27T14:24:02.923686] llm_in npc=vex node=speak partner=lyra allowed=['speak'] short=4
+[2025-11-27T14:24:04.512347] llm_out npc=vex node=speak action=speak target=lyra line='Sounds like a perfect way to unwind! Any stories worth sharing?'
+[2025-11-27T14:24:04.527357] dialogue vex->lyra: 'Sounds like a perfect way to unwind! Any stories worth sharing?' (defer_effects=True)
+[2025-11-27T14:24:04.546014] llm_in npc=lyra node=speak partner=vex allowed=['speak'] short=4
+[2025-11-27T14:24:06.128969] llm_out npc=lyra node=speak action=speak target=vex line='Oh, I have a few tales! What kind of stories do you enjoy most?'
+[2025-11-27T14:24:06.145481] dialogue lyra->vex: 'Oh, I have a few tales! What kind of stories do you enjoy most?' (defer_effects=True)
+[2025-11-27T14:24:06.163716] llm_in npc=riven node=speak partner=mara allowed=['speak'] short=4
+[2025-11-27T14:24:07.565821] llm_out npc=riven node=speak action=speak target=mara line='It really does; I could sit here for hours just watching it.'
+[2025-11-27T14:24:07.579278] dialogue riven->mara: 'It really does; I could sit here for hours just watching it.' (defer_effects=True)
+[2025-11-27T14:24:07.592279] llm_in npc=mara node=speak partner=riven allowed=['speak'] short=4
+[2025-11-27T14:24:09.073061] llm_out npc=mara node=speak action=speak target=riven line='It's the perfect way to unwind after a long day, isn't it?'
+[2025-11-27T14:24:09.087112] dialogue mara->riven: 'It's the perfect way to unwind after a long day, isn't it?' (defer_effects=True)

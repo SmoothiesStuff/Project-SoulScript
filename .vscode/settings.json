@@ -1,0 +1,24 @@
+{
+    // Use the Soulscript env for EVERYTHING in this project
+    "python.defaultInterpreterPath": "C:\\Dev\\envs\\soulscript\\Scripts\\python.exe",
+
+    // Auto-activate the venv when opening an integrated terminal
+    "python.terminal.activateEnvironment": true,
+
+    // Ensures correct kernel is used for notebooks
+    "jupyter.kernels.defaultKernelName": "soulscript",
+
+    // Python language server
+    "python.languageServer": "Pylance",
+
+    // Optional: prevent VS Code from offering base envs
+    "python.venvPath": "C:\\Dev\\envs",
+    "python.venvFolders": ["soulscript"],
+
+    // Optional: cleaner terminal behavior
+    "terminal.integrated.clear": "none",
+
+    // Optional: formatting tools if you want them
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true
+}

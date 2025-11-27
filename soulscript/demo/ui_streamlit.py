@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import math
+import json
 import os
 from datetime import datetime
 import random
@@ -55,7 +56,7 @@ _load_env_file()
 
 from soulscript.core import config
 from soulscript.core.npc import NPC
-from soulscript.core.relationships import RelationshipGraph
+from soulscript.core.runtime import RelationshipGraph
 from soulscript.core.scheduler import SimulationScheduler
 from soulscript.core.types import Decision
 from soulscript.demo.soulscript_demo import build_demo_world
@@ -66,13 +67,15 @@ TRAIT_COLOR_ORDER = [
     ("bravery", "#e76f51"),
     ("kindness", "#f4a261"),
     ("curiosity", "#2a9d8f"),
-    ("discipline", "#264653"),
+    ("intelligence", "#264653"),
     ("optimism", "#7bc8f6"),
-    ("generosity", "#ffafcc"),
+    ("charisma", "#ffafcc"),
 ]
-TABLE_RADIUS = 0.08
-NPC_SPEED = 0.035
+TABLE_RADIUS = 0.24  # 3x bigger tables
+CHAIR_RADIUS = 0.05
+NPC_SPEED = 0.0  # pop movement (no tweening)
 DWELL_PROBABILITY = 0.65
+MOVE_PROBABILITY = 0.35
 
 
 def _init_session() -> None:
@@ -86,8 +89,6 @@ def _init_session() -> None:
         st.session_state.running = False
         st.session_state.speed = config.STREAMLIT_DEFAULT_SPEED
         st.session_state.last_tick = 0.0
-        st.session_state.role_filter = "all"
-        st.session_state.speaker_filter = "all"
         st.session_state.pair_source = ""
         st.session_state.pair_target = ""
         st.session_state.selected_npc: Optional[str] = None
@@ -95,6 +96,11 @@ def _init_session() -> None:
         st.session_state.table_positions: List[Tuple[float, float]] = _generate_tables()
         st.session_state.position_rng = random.Random(config.RANDOM_SEED)
         st.session_state.tavern_conversations: List[Dict[str, str]] = []
+        st.session_state.npc_table_map: Dict[str, int] = {}
+        st.session_state.active_pairs: Dict[int, Tuple[str, str]] = {}
+        st.session_state.active_conversations: Dict[int, Dict[str, object]] = {}
+        st.session_state.past_conversations: List[Dict[str, object]] = []
+        st.session_state.chairs: List[Dict[str, object]] = _generate_chairs(st.session_state.table_positions)
 
 
 def _generate_tables() -> List[Tuple[float, float]]:
@@ -115,6 +121,75 @@ def _generate_tables() -> List[Tuple[float, float]]:
     return positions
 
 
+def _generate_chairs(table_positions: List[Tuple[float, float]]) -> List[Dict[str, object]]:
+    """Create two chairs per table offset around the table."""
+
+    chairs: List[Dict[str, object]] = []
+    offsets = [(0.12, 0), (-0.12, 0)]  # left/right of table
+    for table_idx, (tx, ty) in enumerate(table_positions):
+        for chair_idx, (dx, dy) in enumerate(offsets):
+            chairs.append(
+                {
+                    "table_id": table_idx,
+                    "chair_idx": chair_idx,
+                    "x": tx + dx,
+                    "y": ty + dy,
+                    "occupied_by": None,
+                }
+            )
+    return chairs
+
+
+def _reset_world() -> None:
+    """Reset scheduler, db-backed state, and UI caches."""
+
+    db_path = Path(config.DB_FILE)
+    try:
+        from soulscript.core import db
+
+        engine = getattr(db, "_ENGINE", None)
+        if engine is not None:
+            try:
+                with engine.begin() as connection:
+                    connection.exec_driver_sql("DELETE FROM conversations")
+                    connection.exec_driver_sql("DELETE FROM relationships")
+                    connection.exec_driver_sql("DELETE FROM npc_state")
+                    connection.exec_driver_sql("DELETE FROM event_log")
+            except Exception:
+                pass
+        if engine is not None:
+            try:
+                engine.dispose()
+            except Exception:
+                pass
+        db._ENGINE = None  # type: ignore[attr-defined]
+        if db_path.exists():
+            try:
+                db_path.unlink()
+            except PermissionError:
+                try:
+                    db_path.unlink(missing_ok=True)
+                except Exception:
+                    pass
+    except Exception:
+        # If cleanup fails, proceed with a new scheduler so in-memory state is fresh.
+        pass
+    scheduler = build_demo_world()
+    st.session_state.scheduler = scheduler
+    st.session_state.log_lines = []
+    st.session_state.running = False
+    st.session_state.last_tick = 0.0
+    st.session_state.npc_positions = {}
+    st.session_state.npc_table_map = {}
+    st.session_state.active_pairs = {}
+    st.session_state.active_conversations = {}
+    st.session_state.past_conversations = []
+    st.session_state.chairs = _generate_chairs(st.session_state.table_positions)
+    st.session_state.selected_npc = None
+    st.session_state.tavern_conversations = []
+    st.session_state.table_positions = _generate_tables()
+
+
 def _render_sidebar_controls() -> None:
     """Build sidebar controls for the simulation."""
 
@@ -127,27 +202,13 @@ def _render_sidebar_controls() -> None:
         if cols[1].button("Stop"):
             st.session_state.running = False
         if cols[2].button("Reset"):
-            scheduler: SimulationScheduler = build_demo_world()
-            st.session_state.scheduler = scheduler
-            st.session_state.log_lines = []
-            st.session_state.running = False
-            st.session_state.last_tick = 0.0
-            st.session_state.npc_positions.clear()
-            st.session_state.table_positions = _generate_tables()
-            st.session_state.selected_npc = None
-            st.session_state.tavern_conversations.clear()
+            _reset_world()
         speed = st.selectbox(
             "Speed",
             options=config.STREAMLIT_SPEED_OPTIONS,
             index=config.STREAMLIT_SPEED_OPTIONS.index(config.STREAMLIT_DEFAULT_SPEED),
         )
         st.session_state.speed = speed
-        st.markdown("### Filters")
-        st.session_state.role_filter = st.selectbox("View", ROLE_OPTIONS, index=0)
-        scheduler: SimulationScheduler = st.session_state.scheduler
-        npc_ids = [npc_id for npc_id in scheduler.npcs]
-        speakers = ["all"] + npc_ids
-        st.session_state.speaker_filter = st.selectbox("Speaker", speakers, index=0)
 
 
 def _maybe_run_tick() -> None:
@@ -162,7 +223,14 @@ def _maybe_run_tick() -> None:
     if not should_advance:
         return
     scheduler: SimulationScheduler = st.session_state.scheduler
-    decisions = scheduler.step({"gathering_spot": "tavern_floor"})
+    _update_positions_and_tables(scheduler)
+    _update_active_pairs(scheduler)
+    world_context = {
+        "gathering_spot": "tavern_floor",
+        "table_map": st.session_state.npc_table_map,
+        "active_pairs": st.session_state.active_pairs,
+    }
+    decisions = scheduler.step(world_context)
     st.session_state.last_tick = now
     log_lines = st.session_state.log_lines
     for decision in decisions:
@@ -170,67 +238,187 @@ def _maybe_run_tick() -> None:
     while len(log_lines) > config.STREAMLIT_MAX_LOG_LINES:
         log_lines.pop(0)
     st.session_state.log_lines = log_lines
-    _update_positions(scheduler)
     _record_conversations(decisions)
+    _cleanup_finished_conversations(scheduler)
     time.sleep(0.05)
     st.experimental_rerun()
 
 
-def _update_positions(scheduler: SimulationScheduler) -> None:
-    """Maintain soft roaming for each NPC."""
+def _pair_key(npc_a: str, npc_b: str) -> Tuple[str, str]:
+    """Stable tuple ordering for pair lookups."""
 
-    # 1 Create positions for new NPCs anchored near a table.                   # steps
-    rng: random.Random = st.session_state.position_rng
-    for npc_id, npc in scheduler.npcs.items():
-        if npc_id not in st.session_state.npc_positions:
-            table_x, table_y = rng.choice(st.session_state.table_positions)
-            jitter_x = rng.uniform(-0.05, 0.05)
-            jitter_y = rng.uniform(-0.05, 0.05)
-            st.session_state.npc_positions[npc_id] = {
-                "x": table_x + jitter_x,
-                "y": table_y + jitter_y,
-                "anchor_x": table_x,
-                "anchor_y": table_y,
-            }
-    # 2 Randomly drift positions a little toward their anchor.                 # steps
-    for npc_id, pos in st.session_state.npc_positions.items():
-        anchor_x = pos["anchor_x"]
-        anchor_y = pos["anchor_y"]
-        current_x = pos["x"]
-        current_y = pos["y"]
-        move = rng.random() > DWELL_PROBABILITY
-        if move:
-            angle = rng.uniform(0, 2 * math.pi)
-            step = NPC_SPEED * rng.uniform(0.3, 1.0)
-            current_x += math.cos(angle) * step
-            current_y += math.sin(angle) * step
+    return tuple(sorted((npc_a, npc_b)))
+
+
+def _finalize_pair(scheduler: SimulationScheduler, npc_a: str, npc_b: str) -> None:
+    """Finalize a single pair's conversation, preserving others."""
+
+    key = _pair_key(npc_a, npc_b)
+    pending = scheduler.pending_effects
+    keep: List[Dict[str, str]] = []
+    pair_effects: List[Dict[str, str]] = []
+    for effect in pending:
+        effect_key = _pair_key(effect["source_id"], effect["target_id"])
+        if effect_key == key:
+            pair_effects.append(effect)
         else:
-            current_x += (anchor_x - current_x) * 0.1
-            current_y += (anchor_y - current_y) * 0.1
-        current_x = max(0.05, min(0.95, current_x))
-        current_y = max(0.05, min(0.95, current_y))
-        pos["x"] = current_x
-        pos["y"] = current_y
+            keep.append(effect)
+    if not pair_effects:
+        return
+    table_id = st.session_state.npc_table_map.get(npc_a)
+    # Capture transcript for past log before clearing.
+    convo = st.session_state.active_conversations.get(table_id or -1)
+    if convo:
+        st.session_state.past_conversations.append(
+            {
+                "table": table_id,
+                "pair": convo.get("pair", (npc_a, npc_b)),
+                "lines": list(convo.get("lines", [])),
+            }
+        )
+    scheduler.pending_effects = pair_effects
+    scheduler.finalize_conversation()
+    scheduler.pending_effects = keep
+    if table_id is not None:
+        st.session_state.active_conversations.pop(table_id, None)
+
+
+def _update_positions_and_tables(scheduler: SimulationScheduler) -> None:
+    """Maintain soft roaming and occasionally shift NPCs to a new table."""
+
+    rng: random.Random = st.session_state.position_rng
+    table_positions = st.session_state.table_positions
+    npc_positions = st.session_state.npc_positions
+    table_map = st.session_state.npc_table_map
+    active_pairs = st.session_state.active_pairs
+    chairs = st.session_state.chairs
+    # 1 Create anchors for new NPCs.
+    def _find_free_chair(table_idx: int) -> Dict[str, object] | None:
+        free = [c for c in chairs if c["table_id"] == table_idx and c.get("occupied_by") is None]
+        return rng.choice(free) if free else None
+
+    def _assign_chair(npc_id: str, chair: Dict[str, object]) -> None:
+        chair["occupied_by"] = npc_id
+        npc_positions[npc_id] = {
+            "x": chair["x"],
+            "y": chair["y"],
+            "anchor_x": chair["x"],
+            "anchor_y": chair["y"],
+        }
+        table_map[npc_id] = chair["table_id"]
+
+    def _release_chair(npc_id: str) -> None:
+        for chair in chairs:
+            if chair.get("occupied_by") == npc_id:
+                chair["occupied_by"] = None
+
+    for npc_id in scheduler.npcs:
+        if npc_id not in npc_positions:
+            table_idx = rng.randrange(len(table_positions))
+            chair = _find_free_chair(table_idx) or _find_free_chair(rng.randrange(len(table_positions)))
+            if chair:
+                _assign_chair(npc_id, chair)
+    # 2 Occasionally move to a different table and finalize old conversations.
+    engaged_pairs = set()
+    for pair in active_pairs.values():
+        engaged_pairs.update(pair)
+    for npc_id, pos in npc_positions.items():
+        current_table = table_map.get(npc_id, 0)
+        if npc_id in engaged_pairs:
+            # Locked in conversation; stay put.
+            pos["x"] = pos["anchor_x"]
+            pos["y"] = pos["anchor_y"]
+            continue
+        if rng.random() < MOVE_PROBABILITY and len(table_positions) > 1:
+            new_table = rng.randrange(len(table_positions))
+            while new_table == current_table and len(table_positions) > 1:
+                new_table = rng.randrange(len(table_positions))
+            # End the current conversation for this NPC before moving.
+            table_pair = active_pairs.get(current_table)
+            if table_pair and npc_id in table_pair:
+                partner = table_pair[0] if table_pair[1] == npc_id else table_pair[1]
+                _finalize_pair(scheduler, npc_id, partner)
+                active_pairs.pop(current_table, None)
+            _release_chair(npc_id)
+            chair = _find_free_chair(new_table) or _find_free_chair(current_table)
+            if chair:
+                _assign_chair(npc_id, chair)
+        else:
+            # Snap to anchor (no tweening).
+            pos["x"] = pos["anchor_x"]
+            pos["y"] = pos["anchor_y"]
+    st.session_state.npc_positions = npc_positions
+    st.session_state.npc_table_map = table_map
+    st.session_state.active_pairs = active_pairs
+    st.session_state.chairs = chairs
+
+
+def _update_active_pairs(scheduler: SimulationScheduler) -> None:
+    """Maintain per-table conversation bubbles."""
+
+    table_map = st.session_state.npc_table_map
+    active_pairs = st.session_state.active_pairs
+    active_convos = st.session_state.active_conversations
+    occupancy: Dict[int, List[str]] = {}
+    for npc_id, table_id in table_map.items():
+        occupancy.setdefault(table_id, []).append(npc_id)
+    # Drop stale pairs when someone leaves the table.
+    for table_id, pair in list(active_pairs.items()):
+        occupants = occupancy.get(table_id, [])
+        if len(occupants) < 2 or pair[0] not in occupants or pair[1] not in occupants:
+            _finalize_pair(scheduler, pair[0], pair[1])
+            active_pairs.pop(table_id, None)
+            active_convos.pop(table_id, None)
+    # Add new pairs when two or more share a table.
+    for table_id, occupants in occupancy.items():
+        if len(occupants) < 2:
+            continue
+        if table_id in active_pairs:
+            continue
+        chosen = tuple(sorted(occupants)[:2])
+        active_pairs[table_id] = chosen  # only two chat; others at the table stay idle.
+        active_convos[table_id] = {"pair": chosen, "lines": []}
+    st.session_state.active_pairs = active_pairs
+    st.session_state.active_conversations = active_convos
+
+
+def _ensure_positions_initialized(scheduler: SimulationScheduler) -> None:
+    """Guarantee positions exist before first render."""
+
+    if st.session_state.npc_positions:
+        return
+    _update_positions_and_tables(scheduler)
+    _update_active_pairs(scheduler)
 
 
 def _record_conversations(decisions: List[Decision]) -> None:
-    """Store recent conversation snippets for quick lookup."""
+    """Store active conversation snippets per table."""
 
-    # 1 Append speak actions with dialogue lines.                               # steps
+    table_map = st.session_state.npc_table_map
+    active_pairs = st.session_state.active_pairs
+    active_convos = st.session_state.active_conversations
     for decision in decisions:
         action = decision.selected_action
-        if action.action_type == action.action_type.SPEAK and action.target_id:
-            entry = {
-                "timestamp": datetime.utcnow().isoformat(),
-                "speaker": decision.npc_id,
-                "target": action.target_id,
-                "line": decision.dialogue_line or "(silent glance)",
-                "reason": decision.reason,
-            }
-            st.session_state.tavern_conversations.append(entry)
-    # 2 Clamp stored conversation history.                                     # steps
-    while len(st.session_state.tavern_conversations) > 200:
-        st.session_state.tavern_conversations.pop(0)
+        if action.action_type != action.action_type.SPEAK or not action.target_id:
+            continue
+        speaker = decision.npc_id
+        target = action.target_id
+        table_id = table_map.get(speaker)
+        if table_id is None:
+            continue
+        pair = active_pairs.get(table_id)
+        if not pair or speaker not in pair or target not in pair:
+            continue
+        convo = active_convos.setdefault(table_id, {"pair": pair, "lines": []})
+        line = decision.dialogue_line or "(silent glance)"
+        convo["lines"].append(f"{speaker}: {line}")
+        convo["pair"] = pair
+    # Keep lines short for readability.
+    for convo in active_convos.values():
+        lines = convo.get("lines", [])
+        if len(lines) > 12:
+            convo["lines"] = lines[-12:]
+    st.session_state.active_conversations = active_convos
 
 
 def _build_trait_color(npc: NPC) -> str:
@@ -265,6 +453,17 @@ def _build_tavern_figure(scheduler: SimulationScheduler) -> Optional[str]:
         hoverinfo="skip",
         showlegend=False,
     )
+    # Chairs
+    chair_x = [chair["x"] for chair in st.session_state.chairs]
+    chair_y = [chair["y"] for chair in st.session_state.chairs]
+    chair_trace = go.Scatter(
+        x=chair_x,
+        y=chair_y,
+        mode="markers",
+        marker=dict(size=220 * CHAIR_RADIUS, color="#d8c3a5", opacity=0.9, symbol="square"),
+        hoverinfo="skip",
+        showlegend=False,
+    )
     # 2 Build NPC scatter with custom symbols.                                  # steps
     npc_ids: List[str] = []
     npc_x: List[float] = []
@@ -273,8 +472,6 @@ def _build_tavern_figure(scheduler: SimulationScheduler) -> Optional[str]:
     npc_colors: List[str] = []
     npc_names: List[str] = []
     for npc_id, npc in scheduler.npcs.items():
-        if st.session_state.role_filter != "all" and npc.role != st.session_state.role_filter:
-            continue
         pos = st.session_state.npc_positions.get(npc_id)
         if not pos:
             continue
@@ -296,7 +493,7 @@ def _build_tavern_figure(scheduler: SimulationScheduler) -> Optional[str]:
         hovertemplate="%{text}<extra></extra>",
         showlegend=False,
     )
-    fig = go.Figure(data=[table_trace, npc_trace])
+    fig = go.Figure(data=[table_trace, chair_trace, npc_trace])
     fig.update_layout(
         height=450,
         margin=dict(l=10, r=10, t=10, b=10),
@@ -304,13 +501,19 @@ def _build_tavern_figure(scheduler: SimulationScheduler) -> Optional[str]:
         plot_bgcolor="#f2e9e4",
         xaxis=dict(range=[0, 1], showgrid=False, zeroline=False, visible=False),
         yaxis=dict(range=[0, 1], showgrid=False, zeroline=False, visible=False, scaleanchor="x", scaleratio=1),
+        clickmode="event+select",
     )
     selected_points = plotly_events(fig, click_event=True, hover_event=False, select_event=False, key="tavern-map")
     if selected_points:
-        custom = selected_points[0].get("customdata")
-        if custom:
-            st.session_state.selected_npc = custom
-            return custom
+        for point in selected_points:
+            # npc_trace is the third trace (index 2)
+            if point.get("curveNumber") != 2:
+                continue
+            custom = point.get("customdata")
+            if custom:
+                st.session_state.selected_npc = custom
+                st.experimental_rerun()
+                break
     return st.session_state.selected_npc
 
 
@@ -318,79 +521,168 @@ def _render_detail_panel(scheduler: SimulationScheduler, selected_npc: Optional[
     """Show character stats and conversations in the side panel."""
 
     # 1 Handle missing selection with a friendly hint.                          # steps
-    if not selected_npc or selected_npc not in scheduler.npcs:
-        st.markdown("Select a character on the map to view their story.")
+    npc_ids = list(scheduler.npcs.keys())
+    current_id = selected_npc if selected_npc in npc_ids else (npc_ids[0] if npc_ids else None)
+    chosen = st.selectbox("Character", npc_ids, index=npc_ids.index(current_id) if current_id else 0)
+    st.session_state.selected_npc = chosen
+    if not chosen:
+        st.markdown("Select a character to view their story.")
         return
-    npc = scheduler.npcs[selected_npc]
-    st.markdown(f"### {npc.profile.truth.name}")
-    st.caption(f"Role: {npc.role} | Motivation: {npc.profile.truth.motivation}")
-    st.write(npc.profile.truth.backstory)
-    trait_rows = []
-    truth = npc.truth_vector()
-    self_traits = npc.serialize_self_traits()
-    for trait_name, _color in TRAIT_COLOR_ORDER:
-        trait_rows.append(
-            {
-                "Trait": trait_name.capitalize(),
-                "Truth": getattr(truth, trait_name),
-                "Self": self_traits.get(trait_name, 0),
-            }
-        )
-    st.dataframe(pd.DataFrame(trait_rows), hide_index=True, use_container_width=True)
+    npc = scheduler.npcs[chosen]
+    current_table = st.session_state.npc_table_map.get(chosen)
+    # Build a compact agent state snapshot.
+    truth = npc.truth_vector().as_dict()
+    relations: Dict[str, Dict[str, int | str]] = {}
+    for other_id in scheduler.npcs:
+        if other_id == selected_npc:
+            continue
+        edge = scheduler.relationships.get_edge(selected_npc, other_id)
+        relations[other_id] = {
+            "trust": edge.trust,
+            "affinity": edge.affinity,
+            "summary": edge.summary or "",
+        }
     latest = _find_latest_conversation(selected_npc)
-    if latest:
-        target_id = latest["target"] if latest["speaker"] == selected_npc else latest["speaker"]
-        st.markdown("#### Recent Conversation")
-        st.write(f"**Line:** {latest['line']}")
-        st.caption(f"Reason: {latest['reason']}")
-        if target_id in scheduler.npcs:
-            other = scheduler.npcs[target_id]
-            st.markdown(f"**Talking with:** {other.profile.truth.name}")
-            st.caption(other.profile.truth.backstory[:160] + "...")
-    else:
-        st.markdown("No recent dialogue yet. Let's wait for the chatter.")
+    state = {
+        "npc_id": npc.npc_id,
+        "name": npc.profile.truth.name,
+        "role": npc.role,
+        "table": current_table,
+        "mood": npc.mood,
+        "backstory": npc.profile.truth.backstory,
+        "motivation": npc.profile.truth.motivation,
+        "traits_summary": npc.profile.truth.traits,
+        "traits_truth": truth,
+        "relationships": relations,
+        "active_conversation": latest,
+    }
+    st.markdown(f"### {npc.profile.truth.name} — Character State")
+    st.text_area(
+        "State JSON",
+        json.dumps(state, indent=2),
+        height=320,
+        key=f"state_json_{npc.npc_id}",
+    )
 
 
 def _find_latest_conversation(npc_id: str) -> Optional[Dict[str, str]]:
     """Locate the latest conversation entry involving the NPC."""
 
-    # 1 Scan from the end for a quick match.                                    # steps
-    for entry in reversed(st.session_state.tavern_conversations):
-        if entry["speaker"] == npc_id or entry["target"] == npc_id:
-            return entry
+    active_convos = st.session_state.active_conversations
+    for convo in active_convos.values():
+        pair = convo.get("pair", ())
+        if npc_id in pair:
+            lines = convo.get("lines", [])
+            if lines:
+                last = lines[-1]
+                parts = last.split(":", 1)
+                if len(parts) == 2:
+                    speaker = parts[0].strip()
+                    text = parts[1].strip()
+                    target = pair[0] if speaker == pair[1] else pair[1]
+                    return {"speaker": speaker, "target": target, "line": text, "reason": ""}
     return None
 
 
 def _render_log_section(log_lines: List[Decision]) -> None:
     """Show a filtered slice of the dialogue log."""
 
-    # 1 Convert captured decisions into a tidy DataFrame.                      # steps
-    records: List[Dict[str, str]] = []
-    speaker_filter = st.session_state.speaker_filter
-    for decision in log_lines[-120:]:
-        if speaker_filter != "all" and decision.npc_id != speaker_filter:
-            continue
-        dialogue = decision.dialogue_line or ""
-        records.append(
-            {
-                "NPC": decision.npc_id,
-                "Action": decision.selected_action.action_type.value,
-                "Target": decision.selected_action.target_id or "",
-                "Line": dialogue,
-                "Why": decision.reason,
-            }
-        )
-    if records:
-        frame = pd.DataFrame(records)
-        st.dataframe(frame, hide_index=True, use_container_width=True)
-    else:
-        st.write("No activity yet. Click Start to begin.")
+    st.write("Conversation log moved to the bubbles below.")
+
+
+def _render_conversations_panel() -> None:
+    """Show active conversation bubbles per table."""
+
+    st.markdown("### Conversations")
+    active_convos = st.session_state.active_conversations
+    scheduler: SimulationScheduler = st.session_state.scheduler
+    if not active_convos:
+        st.write("No conversations yet. Characters will chat when sharing a table.")
+        return
+    for table_id, convo in active_convos.items():
+        pair = convo.get("pair", ())
+        lines = convo.get("lines", [])
+        names = []
+        for npc_id in pair:
+            if npc_id in scheduler.npcs:
+                names.append(scheduler.npcs[npc_id].profile.truth.name)
+            else:
+                names.append(npc_id)
+        st.markdown(f"**Table {table_id}** — {' ↔ '.join(names)}")
+        if lines:
+            st.code("\n".join(lines[-8:]), language="text")
+        else:
+            st.write("Just having a drink...")
+
+
+def _cleanup_finished_conversations(scheduler: SimulationScheduler) -> None:
+    """Remove UI pairs whose sessions are done in the scheduler."""
+
+    active_pairs = st.session_state.active_pairs
+    active_convos = st.session_state.active_conversations
+    live_sessions = set(scheduler.conversation_sessions.keys())
+    for table_id, pair in list(active_pairs.items()):
+        key = _pair_key(pair[0], pair[1])
+        if key not in live_sessions:
+            convo = active_convos.get(table_id)
+            if convo:
+                st.session_state.past_conversations.append(
+                    {"table": table_id, "pair": convo.get("pair", pair), "lines": list(convo.get("lines", []))}
+                )
+            active_pairs.pop(table_id, None)
+            active_convos.pop(table_id, None)
+    st.session_state.active_pairs = active_pairs
+    st.session_state.active_conversations = active_convos
+
+
+def _render_relationship_matrix(scheduler: SimulationScheduler) -> None:
+    """Display current affinity between all NPCs."""
+
+    npc_ids = list(scheduler.npcs.keys())
+    headers = ["NPC"] + [scheduler.npcs[npc_id].profile.truth.name for npc_id in npc_ids]
+    rows: List[Dict[str, str | int]] = []
+    for source_id in npc_ids:
+        row: Dict[str, str | int] = {"NPC": scheduler.npcs[source_id].profile.truth.name}
+        for target_id in npc_ids:
+            header = scheduler.npcs[target_id].profile.truth.name
+            if source_id == target_id:
+                row[header] = "-"
+            else:
+                edge = scheduler.relationships.get_edge(source_id, target_id)
+                scaled = int(round((edge.affinity * edge.trust) / 100))
+                row[header] = scaled
+        rows.append(row)
+    frame = pd.DataFrame(rows, columns=headers)
+    st.markdown("### Relationship Affinity Matrix")
+    st.dataframe(frame, hide_index=True, use_container_width=True)
+
+
+def _render_past_conversations() -> None:
+    """Show completed conversations after the matrix."""
+
+    past = st.session_state.past_conversations
+    st.markdown("### Past Conversations")
+    if not past:
+        st.write("None yet.")
+        return
+    for convo in past[-8:]:
+        pair = convo.get("pair", ())
+        table = convo.get("table")
+        lines = convo.get("lines", [])
+        st.markdown(f"**Table {table}** — {' ↔ '.join(pair)}")
+        if lines:
+            st.code("\n".join(lines[-10:]), language="text")
+        else:
+            st.write("No transcript captured.")
 
 
 def _render_main_layout() -> None:
     """Compose the map and detail panel layout."""
 
     scheduler: SimulationScheduler = st.session_state.scheduler
+    _ensure_positions_initialized(scheduler)
+    if not st.session_state.selected_npc and scheduler.npcs:
+        st.session_state.selected_npc = next(iter(scheduler.npcs.keys()))
     col_map, col_detail = st.columns([3, 2])
     with col_map:
         st.markdown("### Tavern Floor")
@@ -398,7 +690,6 @@ def _render_main_layout() -> None:
         if selected:
             st.caption(f"Selected: {selected}")
     with col_detail:
-        st.markdown("### Character Details")
         _render_detail_panel(scheduler, st.session_state.selected_npc)
 
 
@@ -409,8 +700,9 @@ def main() -> None:
     _init_session()
     _render_sidebar_controls()
     _render_main_layout()
-    st.markdown("### Live Log")
-    _render_log_section(st.session_state.log_lines)
+    _render_conversations_panel()
+    _render_relationship_matrix(st.session_state.scheduler)
+    _render_past_conversations()
     _maybe_run_tick()
 
 

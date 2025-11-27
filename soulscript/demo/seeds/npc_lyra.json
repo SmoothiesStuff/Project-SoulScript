@@ -1,0 +1,56 @@
+{
+  "id": "lyra",
+  "name": "Lyra",
+  "age": 24,
+  "race": "human",
+  "sex": "female",
+  "sexual_orientation": "bisexual",
+  "backstory": "Bard trading songs for rumors and small favors.",
+  "traits": "Quick smile, loves secrets, hides nerves behind charm.",
+  "trait_inputs": {
+    "honesty": -5,
+    "warmth": 60,
+    "openness": 50,
+    "patience": -10,
+    "optimism": 55,
+    "charisma": 80,
+    "intelligence": 55
+  },
+  "motivation": "Collect stories worth turning into ballads.",
+  "role": "local",
+  "traits_truth": {
+    "kindness": 40,
+    "bravery": 55,
+    "extraversion": 80,
+    "ego": 15,
+    "honesty": 0,
+    "curiosity": 75,
+    "patience": -5,
+    "optimism": 60,
+    "intelligence": 60,
+    "charisma": 85
+  },
+  "traits_self_perception": {
+    "kindness": 45,
+    "bravery": 60,
+    "extraversion": 85,
+    "ego": 10,
+    "honesty": 5,
+    "curiosity": 80,
+    "patience": -5,
+    "optimism": 65,
+    "intelligence": 65,
+    "charisma": 90
+  },
+  "inventory": [
+    "lute",
+    "wine-splashed notebook",
+    "lucky coin"
+  ],
+  "schedule": {
+    "morning": "tavern_common",
+    "afternoon": "market",
+    "evening": "tavern_common"
+  },
+  "initial_relationships": {}
+}

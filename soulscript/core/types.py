@@ -18,10 +18,10 @@ TRAIT_AXES: List[str] = [
     "ego",
     "honesty",
     "curiosity",
-    "discipline",
     "patience",
     "optimism",
-    "generosity",
+    "intelligence",
+    "charisma",
 ]
 
 
@@ -34,10 +34,10 @@ class TraitVector(BaseModel):
     ego: int = Field(default=0)
     honesty: int = Field(default=0)
     curiosity: int = Field(default=0)
-    discipline: int = Field(default=0)
     patience: int = Field(default=0)
     optimism: int = Field(default=0)
-    generosity: int = Field(default=0)
+    intelligence: int = Field(default=0)
+    charisma: int = Field(default=0)
 
     @model_validator(mode="after")
     def _clamp_values(self) -> "TraitVector":
@@ -116,14 +116,30 @@ class NPCTruth(BaseModel):
     sex: str
     sexual_orientation: str
     backstory: str
-    personality: str
+    traits: str
     motivation: str
     role: str = Field(default="local")
+    trait_inputs: Dict[str, int] = Field(default_factory=dict)
     traits_truth: TraitVector
     traits_self_perception: TraitVector
     initial_relationships: Dict[str, RelationshipSeed] = Field(default_factory=dict)
     inventory: List[str] = Field(default_factory=list)
     schedule: Dict[str, str] = Field(default_factory=dict)
+
+    @model_validator(mode="after")
+    def _clamp_trait_inputs(self) -> "NPCTruth":
+        """Keep trait inputs in -100..100 so prompts stay sane."""
+
+        clamped: Dict[str, int] = {}
+        for key, value in self.trait_inputs.items():
+            if value < -100:
+                clamped[key] = -100
+            elif value > 100:
+                clamped[key] = 100
+            else:
+                clamped[key] = int(value)
+        self.trait_inputs = clamped
+        return self
 
 
 class NPCProfile(BaseModel):

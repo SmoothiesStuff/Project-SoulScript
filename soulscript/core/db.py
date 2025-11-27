@@ -45,6 +45,25 @@ def ensure_schema() -> None:
     with engine.begin() as connection:
         for statement in statements:
             connection.execute(text(statement))
+        _ensure_new_columns(connection)
+
+
+def _ensure_new_columns(connection) -> None:
+    """Add newly introduced trait columns if they do not exist."""
+
+    def _has_column(table: str, column: str) -> bool:
+        info = connection.exec_driver_sql(f"PRAGMA table_info({table})").fetchall()
+        return any(row[1] == column for row in info)
+
+    # relationships: add intelligence, charisma if missing
+    for col in ["intelligence", "charisma"]:
+        if not _has_column("relationships", col):
+            connection.exec_driver_sql(f"ALTER TABLE relationships ADD COLUMN {col} INTEGER DEFAULT 0")
+
+    # npc_state: add self_intelligence, self_charisma if missing
+    for col in ["self_intelligence", "self_charisma"]:
+        if not _has_column("npc_state", col):
+            connection.exec_driver_sql(f"ALTER TABLE npc_state ADD COLUMN {col} INTEGER")
 
 
 def _schema_statements() -> List[str]:
@@ -62,10 +81,10 @@ def _schema_statements() -> List[str]:
         self_ego INTEGER,
         self_honesty INTEGER,
         self_curiosity INTEGER,
-        self_discipline INTEGER,
         self_patience INTEGER,
         self_optimism INTEGER,
-        self_generosity INTEGER
+        self_intelligence INTEGER,
+        self_charisma INTEGER
     )
     """
     relationships = """
@@ -80,10 +99,10 @@ def _schema_statements() -> List[str]:
         ego INTEGER,
         honesty INTEGER,
         curiosity INTEGER,
-        discipline INTEGER,
         patience INTEGER,
         optimism INTEGER,
-        generosity INTEGER,
+        intelligence INTEGER,
+        charisma INTEGER,
         summary TEXT DEFAULT NULL,
         updated_at TEXT,
         PRIMARY KEY (source_id, target_id)
@@ -393,6 +412,22 @@ def fetch_events(limit: Optional[int] = None) -> List[Dict[str, str]]:
         )
     payloads.reverse()
     return payloads
+
+
+def delete_conversation(npc_a: str, npc_b: str) -> None:
+    """Remove all stored conversation lines for a pair."""
+
+    ensure_schema()
+    engine = get_engine()
+    first_id, second_id = _normalize_pair(npc_a, npc_b)
+    statement = text(
+        """
+        DELETE FROM conversations
+        WHERE a_id = :a_id AND b_id = :b_id
+        """
+    )
+    with engine.begin() as connection:
+        connection.execute(statement, {"a_id": first_id, "b_id": second_id})
 
 
 def _normalize_pair(npc_a: str, npc_b: str) -> Tuple[str, str]:

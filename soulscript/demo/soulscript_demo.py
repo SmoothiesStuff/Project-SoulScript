@@ -9,6 +9,18 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List
 
+# Allow running directly (python soulscript/demo/soulscript_demo.py) by
+# injecting the repo root into sys.path when no package context exists.
+import sys
+
+if __package__ is None:  # pragma: no cover - direct invocation helper
+    repo_root = Path(__file__).resolve().parents[2]
+    if str(repo_root) not in sys.path:
+        sys.path.insert(0, str(repo_root))
+    __package__ = "soulscript.demo"
+    import importlib
+    importlib.import_module("soulscript")
+
 from ..core import config
 from ..core.db import fetch_events
 from ..core.npc import NPC
@@ -99,10 +111,9 @@ def export_event_log() -> Path:
     """Dump the sqlite event log to CSV for analysts."""
 
     # 1 Fetch events and write a simple CSV file.                               # steps
-    export_dir = Path(config.DEFAULT_DIALOGUE_EXPORT)
-    export_dir.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
-    file_path = export_dir / Path(config.DEFAULT_EVENT_LOG_EXPORT.format(timestamp=timestamp))
+    file_path = Path(config.DEFAULT_EVENT_LOG_EXPORT.format(timestamp=timestamp))
+    file_path.parent.mkdir(parents=True, exist_ok=True)
     events = fetch_events()
     with file_path.open("w", encoding="utf-8") as handle:
         handle.write("npc_id,target_id,type,data,ts\n")
