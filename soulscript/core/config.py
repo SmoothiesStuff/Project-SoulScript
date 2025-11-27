@@ -29,7 +29,7 @@ LLM_OPENROUTER_MODEL: str = "openai/gpt-4o-mini"
 LLM_OPENROUTER_BASE_URL: str = "https://openrouter.ai/api/v1"
 LLM_OPENROUTER_API_KEY: str = os.getenv(
     "OPENROUTER_API_KEY",
-    "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",
+    #################,
 )
 if LLM_PROVIDER.lower() == "openrouter" and LLM_OPENROUTER_API_KEY:
     os.environ.setdefault("OPENROUTER_API_KEY", LLM_OPENROUTER_API_KEY)
