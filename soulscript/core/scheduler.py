@@ -22,6 +22,18 @@ from .runtime import (
 from .types import ActionType, Decision, RelationshipEdge
 
 
+########## Sentiment Helpers ##########
+# Derive simple sentiment scores from mood for relationship updates.
+
+
+def _mood_to_sentiment_value(mood: int) -> float:
+    """Translate mood into a bounded sentiment score."""
+
+    denom = abs(config.RELATIONSHIP_NEUTRAL) if config.RELATIONSHIP_NEUTRAL != 0 else 100
+    score = (mood - config.RELATIONSHIP_NEUTRAL) / denom
+    return max(-1.0, min(1.0, score))
+
+
 class SimulationScheduler:
     """Ticks NPCs in order and records emitted decisions."""
 
@@ -226,7 +238,7 @@ class SimulationScheduler:
                 self.npcs[target_id].profile.truth.traits_truth,
                 summary_st or "",
                 lines,
-                sentiment=0.0,
+                sentiment=_mood_to_sentiment_value(self.npcs[source_id].mood),
                 current_trust=edge_st.trust,
                 current_affinity=edge_st.affinity,
             )
@@ -235,7 +247,7 @@ class SimulationScheduler:
                 self.npcs[source_id].profile.truth.traits_truth,
                 summary_ts or "",
                 lines,
-                sentiment=0.0,
+                sentiment=_mood_to_sentiment_value(self.npcs[target_id].mood),
                 current_trust=edge_ts.trust,
                 current_affinity=edge_ts.affinity,
             )

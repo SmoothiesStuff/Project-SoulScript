@@ -29,7 +29,7 @@ LLM_OPENROUTER_MODEL: str = "openai/gpt-4o-mini"
 LLM_OPENROUTER_BASE_URL: str = "https://openrouter.ai/api/v1"
 LLM_OPENROUTER_API_KEY: str = os.getenv(
     "OPENROUTER_API_KEY",
-    "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",
+    "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",
 )
 if LLM_PROVIDER.lower() == "openrouter" and LLM_OPENROUTER_API_KEY:
     os.environ.setdefault("OPENROUTER_API_KEY", LLM_OPENROUTER_API_KEY)
@@ -46,6 +46,8 @@ SUMMARY_MAX_TOKENS: int = 120
 VALIDATOR_TEMPERATURE: float = 0.2
 VALIDATOR_TOP_P: float = 0.9
 VALIDATOR_MAX_TOKENS: int = 64
+RESPONSE_VALIDATION_ENABLED: bool = False
+RESPONSE_VALIDATION_MAX_ATTEMPTS: int = 3
 
 RELATIONSHIP_UPDATER_TEMPERATURE: float = 0.3
 RELATIONSHIP_UPDATER_TOP_P: float = 0.9
@@ -53,11 +55,11 @@ RELATIONSHIP_UPDATER_MAX_TOKENS: int = 80
 
 # Prompts per node/tool 
 ACTION_SYSTEM_PROMPT: str = (
-    "You decide NPC actions in a cozy tavern sim. "
-    "Keep dialogue natural; small talk is fine. "
-    "Reflect trait scale gently in tone (axes show -100..100). "
+    "You decide NPC actions in a tavern sim. "
+    "Keep dialogue natural; should match the NPC "
+    "Reflect trait scale  in tone (axes show -100..100). "
     "Trust and affinity run from -100 (worst) to 100 (best), strangers start at 0. "
-    "Reply directly to the partner's last line in one short sentence (<=20 words). "
+    "Reply directly to the partner's last line in one short sentence (<=30 words). "
     'Return only JSON: {\"action\": <number or \"speak\">, \"line\": \"...\", \"reason\": \"...\"}. '
     "Do not include any other fields or text. Do not write essays, tasks, or instructions."
 )
@@ -66,7 +68,7 @@ SUMMARY_SYSTEM_PROMPT: str = (
     "You are updating a first-person relationship summary about the partner NPC. "
     "Keep it to one or two short sentences. "
     "Only mention details about the partner, not yourself. "
-    "Stay friendly and grounded. No inventions."
+    "It should serve as a memory of the person as percieved"
 )
 
 VALIDATOR_SYSTEM_PROMPT: str = (
@@ -75,8 +77,8 @@ VALIDATOR_SYSTEM_PROMPT: str = (
 )
 
 RELATIONSHIP_UPDATER_PROMPT: str = (
-    "Given a conversation summary and trait similarity, produce small trust/affinity deltas "
-    "in the range -3..3 that reflect rapport, mood, and conversational energy."
+    "Given a conversation summary and trait similarity, produce small trust/affinity deltas based on the conversation"
+    "in the range -3..3 that reflect rapport, mood, and conversational energy. Do not be too kind."
 )
 
 # NPC and interaction pacing
@@ -118,16 +120,17 @@ MOOD_MIN: int = 0
 MOOD_MAX: int = 100
 INITIAL_MOOD: int = 55
 
-RELATIONSHIP_TRUST_CLAMP: tuple[int, int] = (-100, 100)
-RELATIONSHIP_AFFINITY_CLAMP: tuple[int, int] = (-100, 100)
+RELATIONSHIP_TRUST_CLAMP: tuple[int, int] = (-50, 50)
+RELATIONSHIP_AFFINITY_CLAMP: tuple[int, int] = (-50, 50)
 RELATIONSHIP_EVENT_DELTA: int = 5
 RELATIONSHIP_DECAY_PER_TICK: float = 0.5
 RELATIONSHIP_SOFT_LIMIT: int = 90
 RELATIONSHIP_COOLDOWN_SECONDS: float = 4.0
 RELATIONSHIP_NEUTRAL: int = 0
-RELATIONSHIP_TRUST_BASE_INCREMENT: int = 1  # steady per-interaction nudge
+RELATIONSHIP_TRUST_BASE_INCREMENT: int = 0  # steady per-interaction nudge
 
 SHORT_TERM_MEMORY_SIZE: int = 12
+SHORT_TERM_PROMPT_MAX_LINES: int = 6
 SUMMARY_INTERVAL_TICKS: int = 15
 SUMMARY_TTL_TICKS: int = 120
 MEMORY_SALIENCE_BASE: float = 0.6

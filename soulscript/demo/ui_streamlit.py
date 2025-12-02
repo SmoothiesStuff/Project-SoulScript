@@ -636,7 +636,7 @@ def _cleanup_finished_conversations(scheduler: SimulationScheduler) -> None:
 
 
 def _render_relationship_matrix(scheduler: SimulationScheduler) -> None:
-    """Display current affinity between all NPCs."""
+    """Display summed trust + affinity (clamped) between all NPCs."""
 
     npc_ids = list(scheduler.npcs.keys())
     headers = ["NPC"] + [scheduler.npcs[npc_id].profile.truth.name for npc_id in npc_ids]
@@ -649,11 +649,12 @@ def _render_relationship_matrix(scheduler: SimulationScheduler) -> None:
                 row[header] = "-"
             else:
                 edge = scheduler.relationships.get_edge(source_id, target_id)
-                scaled = int(round((edge.affinity * edge.trust) / 100))
-                row[header] = scaled
+                trust_value = max(-50, min(50, edge.trust))
+                affinity_value = max(-50, min(50, edge.affinity))
+                row[header] = trust_value + affinity_value
         rows.append(row)
     frame = pd.DataFrame(rows, columns=headers)
-    st.markdown("### Relationship Affinity Matrix")
+    st.markdown("### Trust + Affinity Matrix (each clamped to +/-50)")
     st.dataframe(frame, hide_index=True, use_container_width=True)
 
 

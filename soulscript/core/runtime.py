@@ -27,6 +27,7 @@ from .types import (
     TraitVector,
     TRAIT_AXES,
 )
+from . import tools
 
 ########## Text Logging ##########
 # Lightweight, human-readable log lines for demo runs.
@@ -65,29 +66,6 @@ def _trim_log_file(log_path: Path, max_lines: int) -> None:
 # Utility lookups used by LangGraph nodes to ground decisions.
 
 FILTERED_WORDS = {"curse", "dang", "heck"}
-
-
-def inventory_for(profile: NPCProfile) -> List[str]:
-    """Return the inventory list declared in the truth seed."""
-
-    return list(profile.truth.inventory)  # safe copy                           # intent
-
-
-def location_of(profile: NPCProfile) -> str:
-    """Return the default hangout spot for the NPC."""
-
-    schedule = profile.truth.schedule
-    if "morning" in schedule:
-        return schedule["morning"]
-    for _, location in schedule.items():
-        return location
-    return "tavern_floor"
-
-
-def schedule_for(profile: NPCProfile) -> Dict[str, str]:
-    """Return a simple schedule map for the NPC."""
-
-    return dict(profile.truth.schedule)  # avoid caller mutation                 # intent
 
 
 def style_and_lore_filter(text: str) -> str:
@@ -181,7 +159,7 @@ class ConversationMemory:
 
         items = self.history(npc_a, npc_b)
         short_term: List[str] = []
-        for item in items[-4:]:  # keep the prompt lean to reduce repetition
+        for item in items[-config.SHORT_TERM_MEMORY_SIZE :]:
             short_term.append(f"{item.speaker_id}: {item.text}")
         summary = existing_summary or ""
         if len(items) >= config.LONG_TERM_SUMMARY_TRIGGER:
@@ -240,6 +218,16 @@ class RelationshipGraph:
         ensure_schema()
         self._ensure_graph()
 
+    def _clamp_metric(self, value: int, clamp: tuple[int, int]) -> int:
+        """Clamp trust/affinity into configured bounds."""
+
+        low, high = clamp
+        if value < low:
+            return low
+        if value > high:
+            return high
+        return value
+
     def _ensure_graph(self) -> None:
         if self.graph is None:
             import networkx as nx
@@ -276,19 +264,21 @@ class RelationshipGraph:
             return RelationshipEdge(
                 source_id=source_id,
                 target_id=target_id,
-                trust=data["trust"],
-                affinity=data["affinity"],
+                trust=self._clamp_metric(data["trust"], config.RELATIONSHIP_TRUST_CLAMP),
+                affinity=self._clamp_metric(data["affinity"], config.RELATIONSHIP_AFFINITY_CLAMP),
                 traits=data["traits"],
                 summary=data.get("summary"),
                 updated_at=data.get("updated_at", datetime.utcnow()),
             )
         stored = load_relationship(source_id, target_id)
         if stored:
+            trust_value = self._clamp_metric(stored.get("trust", config.RELATIONSHIP_NEUTRAL), config.RELATIONSHIP_TRUST_CLAMP)
+            affinity_value = self._clamp_metric(stored.get("affinity", config.RELATIONSHIP_NEUTRAL), config.RELATIONSHIP_AFFINITY_CLAMP)
             edge = RelationshipEdge(
                 source_id=source_id,
                 target_id=target_id,
-                trust=stored.get("trust", config.RELATIONSHIP_NEUTRAL),
-                affinity=stored.get("affinity", config.RELATIONSHIP_NEUTRAL),
+                trust=trust_value,
+                affinity=affinity_value,
                 traits=TraitVector(**{axis: stored[axis] for axis in TRAIT_AXES}),
                 summary=stored.get("summary"),
                 updated_at=datetime.fromisoformat(stored.get("updated_at")) if stored.get("updated_at") else datetime.utcnow(),
@@ -320,6 +310,8 @@ class RelationshipGraph:
         updated_traits = edge.traits
         if trait_deltas:
             updated_traits = edge.traits.with_delta(trait_deltas)
+        trust_value = self._clamp_metric(trust_value, config.RELATIONSHIP_TRUST_CLAMP)
+        affinity_value = self._clamp_metric(affinity_value, config.RELATIONSHIP_AFFINITY_CLAMP)
         edge = RelationshipEdge(
             source_id=source_id,
             target_id=target_id,
@@ -355,8 +347,8 @@ class RelationshipGraph:
             edge = RelationshipEdge(
                 source_id=source_id,
                 target_id=target_id,
-                trust=trust_value,
-                affinity=affinity_value,
+                trust=self._clamp_metric(trust_value, config.RELATIONSHIP_TRUST_CLAMP),
+                affinity=self._clamp_metric(affinity_value, config.RELATIONSHIP_AFFINITY_CLAMP),
                 traits=traits,
                 summary=data.get("summary"),
                 updated_at=now,
@@ -372,8 +364,8 @@ class RelationshipGraph:
             if source_id not in export:
                 export[source_id] = {}
             export[source_id][target_id] = {
-                "trust": float(data["trust"]),
-                "affinity": float(data["affinity"]),
+                "trust": float(self._clamp_metric(data["trust"], config.RELATIONSHIP_TRUST_CLAMP)),
+                "affinity": float(self._clamp_metric(data["affinity"], config.RELATIONSHIP_AFFINITY_CLAMP)),
             }
         return export
 
@@ -385,11 +377,13 @@ class RelationshipGraph:
             self.graph.add_node(edge.source_id)
         if not self.graph.has_node(edge.target_id):
             self.graph.add_node(edge.target_id)
+        trust_value = self._clamp_metric(edge.trust, config.RELATIONSHIP_TRUST_CLAMP)
+        affinity_value = self._clamp_metric(edge.affinity, config.RELATIONSHIP_AFFINITY_CLAMP)
         self.graph.add_edge(
             edge.source_id,
             edge.target_id,
-            trust=edge.trust,
-            affinity=edge.affinity,
+            trust=trust_value,
+            affinity=affinity_value,
             traits=edge.traits,
             summary=edge.summary,
             updated_at=edge.updated_at,
@@ -397,8 +391,8 @@ class RelationshipGraph:
         upsert_relationship(
             edge.source_id,
             edge.target_id,
-            trust=edge.trust,
-            affinity=edge.affinity,
+            trust=trust_value,
+            affinity=affinity_value,
             trait_perception=edge.traits.as_dict(),
             summary=edge.summary,
             updated_at=edge.updated_at,
@@ -450,14 +444,33 @@ def compute_relationship_update(
     similarity = _compatibility_factor(source_truth, target_truth)
     energy = _conversation_energy(lines)
     summary_bias = 0.3 if summary else 0.0
-    trust_inertia = -0.1 if current_trust > 60 else 0.1 if current_trust < -40 else 0.0
-    affinity_inertia = -0.1 if current_affinity > 60 else 0.1 if current_affinity < -40 else 0.0
-    trust_score = (similarity * 0.9) + (energy * 0.8) + (sentiment * 0.6) + summary_bias + trust_inertia
-    affinity_score = (similarity * 1.0) + (energy * 0.9) + (sentiment * 0.5) + summary_bias * 0.5 + affinity_inertia
+
+    trust_direction = 1.2 if current_trust > 20 else 0.8 if current_trust < -15 else 1.0
+    affinity_direction = 1.2 if current_affinity > 20 else 0.8 if current_affinity < -15 else 1.0
+
+    trust_score = (similarity * 0.8) + (energy * 0.7) + (sentiment * 0.8) + summary_bias
+    affinity_score = (similarity * 0.9) + (energy * 0.7) + (sentiment * 0.7) + (summary_bias * 0.4)
+
+    trust_score *= trust_direction
+    affinity_score *= affinity_direction
+
+    if current_trust < -20:
+        trust_score -= 0.6
+    elif current_trust > 25:
+        trust_score += 0.3
+
+    if current_affinity < -20:
+        affinity_score -= 0.6
+    elif current_affinity > 25:
+        affinity_score += 0.3
+
+    if sentiment < -0.15:
+        trust_score -= 0.6
+        affinity_score -= 0.7
+
     llm_trust_delta = int(round(max(-3.0, min(3.0, trust_score * 2.0))))
     llm_affinity_delta = int(round(max(-3.0, min(3.0, affinity_score * 2.0))))
-    trust_delta = llm_trust_delta + config.RELATIONSHIP_TRUST_BASE_INCREMENT
-    trust_delta = max(-3, min(3, trust_delta))
+    trust_delta = max(-3, min(3, llm_trust_delta))
     affinity_delta = max(-3, min(3, llm_affinity_delta))
     return {"trust_delta": trust_delta, "affinity_delta": affinity_delta}
 
@@ -495,12 +508,9 @@ def apply_policy(npc_profile: NPCProfile, node_name: str, context: Dict[str, Any
     config_entry = POLICY_CONFIG.get(node_name, POLICY_CONFIG["idle"])
     tool_outputs: Dict[str, Any] = {}
     for tool_name in config_entry.get("tools", []):
-        if tool_name == "inventory":
-            tool_outputs["inventory"] = inventory_for(npc_profile)
-        elif tool_name == "location":
-            tool_outputs["location"] = location_of(npc_profile)
-        elif tool_name == "schedule":
-            tool_outputs["schedule"] = schedule_for(npc_profile)
+        output = tools.fetch_tool_output(tool_name, npc_profile)
+        if output is not None:
+            tool_outputs[tool_name] = output
     nearby = context.get("nearby_npcs", [])
     focus_target = context.get("focus_target")
     target_id = focus_target
@@ -541,6 +551,120 @@ def _filtered_actions(actions: List[ActionType]) -> List[ActionType]:
 # Coordinates policy, LLM calls, logging, and relationship effects.
 
 
+def node_context_aggregate(
+    npc_profile: NPCProfile,
+    npc_mood: int,
+    conversation_memory: ConversationMemory,
+    relationships: RelationshipGraph,
+    context: Dict[str, Any],
+    node_name: str,
+) -> Dict[str, Any]:
+    """Collect tool outputs, allowed actions, and prompt-ready context for a node."""
+
+    # 1 Apply the node policy to fetch allowed actions and requested tools.    # steps
+    # 2 Build the prompt context so downstream nodes receive a single bundle.  # steps
+    allowed_actions, tool_outputs = apply_policy(npc_profile, node_name, context)
+    llm_context = _build_llm_context(
+        npc_profile,
+        npc_mood,
+        conversation_memory,
+        context,
+        tool_outputs,
+        relationships,
+    )
+    return {
+        "allowed_actions": allowed_actions,
+        "tool_outputs": tool_outputs,
+        "llm_context": llm_context,
+    }
+
+
+def node_decide_action(
+    npc_profile: NPCProfile,
+    node_name: str,
+    allowed_actions: List[Action],
+    llm_context: Dict[str, Any],
+) -> Decision:
+    """Deterministically select a speak-first action to keep the graph explicit."""
+
+    # 1 Prefer a speak action, otherwise pick the first allowed option.        # steps
+    selected_action = _first_speak_action(allowed_actions)
+    if selected_action is None and allowed_actions:
+        selected_action = allowed_actions[0]
+    if selected_action is None:
+        selected_action = Action(action_type=ActionType.IDLE)
+    return Decision(
+        npc_id=npc_profile.truth.npc_id,
+        selected_action=selected_action,
+        reason=f"defaulted {node_name} decision to {selected_action.action_type.value}",
+        dialogue_line=None,
+        confidence=0.5,
+    )
+
+
+def node_generate_response(
+    npc_profile: NPCProfile,
+    llm_client: Any,
+    llm_context: Dict[str, Any],
+    selected_action: Action,
+    tool_outputs: Dict[str, Any],
+    context: Dict[str, Any],
+) -> Dict[str, Any]:
+    """Call the LLM for a response while keeping the chosen action fixed."""
+
+    # 1 Skip LLM when the action is not speak to avoid pointless calls.        # steps
+    if selected_action.action_type != ActionType.SPEAK:
+        decision = Decision(
+            npc_id=npc_profile.truth.npc_id,
+            selected_action=selected_action,
+            reason="Non-speak action selected; response skipped.",
+            dialogue_line=None,
+            confidence=0.4,
+        )
+        return {"decision": decision, "tool_outputs": tool_outputs}
+
+    allowed_actions = [selected_action]
+    log_run_event(
+        f"llm_in npc={npc_profile.truth.npc_id} node=response partner={context.get('focus_target')} allowed={[a.action_type.value for a in allowed_actions]} short={len(llm_context.get('short_term', []))}"
+    )
+    decision = llm_client.select_action(npc_profile.truth.npc_id, llm_context, allowed_actions)
+    decision.selected_action = selected_action
+    if not decision.dialogue_line or _looks_like_junk(decision.dialogue_line):
+        partner_last = llm_context.get("last_partner_line", "")
+        fallback_line = style_and_lore_filter(f"Got it about '{partner_last[:40]}'." if partner_last else "Sure, tell me more.")
+        decision.dialogue_line = fallback_line
+    log_run_event(
+        f"llm_out npc={npc_profile.truth.npc_id} node=response action={decision.selected_action.action_type.value} target={decision.selected_action.target_id or '-'} line='{(decision.dialogue_line or '')[:120]}'"
+    )
+    return {"decision": decision, "tool_outputs": tool_outputs}
+
+
+def node_validate_response(
+    decision: Decision,
+    allowed_actions: List[Action],
+    require_speak: bool,
+    max_attempts: int = config.RESPONSE_VALIDATION_MAX_ATTEMPTS,
+    enabled: bool = config.RESPONSE_VALIDATION_ENABLED,
+) -> Decision:
+    """Placeholder validator that passes through decisions by default."""
+
+    # 1 Return early when validation is disabled to keep the loop minimal.     # steps
+    if not enabled:
+        return decision
+    attempt = 0
+    validated = decision
+    while attempt < max_attempts:
+        is_ok = _decision_ok(validated, allowed_actions, require_speak)
+        if is_ok:
+            return validated
+        attempt += 1
+    if validated.selected_action.action_type == ActionType.SPEAK:
+        partner_last = validated.dialogue_line or ""
+        fallback_line = style_and_lore_filter(f"Got it about '{partner_last[:40]}'." if partner_last else "Tell me more.")
+        validated.dialogue_line = fallback_line
+    return validated
+
+
 def node_idle(
     npc_profile: NPCProfile,
     npc_mood: int,
@@ -551,8 +675,17 @@ def node_idle(
 ) -> Dict[str, Any]:
     """Handle idle decisions and gentle state recovery."""
 
-    allowed_actions, tool_outputs = apply_policy(npc_profile, "idle", context)
-    llm_context = _build_llm_context(npc_profile, npc_mood, conversation_memory, context, tool_outputs, relationships)
+    aggregate = node_context_aggregate(
+        npc_profile=npc_profile,
+        npc_mood=npc_mood,
+        conversation_memory=conversation_memory,
+        relationships=relationships,
+        context=context,
+        node_name="idle",
+    )
+    allowed_actions = aggregate["allowed_actions"]
+    tool_outputs = aggregate["tool_outputs"]
+    llm_context = aggregate["llm_context"]
     log_run_event(
         f"llm_in npc={npc_profile.truth.npc_id} node=idle partner={context.get('focus_target')} allowed={[a.action_type.value for a in allowed_actions]} short={len(llm_context.get('short_term', []))}"
     )
@@ -573,16 +706,37 @@ def node_speak(
 ) -> Dict[str, Any]:
     """Coordinate conversation actions and relationship nudges."""
 
-    allowed_actions, tool_outputs = apply_policy(npc_profile, "speak", context)
-    llm_context = _build_llm_context(npc_profile, npc_mood, conversation_memory, context, tool_outputs, relationships)
-    log_run_event(
-        f"llm_in npc={npc_profile.truth.npc_id} node=speak partner={context.get('focus_target')} allowed={[a.action_type.value for a in allowed_actions]} short={len(llm_context.get('short_term', []))}"
+    aggregate = node_context_aggregate(
+        npc_profile=npc_profile,
+        npc_mood=npc_mood,
+        conversation_memory=conversation_memory,
+        relationships=relationships,
+        context=context,
+        node_name="speak",
     )
-    decision = _validated_decision(llm_client, npc_profile.truth.npc_id, llm_context, allowed_actions, context)
+    allowed_actions = aggregate["allowed_actions"]
+    tool_outputs = aggregate["tool_outputs"]
+    llm_context = aggregate["llm_context"]
+    graph_decision = node_decide_action(
+        npc_profile=npc_profile,
+        node_name="speak",
+        allowed_actions=allowed_actions,
+        llm_context=llm_context,
+    )
+    response_result = node_generate_response(
+        npc_profile=npc_profile,
+        llm_client=llm_client,
+        llm_context=llm_context,
+        selected_action=graph_decision.selected_action,
+        tool_outputs=tool_outputs,
+        context=context,
+    )
+    decision = node_validate_response(
+        decision=response_result["decision"],
+        allowed_actions=allowed_actions,
+        require_speak=True,
+    )
     action = decision.selected_action
-    log_run_event(
-        f"llm_out npc={npc_profile.truth.npc_id} node=speak action={action.action_type.value} target={action.target_id or '-'} line='{(decision.dialogue_line or '')[:120]}'"
-    )
     defer_effects = context.get("defer_effects", False)
     pending_effects: List[Dict[str, Any]] | None = context.get("pending_effects")
     if action.action_type == ActionType.SPEAK and action.target_id:
@@ -678,6 +832,44 @@ def node_adjust_rel(
 # Builds the prompt-ready context and validates model decisions.
 
 
+def node_summarize_short_term(
+    npc_id: str,
+    partner_id: str | None,
+    short_term: List[str],
+    threshold: int = config.SHORT_TERM_PROMPT_MAX_LINES,
+) -> Dict[str, Any]:
+    """Compress long short-term logs into a concise summary plus recent lines."""
+
+    # 1 Return quickly when the list is already small.                         # steps
+    if len(short_term) <= threshold:
+        return {"short_term": list(short_term), "summary_snippet": ""}
+
+    earlier_lines = short_term[:-4]
+    recent_lines = short_term[-4:]
+
+    last_self_line = ""
+    last_partner_line = ""
+    for line in reversed(earlier_lines):
+        if partner_id and line.startswith(f"{partner_id}:") and not last_partner_line:
+            last_partner_line = line.split(":", 1)[1].strip()
+        elif line.startswith(f"{npc_id}:") and not last_self_line:
+            last_self_line = line.split(":", 1)[1].strip()
+        if last_self_line and last_partner_line:
+            break
+
+    summary_lines: List[str] = []
+    if last_partner_line:
+        summary_lines.append(f"Earlier {partner_id}: {last_partner_line}")
+    if last_self_line:
+        summary_lines.append(f"Earlier {npc_id}: {last_self_line}")
+
+    combined = summary_lines + recent_lines
+    if len(combined) > threshold:
+        combined = combined[-threshold:]
+    summary_snippet = " | ".join(summary_lines)
+    return {"short_term": combined, "summary_snippet": summary_snippet}
+
+
 def _build_llm_context(
     npc_profile: NPCProfile,
     npc_mood: int,
@@ -702,7 +894,14 @@ def _build_llm_context(
             "global_facts": list(config.GLOBAL_KNOWLEDGE),
         }
     )
-    short_term = bundle["short_term"]
+    synth = node_summarize_short_term(
+        npc_id=npc_profile.truth.npc_id,
+        partner_id=partner_id,
+        short_term=bundle["short_term"],
+        threshold=config.SHORT_TERM_PROMPT_MAX_LINES,
+    )
+    short_term = synth["short_term"]
+    summary_snippet = synth["summary_snippet"]
     last_partner_line = ""
     if partner_id:
         for line in reversed(short_term):
@@ -739,6 +938,7 @@ def _build_llm_context(
         "last_partner_line": last_partner_line,
         "long_term": bundle["long_term"],
         "global_facts": bundle["global_facts"],
+        "short_term_summary": summary_snippet,
         "conversation_partner": partner_id,
         "interaction_tone": interaction_tone,
     }
@@ -767,37 +967,6 @@ def _toward_truth_delta(
         else:
             deltas[axis] = 0
     return deltas
-
-
-def _validated_decision(
-    llm_client: Any,
-    npc_id: str,
-    llm_context: Dict[str, Any],
-    allowed_actions: List[Action],
-    context: Dict[str, Any],
-) -> Decision:
-    """Ask the LLM, validate, and retry once if the output is junk."""
-
-    max_attempts = 2  # initial + one retry to avoid loops
-    require_speak = bool(context.get("session_turns_left") or context.get("defer_effects"))
-    fallback_action = _first_speak_action(allowed_actions) or (allowed_actions[0] if allowed_actions else Action(action_type=ActionType.IDLE))
-    last_decision: Optional[Decision] = None
-    for _ in range(max_attempts):
-        decision = llm_client.select_action(npc_id, llm_context, allowed_actions)
-        last_decision = decision
-        if _decision_ok(decision, allowed_actions, require_speak):
-            return decision
-    partner_last = llm_context.get("last_partner_line", "")
-    fallback_line = style_and_lore_filter(f"Got it about '{partner_last[:40]}'." if partner_last else "Sure, tell me more.")
-    if last_decision and last_decision.dialogue_line and not _looks_like_junk(last_decision.dialogue_line):
-        fallback_line = last_decision.dialogue_line
-    return Decision(
-        npc_id=npc_id,
-        selected_action=fallback_action,
-        reason=last_decision.reason if last_decision else "Validator fallback.",
-        dialogue_line=fallback_line,
-        confidence=0.5,
-    )
 
 
 def _decision_ok(decision: Decision, allowed_actions: List[Action], require_speak: bool) -> bool:
